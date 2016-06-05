@@ -53,28 +53,30 @@ set autowrite
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!gcc % -o %<"
-		exec "! ./%<"
-	elseif &filetype == 'cpp'
-		exec "!g++ % -o %<"
-		exec "! ./%<"
-	elseif &filetype == 'python'
-		exec "!python2 %"
-	elseif &filetype == 'java' 
-		exec "!javac %" 
-		exec "!java %<"
-	elseif &filetype == 'sh'
-		:!bash %
-	endif
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'python'
+        exec "!python2 %"
+    elseif &filetype == 'go'
+        exec "!go run %"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!java %<"
+    elseif &filetype == 'sh'
+        :!bash %
+    endif
 endfunc
 
 map <F8> :call Rungdb()<CR>
 func! Rungdb()
-	exec "w"
-	exec "!g++ % -g -o %<"
-	exec "!gdb ./%<"
+    exec "w"
+    exec "!g++ % -g -o %<"
+    exec "!gdb ./%<"
 endfunc
 
 set completeopt=preview,menu
@@ -95,20 +97,28 @@ endfunction
 
 map <C-A> ggVG$"+y
 vmap <C-c> "+y
-:map <F10> :set paste<CR>
-:map <F9> :set nopaste<CR>
 
 execute pathogen#infect()
-let g:syntastic_python_python_exec = '/usr/bin/python2'
+
+" SYNTASTIC
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_auto_jump = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-autocmd! BufEnter  *.jsx  
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_python_exec = '/usr/bin/python2'
+autocmd! BufEnter *.jsx
 
-" VIM MARKDOWM
-let g:vim_markdown_folding_disabled=1
+" EASYMOTION
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_leader_key = '<Space>'
+
+map <Space>l <Plug>(easymotion-lineforward)
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+map <Space>h <Plug>(easymotion-linebackward)
