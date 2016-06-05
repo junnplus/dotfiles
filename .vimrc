@@ -112,6 +112,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:syntastic_go_checkers = ['gofmt']
 autocmd! BufEnter *.jsx
 
 " EASYMOTION
