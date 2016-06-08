@@ -22,6 +22,7 @@ set incsearch
 set showmatch 
 set ignorecase
 set matchtime=1
+set backspace=2
 
 set ai
 set si
@@ -113,6 +114,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_go_checkers = ['gofmt']
+let g:syntastic_html_checkers = []
 autocmd! BufEnter *.jsx
 
 " EASYMOTION
