@@ -114,8 +114,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python2'
 let g:syntastic_go_checkers = ['gofmt']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = []
 autocmd! BufEnter *.jsx
+
+" YOUCOMPLETEME
+let g:ycm_python_binary_path = 'python'
+let g:ycm_goto_buffer_command = 'horizontal-split'
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
