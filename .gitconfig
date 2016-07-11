@@ -15,3 +15,5 @@
     email = junnplus@gmail.com
 [core]
     editor = vim
+[url "https://"]
+	insteadOf = git://
