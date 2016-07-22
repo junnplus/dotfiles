@@ -120,7 +120,7 @@ autocmd! BufEnter *.jsx
 
 " YOUCOMPLETEME
 let g:ycm_python_binary_path = 'python'
-let g:ycm_goto_buffer_command = 'horizontal-split'
+let g:ycm_goto_buffer_command = 'vertical-split'
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 
