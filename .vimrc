@@ -132,3 +132,8 @@ map <Space>l <Plug>(easymotion-lineforward)
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 map <Space>h <Plug>(easymotion-linebackward)
+
+" CTRLP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
