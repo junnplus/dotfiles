@@ -41,7 +41,7 @@ autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 set laststatus=2
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
 set cmdheight=1
 
 set showcmd
@@ -112,17 +112,21 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:syntastic_python_python_exec = 'python'
 let g:syntastic_go_checkers = ['gofmt']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = []
+let g:syntastic_ignore_files = ['\m^/usr/local/']
 autocmd! BufEnter *.jsx
 
 " YOUCOMPLETEME
 let g:ycm_python_binary_path = 'python'
 let g:ycm_goto_buffer_command = 'vertical-split'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+nnoremap <Tab> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-j> :YcmCompleter GoToDeclaration<CR>
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
