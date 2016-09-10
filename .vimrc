@@ -34,7 +34,8 @@ set tabstop=4
 set expandtab
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=160
+autocmd FileType go setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=120 noexpandtab
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -51,6 +52,8 @@ set formatoptions=tcrqn
 set nobackup
 set noswapfile
 set autowrite
+set foldmethod=indent
+set nofoldenable
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -62,7 +65,7 @@ func! CompileRunGcc()
         exec "!g++ % -o %<"
         exec "! ./%<"
     elseif &filetype == 'python'
-        exec "!python2 %"
+        exec "!python %"
     elseif &filetype == 'go'
         exec "!go run %"
     elseif &filetype == 'java'
@@ -113,10 +116,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_python_exec = 'python'
-let g:syntastic_go_checkers = ['gofmt']
+let g:syntastic_go_checkers = ['gofmt', 'golint', 'errcheck']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = []
-let g:syntastic_ignore_files = ['\m^/usr/local/']
+let g:syntastic_ignore_files = ['\m^/usr/local/', '\m^/Users/.*/.virtualenvs/']
 autocmd! BufEnter *.jsx
 
 " YOUCOMPLETEME
@@ -125,6 +128,7 @@ let g:ycm_goto_buffer_command = 'vertical-split'
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 nnoremap <Tab> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <C-j> :YcmCompleter GoToDeclaration<CR>
 
