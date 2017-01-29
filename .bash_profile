@@ -4,6 +4,7 @@ export CLICOLOR=1
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+alias vi=vim
 source ~/.git-completion.bash
 
 export WORKON_HOME=~/.virtualenvs
