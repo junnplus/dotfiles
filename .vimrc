@@ -105,23 +105,23 @@ vmap <C-c> "+y
 execute pathogen#infect()
 
 " SYNTASTIC
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_auto_jump = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=E501'
-let g:syntastic_python_python_exec = 'python'
-let g:syntastic_go_checkers = ['gofmt', 'golint', 'errcheck']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers = []
-let g:syntastic_ignore_files = ['\m^/usr/local/', '\m^/Users/.*/.virtualenvs/']
-autocmd! BufEnter *.jsx
+" let g:syntastic_auto_jump = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_python_flake8_args = '--ignore=E501'
+" let g:syntastic_python_python_exec = 'python'
+" let g:syntastic_go_checkers = ['gofmt', 'golint', 'errcheck']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_html_checkers = []
+" let g:syntastic_ignore_files = ['\m^/usr/local/', '\m^/Users/.*/.virtualenvs/']
+" autocmd! BufEnter *.jsx
 
 " YOUCOMPLETEME
 let g:ycm_python_binary_path = 'python'
@@ -130,15 +130,15 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-nnoremap <Tab> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <C-j> :YcmCompleter GoToDeclaration<CR>
 let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+nnoremap <Tab> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-j> :YcmCompleter GoToDeclaration<CR>
 
 " ULTISNIPS
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
