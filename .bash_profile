@@ -1,4 +1,5 @@
-PS1='\W \$ '
+source ~/.git-prompt.sh
+PS1='\W$(__git_ps1) \$ '
 export CLICOLOR=1
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
