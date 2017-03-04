@@ -1,12 +1,13 @@
 source ~/.git-prompt.sh
-PS1='\W$(__git_ps1) \$ '
+source ~/.git-completion.bash
 export CLICOLOR=1
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+PS1='\W$(__git_ps1)\n\e[0;31m\$\e[m '
 alias vi=vim
-source ~/.git-completion.bash
+alias ll='ls -al'
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
