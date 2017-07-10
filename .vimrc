@@ -104,27 +104,9 @@ vmap <C-c> "+y
 
 execute pathogen#infect()
 
-" SYNTASTIC
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_auto_jump = 1
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['flake8']
-" let g:syntastic_python_flake8_args = '--ignore=E501'
-" let g:syntastic_python_python_exec = 'python'
-" let g:syntastic_go_checkers = ['gofmt', 'golint', 'errcheck']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_html_checkers = []
-" let g:syntastic_ignore_files = ['\m^/usr/local/', '\m^/Users/.*/.virtualenvs/']
-" autocmd! BufEnter *.jsx
-
 " YOUCOMPLETEME
 let g:ycm_python_binary_path = 'python'
+let g:ycm_server_python_interpreter = 'python'
 let g:ycm_goto_buffer_command = 'vertical-split'
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
@@ -153,3 +135,11 @@ map <Space>h <Plug>(easymotion-linebackward)
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+
+" ACK
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" ALE
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
