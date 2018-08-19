@@ -104,23 +104,7 @@ vmap <C-c> "+y
 
 execute pathogen#infect()
 
-" YOUCOMPLETEME
-let g:ycm_python_binary_path = 'python'
-let g:ycm_server_python_interpreter = 'python'
-let g:ycm_goto_buffer_command = 'vertical-split'
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-nnoremap <Tab> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <C-j> :YcmCompleter GoToDeclaration<CR>
-
-" ULTISNIPS
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
@@ -143,3 +127,28 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_python_flake8_args = '--ignore=E501'
+
+" RUST.VIM
+let g:rustfmt_autosave = 1
+
+" CTAGS
+set tags=./tags;/
+
+" AG
+set runtimepath^=~/.vim/bundle/ag
+
+" ARTLINE
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.branch = '⎇'
+let g:airline#extensions#tabline#enabled = 1
+
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#goto_command = '<c-j>'
+let g:jedi#goto_assignments_command = '<c-k>'
+
+autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
