@@ -1,0 +1,18 @@
+[submodule ".vim/pack/plugins/start/ale"]
+	path = .vim/pack/plugins/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/pack/plugins/start/vim-airline"]
+	path = .vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/pack/plugins/start/vim-surround"]
+	path = .vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/jedi-vim"]
+	path = .vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
