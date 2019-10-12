@@ -89,6 +89,8 @@ filetype plugin indent on
 
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {}<ESC>i
+:inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
 function ClosePair(char)
@@ -105,6 +107,9 @@ vmap <C-c> "+y
 execute pathogen#infect()
 
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" NERD TREE
+map <C-n> :NERDTreeToggle<CR>
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
@@ -126,8 +131,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " ALE
 let g:ale_linters = {
 \   'python': ['flake8'],
+\   'jsx': ['stylelint', 'eslint'],
 \}
 let g:ale_python_flake8_options = '--ignore=E501'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " RUST.VIM
 let g:rustfmt_autosave = 1
@@ -152,3 +159,6 @@ let g:jedi#goto_command = '<c-j>'
 let g:jedi#goto_assignments_command = '<c-k>'
 
 autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
+
+" JSX
+let g:jsx_ext_required = 1

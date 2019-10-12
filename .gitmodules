@@ -19,3 +19,9 @@
 [submodule ".vim/pack/plugins/start/vim-go"]
 	path = .vim/pack/plugins/start/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/bundle/vim-jsx"]
+	path = .vim/bundle/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
