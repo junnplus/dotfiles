@@ -110,6 +110,11 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 " NERD TREE
 map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+
+" TAGBAR
+nmap <C-m> :TagbarToggle<CR>
+let g:tagbar_left = 1
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
