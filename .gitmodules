@@ -49,3 +49,6 @@
 [submodule ".vim/pack/plugins/start/indentLine"]
 	path = .vim/pack/plugins/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/pack/plugins/start/nerdcommenter"]
+	path = .vim/pack/plugins/start/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter

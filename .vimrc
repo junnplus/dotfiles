@@ -171,3 +171,7 @@ let g:jsx_ext_required = 1
 let g:indentLine_conceallevel=1
 let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
+
+" NERDCOMMENTER
+" let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
