@@ -162,3 +162,7 @@ autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
 
 " JSX
 let g:jsx_ext_required = 1
+
+
+" JAVASCRIPT
+" let g:javascript_plugin_flow = 1
