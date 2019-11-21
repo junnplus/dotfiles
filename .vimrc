@@ -104,8 +104,6 @@ endfunction
 map <C-A> ggVG$"+y
 vmap <C-c> "+y
 
-execute pathogen#infect()
-
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " NERD TREE
@@ -146,9 +144,6 @@ let g:rustfmt_autosave = 1
 
 " CTAGS
 set tags=./tags;/
-
-" AG
-set runtimepath^=~/.vim/bundle/ag
 
 " ARTLINE
 if !exists('g:airline_symbols')
