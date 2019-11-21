@@ -37,3 +37,6 @@
 [submodule ".vim/pack/plugins/start/vim-easymotion"]
 	path = .vim/pack/plugins/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
+[submodule ".vim/pack/plugins/start/tagbar"]
+	path = .vim/pack/plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
