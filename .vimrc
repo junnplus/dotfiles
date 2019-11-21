@@ -166,3 +166,8 @@ let g:jsx_ext_required = 1
 
 " JAVASCRIPT
 " let g:javascript_plugin_flow = 1
+
+" INDENTLINE
+let g:indentLine_conceallevel=1
+let g:indentLine_color_term = 239
+let g:indentLine_char = '¦'
