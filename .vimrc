@@ -40,6 +40,7 @@ autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 soft
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType javascript,javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
@@ -154,15 +155,19 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#enabled = 1
 
+" JEDI
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#goto_command = '<c-j>'
 let g:jedi#goto_assignments_command = '<c-k>'
 
+" VIM-GO
 autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
-
-" JSX
-let g:jsx_ext_required = 1
-
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " JAVASCRIPT
 " let g:javascript_plugin_flow = 1
