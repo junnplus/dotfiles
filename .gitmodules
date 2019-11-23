@@ -40,3 +40,6 @@
 [submodule ".vim/pack/plugins/start/nerdcommenter"]
 	path = .vim/pack/plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
+[submodule ".vim/pack/plugins/start/auto-pairs"]
+	path = .vim/pack/plugins/start/auto-pairs
+	url = https://github.com:jiangmiao/auto-pairs.git
