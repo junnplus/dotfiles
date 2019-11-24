@@ -88,24 +88,12 @@ set completeopt=preview,menu
 filetype on
 filetype plugin indent on
 
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-function ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunction
-
 map <C-A> ggVG$"+y
 vmap <C-c> "+y
 
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+let mapleader=";"
 
 " NERD TREE
 map <C-n> :NERDTreeToggle<CR>
@@ -136,6 +124,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:ale_linters = {
 \   'python': ['flake8'],
 \   'jsx': ['stylelint', 'eslint'],
+\   'go': ['gopls'],
 \}
 let g:ale_python_flake8_options = '--ignore=E501'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -156,13 +145,13 @@ let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#enabled = 1
 
 " JEDI
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#goto_command = '<c-j>'
-let g:jedi#goto_assignments_command = '<c-k>'
+" let g:jedi#use_splits_not_buffers = "left"
+" let g:jedi#goto_command = '<c-j>'
+" let g:jedi#goto_assignments_command = '<c-k>'
 
 " VIM-GO
-autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
-let g:go_highlight_functions = 1
+" autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
+let g:go_def_mapping_enabled = 0 " fuck vim-go default def mapping
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
@@ -180,3 +169,9 @@ let g:indentLine_char = '¦'
 " NERDCOMMENTER
 " let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+
+" COMPLETOR
+noremap <silent> <c-j> :call completor#do('definition')<CR>
+let g:completor_def_split = "vsplit"
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls'}

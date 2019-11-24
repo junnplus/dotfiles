@@ -46,3 +46,9 @@
 [submodule ".vim/pack/plugins/start/vim-wakatime"]
 	path = .vim/pack/plugins/start/vim-wakatime
 	url = https://github.com/wakatime/vim-wakatime.git
+[submodule ".vim/pack/plugins/start/tern_for_vim"]
+	path = .vim/pack/plugins/start/tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim.git
+[submodule ".vim/pack/plugins/start/completor.vim"]
+	path = .vim/pack/plugins/start/completor.vim
+	url = https://github.com/maralla/completor.vim.git
