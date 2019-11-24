@@ -42,4 +42,7 @@
 	url = https://github.com/scrooloose/nerdcommenter
 [submodule ".vim/pack/plugins/start/auto-pairs"]
 	path = .vim/pack/plugins/start/auto-pairs
-	url = https://github.com:jiangmiao/auto-pairs.git
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule ".vim/pack/plugins/start/vim-wakatime"]
+	path = .vim/pack/plugins/start/vim-wakatime
+	url = https://github.com/wakatime/vim-wakatime.git
