@@ -52,3 +52,12 @@
 [submodule ".vim/pack/plugins/start/completor.vim"]
 	path = .vim/pack/plugins/start/completor.vim
 	url = https://github.com/maralla/completor.vim.git
+[submodule ".oh-my-zsh/plugins/zsh-autosuggestions"]
+	path = .oh-my-zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".oh-my-zsh/themes/spaceship-prompt"]
+	path = .oh-my-zsh/themes/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git
+[submodule ".oh-my-zsh/plugins/zsh-syntax-highlighting"]
+	path = .oh-my-zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
