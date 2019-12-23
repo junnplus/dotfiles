@@ -175,3 +175,7 @@ noremap <silent> <c-j> :call completor#do('definition')<CR>
 let g:completor_def_split = "vsplit"
 let g:completor_filetype_map = {}
 let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls'}
+
+" TERRAFORM
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
