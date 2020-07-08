@@ -18,4 +18,4 @@
 [url "https://"]
     insteadOf = git://
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:1234
+    proxy = socks5://127.0.0.1:1234
