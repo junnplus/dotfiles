@@ -115,7 +115,7 @@ alias ksys=kubectl -n kube-system
 alias kd=kubectl describe
 alias kns=kubens
 alias kctx=kubectx
-export KUBECONFIG=~/.kube/config:~/.kube/k8s-qa:~/.kube/k8s-147
+export KUBECONFIG=~/.kube/config
 
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct
