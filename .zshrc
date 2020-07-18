@@ -70,6 +70,7 @@ ZSH_CUSTOM=~/.dotfiles/.oh-my-zsh
 
 plugins=(
     git
+    autojump
     vi-mode
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -115,6 +116,9 @@ alias ksys=kubectl -n kube-system
 alias kd=kubectl describe
 alias kns=kubens
 alias kctx=kubectx
+alias proxy="export all_proxy=socks5://127.0.0.1:1234"
+alias noproxy="unset all_proxy"
+
 export KUBECONFIG=~/.kube/config
 
 export GOPATH=$HOME/.go
@@ -122,5 +126,6 @@ export GOPROXY=https://goproxy.cn,direct
 export GOPRIVATE=git.qutoutiao.net
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export PATH="$PYENV_ROOT/shims:$GOPATH/bin:/usr/local/bin:$PATH"
