@@ -107,10 +107,6 @@ export LC_ALL=en_US.UTF-8
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 alias k=kubectl
 alias ksys=kubectl -n kube-system
 alias kd=kubectl describe
@@ -119,13 +115,15 @@ alias kctx=kubectx
 alias proxy="export all_proxy=socks5://127.0.0.1:1234"
 alias noproxy="unset all_proxy"
 
-export KUBECONFIG=~/.kube/config
+export KUBECONFIG=~/.kube/config:~/.kube/k8s-sit
 
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct
 export GOPRIVATE=git.qutoutiao.net
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+
+export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-export PATH="$PYENV_ROOT/shims:$GOPATH/bin:/usr/local/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
