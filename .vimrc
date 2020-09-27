@@ -32,6 +32,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
+set hidden
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -47,6 +48,8 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
 set cmdheight=1
 
 set showcmd
+set cmdheight=2
+set updatetime=300
 set ruler
 set history=300
 set formatoptions=tcrqn
@@ -144,19 +147,14 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#enabled = 1
 
-" JEDI
-" let g:jedi#use_splits_not_buffers = "left"
-" let g:jedi#goto_command = '<c-j>'
-" let g:jedi#goto_assignments_command = '<c-k>'
-
 " VIM-GO
 " autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
-let g:go_def_mapping_enabled = 0 " fuck vim-go default def mapping
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+" let g:go_def_mapping_enabled = 0 " fuck vim-go default def mapping
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
 
 " JAVASCRIPT
 " let g:javascript_plugin_flow = 1
@@ -171,11 +169,51 @@ let g:indentLine_char = '¦'
 let g:NERDDefaultAlign = 'left'
 
 " COMPLETOR
-noremap <silent> <c-j> :call completor#do('definition')<CR>
-let g:completor_def_split = "vsplit"
-let g:completor_filetype_map = {}
-let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls'}
+" noremap <silent> <c-j> :call completor#do('definition')<CR>
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" let g:completor_auto_trigger = 0
+" let g:completor_def_split = "vsplit"
+" let g:completor_filetype_map = {}
+" let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls'}
+" let g:completor_filetype_map.python = {'ft': 'lsp', 'cmd': 'pyls'}
 
 " TERRAFORM
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" COC
+let g:coc_global_extensions = ["coc-json", "coc-python", "coc-go", "coc-yank"]
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <c-e> <Plug>(coc-diagnostic-next-error)
+nmap <c-E> <Plug>(coc-diagnostic-prev-error)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+function! VSplitIfNotOpen(...)
+    let cursorCmd = ''
+    let fname = a:1
+    if a:0 == 2  " Two arguments.
+        let cursorCmd = a:1
+        let fname = a:2
+    endif
+    if fname != fnamemodify(expand('%'), ':p:~:.')
+        exec 'vsplit '.fname
+    endif
+    if len(cursorCmd)
+        exec cursorCmd
+    endif
+endfunction
+
+command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)

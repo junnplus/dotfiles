@@ -1,0 +1,8 @@
+{
+    "suggest.enablePreview": true,
+    "suggest.triggerAfterInsertEnter": true,
+    "python.jediEnabled": true,
+    "python.linting.enabled": false,
+    "tsserver.trace.server": "verbose",
+    "coc.preferences.jumpCommand": "CocVSplitIfNotOpen"
+}

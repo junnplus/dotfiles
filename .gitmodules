@@ -7,9 +7,6 @@
 [submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/pack/plugins/start/vim-go"]
-	path = .vim/pack/plugins/start/vim-go
-	url = https://github.com/fatih/vim-go.git
 [submodule ".vim/pack/plugins/start/vim-multiple-cursors"]
 	path = .vim/pack/plugins/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
@@ -49,9 +46,6 @@
 [submodule ".vim/pack/plugins/start/tern_for_vim"]
 	path = .vim/pack/plugins/start/tern_for_vim
 	url = https://github.com/ternjs/tern_for_vim.git
-[submodule ".vim/pack/plugins/start/completor.vim"]
-	path = .vim/pack/plugins/start/completor.vim
-	url = https://github.com/maralla/completor.vim.git
 [submodule ".oh-my-zsh/plugins/zsh-autosuggestions"]
 	path = .oh-my-zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
@@ -64,3 +58,7 @@
 [submodule ".vim/pack/plugins/start/vim-terraform"]
 	path = .vim/pack/plugins/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule ".vim/pack/plugins/start/coc.nvim"]
+	path = .vim/pack/plugins/start/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git
+	branch = release
