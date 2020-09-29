@@ -115,7 +115,7 @@ alias kctx=kubectx
 alias proxy="export all_proxy=socks5://127.0.0.1:1234"
 alias noproxy="unset all_proxy"
 
-export KUBECONFIG=~/.kube/config:~/.kube/k8s-sit
+export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
 
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct

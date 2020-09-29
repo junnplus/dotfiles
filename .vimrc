@@ -1,11 +1,16 @@
 syntax on
 syntax enable
 
+packadd! dracula
+" set termguicolors
+let g:dracula_italic = 0
+set background=dark
+" colorscheme solarized
+colorscheme dracula
+
 set nu
 set cul
 set cuc
-set background=dark
-colorscheme solarized
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
 
@@ -94,17 +99,25 @@ filetype plugin indent on
 map <C-A> ggVG$"+y
 vmap <C-c> "+y
 
+" 缩进
+nmap <tab> V>
+nmap <s-tab> V<
+vmap <tab> >gv
+vmap <s-tab> <gv
+
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-let mapleader=";"
+let mapleader = "\<space>"
 
 " NERD TREE
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinPos = "right"
+" autocmd vimenter * NERDTree | wincmd w
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeHijackNetrw=1
+let g:NERDTreeWinPos = "left"
 
 " TAGBAR
 nmap <C-m> :TagbarToggle<CR>
-let g:tagbar_left = 1
+let g:tagbar_left = 0
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
@@ -114,6 +127,8 @@ map <Space>l <Plug>(easymotion-lineforward)
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 map <Space>h <Plug>(easymotion-linebackward)
+map <Space>w <Plug>(easymotion-w)
+map <Space>b <Plug>(easymotion-b)
 
 " CTRLP
 let g:ctrlp_map = '<c-p>'
@@ -129,6 +144,7 @@ let g:ale_linters = {
 \   'jsx': ['stylelint', 'eslint'],
 \   'go': ['gopls'],
 \}
+let g:ale_enabled = 0
 let g:ale_python_flake8_options = '--ignore=E501'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
@@ -165,7 +181,7 @@ let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
 
 " NERDCOMMENTER
-" let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
 " COMPLETOR
@@ -183,15 +199,16 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " COC
-let g:coc_global_extensions = ["coc-json", "coc-python", "coc-go", "coc-yank"]
+let g:coc_global_extensions = ["coc-json", "coc-python", "coc-go", "coc-yank", "coc-explorer", "coc-git"]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <c-e> <Plug>(coc-diagnostic-next-error)
-nmap <c-E> <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <c-e> <Plug>(coc-diagnostic-next)
+" nmap <silent> <c-E> <Plug>(coc-diagnostic-prev)
 
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -217,3 +234,8 @@ function! VSplitIfNotOpen(...)
 endfunction
 
 command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
+
+autocmd VimEnter * CocCommand explorer --no-toggle --no-focus --width=30
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+nmap <c-t> :belowright terminal ++rows=15<cr>
