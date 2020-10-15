@@ -126,4 +126,4 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin"
+export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
