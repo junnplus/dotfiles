@@ -50,7 +50,6 @@ autocmd FileType javascript,javascript.jsx,javascriptreact setlocal tabstop=2 sh
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
-set cmdheight=1
 
 set showcmd
 set cmdheight=2
@@ -116,8 +115,9 @@ let g:NERDTreeHijackNetrw=1
 let g:NERDTreeWinPos = "left"
 
 " TAGBAR
-nmap <C-m> :TagbarToggle<CR>
+map <C-m> :TagbarToggle<CR>
 let g:tagbar_left = 0
+let g:tagbar_autofocus = 1
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
@@ -238,4 +238,43 @@ command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
 autocmd VimEnter * CocCommand explorer --no-toggle --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-nmap <c-t> :belowright terminal ++rows=15<cr>
+nnoremap <leader>r V:call SendToTerminal()<CR>$
+vnoremap <leader>r <Esc>:call SendToTerminal()<CR>
+function! SendToTerminal()
+    let buff_n = term_list()
+    if len(buff_n) > 0
+        let buff_n = buff_n[0] " sends to most recently opened terminal
+        let lines = getline(getpos("'<")[1], getpos("'>")[1])
+        let indent = match(lines[0], '[^ \t]') " check for removing unnecessary indent
+        for l in lines
+            let new_indent = match(l, '[^ \t]')
+            if new_indent == 0
+                call term_sendkeys(buff_n, l. "\<CR>")
+            else
+                call term_sendkeys(buff_n, l[indent:]. "\<CR>")
+            endif
+            sleep 10m
+        endfor
+        FloatermShow()
+    endif
+endfunction
+
+" FLOATERM
+let g:floaterm_autoclose = 2
+let g:floaterm_height = 0.2
+let g:floaterm_position = 'bottom'
+let g:floaterm_keymap_new = '<leader>T'
+let g:floaterm_keymap_toggle = '<leader>t'
+tnoremap <silent> <Esc><Esc> <C-\><C-n>
+
+nnoremap <c-l> :tabnext<cr>
+tnoremap <c-l> <C-\><C-n>:FloatermNext<cr>
+nnoremap <c-h> :tabprevious<cr>
+tnoremap <c-h> <C-\><C-n>:FloatermPrev<cr>
+
+" FZF
+set rtp+=/usr/local/opt/fzf
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
