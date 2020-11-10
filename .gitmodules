@@ -25,9 +25,6 @@
 [submodule ".vim/pack/plugins/start/vim-fugitive"]
 	path = .vim/pack/plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/pack/plugins/start/ctrlp.vim"]
-	path = .vim/pack/plugins/start/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule ".vim/pack/plugins/start/vim-javascript"]
 	path = .vim/pack/plugins/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
