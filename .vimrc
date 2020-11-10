@@ -115,7 +115,7 @@ let g:NERDTreeHijackNetrw=1
 let g:NERDTreeWinPos = "left"
 
 " TAGBAR
-map <C-m> :TagbarToggle<CR>
+" map <C-m> :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 
@@ -235,7 +235,8 @@ endfunction
 
 command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
 
-autocmd VimEnter * CocCommand explorer --no-toggle --no-focus --width=30
+map <C-m> :CocCommand explorer --no-focus --width=30<CR>
+autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 nnoremap <leader>r V:call SendToTerminal()<CR>$
@@ -262,10 +263,11 @@ endfunction
 " FLOATERM
 let g:floaterm_autoclose = 2
 let g:floaterm_height = 0.2
-let g:floaterm_position = 'bottom'
-let g:floaterm_keymap_new = '<leader>T'
-let g:floaterm_keymap_toggle = '<leader>t'
+let g:floaterm_position = 'bottomright'
+let g:floaterm_keymap_new = '<c-T>'
+let g:floaterm_keymap_toggle = '<c-t>'
 tnoremap <silent> <Esc><Esc> <C-\><C-n>
+tnoremap <silent> <C-w> <C-w>.
 
 nnoremap <c-l> :tabnext<cr>
 tnoremap <c-l> <C-\><C-n>:FloatermNext<cr>
