@@ -38,6 +38,7 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 set hidden
+set wildmenu
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -130,14 +131,6 @@ map <Space>h <Plug>(easymotion-linebackward)
 map <Space>w <Plug>(easymotion-w)
 map <Space>b <Plug>(easymotion-b)
 
-" CTRLP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
-
-" ACK
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " ALE
 let g:ale_linters = {
 \   'python': ['flake8'],
@@ -184,16 +177,6 @@ let g:indentLine_char = '¦'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
-" COMPLETOR
-" noremap <silent> <c-j> :call completor#do('definition')<CR>
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" let g:completor_auto_trigger = 0
-" let g:completor_def_split = "vsplit"
-" let g:completor_filetype_map = {}
-" let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls'}
-" let g:completor_filetype_map.python = {'ft': 'lsp', 'cmd': 'pyls'}
-
 " TERRAFORM
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
@@ -239,35 +222,19 @@ map <C-m> :CocCommand explorer --no-focus --width=30<CR>
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-nnoremap <leader>r V:call SendToTerminal()<CR>$
-vnoremap <leader>r <Esc>:call SendToTerminal()<CR>
-function! SendToTerminal()
-    let buff_n = term_list()
-    if len(buff_n) > 0
-        let buff_n = buff_n[0] " sends to most recently opened terminal
-        let lines = getline(getpos("'<")[1], getpos("'>")[1])
-        let indent = match(lines[0], '[^ \t]') " check for removing unnecessary indent
-        for l in lines
-            let new_indent = match(l, '[^ \t]')
-            if new_indent == 0
-                call term_sendkeys(buff_n, l. "\<CR>")
-            else
-                call term_sendkeys(buff_n, l[indent:]. "\<CR>")
-            endif
-            sleep 10m
-        endfor
-        FloatermShow()
-    endif
-endfunction
+nnoremap <leader>r V:FloatermSend<CR>
+vnoremap <leader>r :FloatermSend<CR>
 
 " FLOATERM
 let g:floaterm_autoclose = 2
-let g:floaterm_height = 0.2
+let g:floaterm_autohide = v:false
+let g:floaterm_height = 0.3
 let g:floaterm_position = 'bottomright'
-let g:floaterm_keymap_new = '<c-T>'
 let g:floaterm_keymap_toggle = '<c-t>'
-tnoremap <silent> <Esc><Esc> <C-\><C-n>
-tnoremap <silent> <C-w> <C-w>.
+tnoremap <silent> <c-e> <C-\><C-n>
+if !has('nvim')
+    tnoremap <silent> <C-w> <C-w>.
+endif
 
 nnoremap <c-l> :tabnext<cr>
 tnoremap <c-l> <C-\><C-n>:FloatermNext<cr>
@@ -276,6 +243,8 @@ tnoremap <c-h> <C-\><C-n>:FloatermPrev<cr>
 
 " FZF
 set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :Files<cr>
+nnoremap <leader>f :Ag<cr>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
