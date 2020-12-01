@@ -71,6 +71,7 @@ set noswapfile
 set autowrite
 set foldmethod=indent
 set nofoldenable
+set mouse=a
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -239,15 +240,22 @@ let g:floaterm_autohide = v:false
 let g:floaterm_height = 0.3
 let g:floaterm_position = 'bottomright'
 let g:floaterm_keymap_toggle = '<c-t>'
-tnoremap <silent> <c-q> <C-\><C-n>
+" tnoremap <silent> <Esc><Esc> <C-\><C-n>
+" inoremap <silent> <Esc> <C-\><C-n>
 if !has('nvim')
     tnoremap <silent> <C-w> <C-w>.
 endif
 
-nnoremap <c-l> :tabnext<cr>
-tnoremap <c-l> <C-\><C-n>:FloatermNext<cr>
-nnoremap <c-h> :tabprevious<cr>
-tnoremap <c-h> <C-\><C-n>:FloatermPrev<cr>
+nnoremap <c-j> :tabnext<cr>
+nnoremap <c-k> :tabprevious<cr>
+
+nnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
+nnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
+tnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
+tnoremap <c-l> <C-\><C-n>:FloatermNew<cr>
+tnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
+tnoremap <c-j> <C-\><C-n>:FloatermNext<cr>
+tnoremap <c-k> <C-\><C-n>:FloatermPrev<cr>
 
 " FZF
 set rtp+=/usr/local/opt/fzf
@@ -257,4 +265,4 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': {'height': 0.4, 'width': 0.6} }
