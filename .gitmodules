@@ -71,3 +71,6 @@
 [submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule ".oh-my-zsh/plugins/fzf-tab"]
+	path = .oh-my-zsh/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

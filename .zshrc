@@ -81,6 +81,7 @@ plugins=(
     helm
     terraform
     tmux
+    fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -127,6 +128,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
+
+export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=light
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
