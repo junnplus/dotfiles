@@ -109,10 +109,13 @@ export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 
 alias k=kubectl
-alias ksys=kubectl -n kube-system
-alias kd=kubectl describe
+alias ky='kubectl -o=yaml'
+alias ksys='kubectl -n kube-system'
+alias kd='kubectl describe'
 alias kns=kubens
 alias kctx=kubectx
+alias g=git
+alias gti=git
 alias proxy="export all_proxy=socks5://127.0.0.1:1234"
 alias noproxy="unset all_proxy"
 
@@ -126,6 +129,8 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export GPG_TTY=$(tty)
 
 export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
 

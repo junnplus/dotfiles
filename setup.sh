@@ -42,3 +42,6 @@ fi
 echo "Syncing submodule..."
 git submodule init
 git submodule update --init --recursive
+
+echo "Dump brew dependencies..."
+brew bundle dump --global
