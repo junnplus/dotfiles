@@ -1,29 +1,26 @@
-if [ ! -d ~/.ssh ]; then
-    mkdir ~/.ssh
-fi
+mkdir -p ~/.ssh
+mkdir -p ~/.pip
 
 FILES=(
-    .vim
     .vimrc
     .zshrc
-    .pip
+    .pip/pip.conf
     .gitconfig
     .tmux.conf
     .ssh/config
     .Brewfile
+    .Brewfile.lock.json
 )
 
 echo "Making dotfile links..."
 for FILE in ${FILES[@]}
 do
-    if [ ! -L ~/$FILE ]; then
-        echo "Link "$FILE;
-        ln -s ~/.dotfiles/$FILE ~/$FILE;
-    fi
+    ln -sfv ~/.dotfiles/$FILE ~/$FILE;
 done
 
-echo "Link neovim"
-ln -s ~/.dotfiles/.vim ~/.config/nvim
+echo "Link vim..."
+ln -sfvn ~/.dotfiles/.vim ~/.vim
+ln -sfvn ~/.dotfiles/.vim ~/.config/nvim
 
 if test ! $(which brew); then
     echo "Installing homebrew..."
