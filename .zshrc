@@ -111,7 +111,7 @@ export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 alias k=kubectl
 alias ky='kubectl -o=yaml'
 alias ksys='kubectl -n kube-system'
-alias kd='kubectl describe'
+alias kd='kubectl debug'
 alias kns=kubens
 alias kctx=kubectx
 alias g=git

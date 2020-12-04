@@ -33,12 +33,14 @@ brew bundle -v --global
 if [ ! -d ~/.oh-my-zsh ]; then
     echo "Installing oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ln -s -F ~/.dotfiles/.oh-my-zsh ~/.oh-my-zsh/custom
 fi
+
+rm -rf ~/.oh-my-zsh/custom
+ln -sfvn ~/.dotfiles/.oh-my-zsh ~/.oh-my-zsh/custom
 
 echo "Syncing submodule..."
 git submodule init
 git submodule update --init --recursive
 
 echo "Dump brew dependencies..."
-brew bundle dump --global
+brew bundle dump --global -f
