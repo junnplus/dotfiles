@@ -43,5 +43,4 @@ echo "Dumping brew dependencies..."
 brew bundle dump --global -f
 
 echo "Installing powerline fonts"
-pip install --user powerline-status
 cd /tmp && git clone https://github.com/powerline/fonts && ./fonts/install.sh
