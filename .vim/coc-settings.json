@@ -3,7 +3,6 @@
     "suggest.triggerAfterInsertEnter": true,
     "tsserver.trace.server": "verbose",
     "coc.preferences.jumpCommand": "CocVSplitIfNotOpen",
-    "python.jediEnabled": false,
     "python.linting.enabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "~/.local/bin/flake8",

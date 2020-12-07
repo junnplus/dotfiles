@@ -12,13 +12,10 @@ FILES=(
     .Brewfile.lock.json
 )
 
-echo "Making dotfile links..."
-for FILE in ${FILES[@]}
-do
+echo "Linking dotfile..."
+for FILE in ${FILES[@]}; do
     ln -sfv ~/.dotfiles/$FILE ~/$FILE;
 done
-
-echo "Link vim..."
 ln -sfvn ~/.dotfiles/.vim ~/.vim
 ln -sfvn ~/.dotfiles/.vim ~/.config/nvim
 
@@ -42,5 +39,9 @@ echo "Syncing submodule..."
 git submodule init
 git submodule update --init --recursive
 
-echo "Dump brew dependencies..."
+echo "Dumping brew dependencies..."
 brew bundle dump --global -f
+
+echo "Installing powerline fonts"
+pip install --user powerline-status
+cd /tmp && git clone https://github.com/powerline/fonts && ./fonts/install.sh

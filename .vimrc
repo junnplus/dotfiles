@@ -191,7 +191,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " COC
-let g:coc_global_extensions = ["coc-json", "coc-python", "coc-go", "coc-yank", "coc-explorer", "coc-git"]
+let g:coc_global_extensions = ["coc-json", "coc-pyright", "coc-go", "coc-yank", "coc-explorer", "coc-git"]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
@@ -226,6 +226,7 @@ function! VSplitIfNotOpen(...)
 endfunction
 
 command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
+autocmd * call coc#config('python', {'pythonPath': $HOME . '.pyenv/shims/python'})
 
 map <C-m> :CocCommand explorer --no-focus --width=30<CR>
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
