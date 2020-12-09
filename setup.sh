@@ -9,7 +9,6 @@ FILES=(
     .tmux.conf
     .ssh/config
     .Brewfile
-    .Brewfile.lock.json
 )
 
 echo "Linking dotfile..."
