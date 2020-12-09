@@ -226,7 +226,6 @@ function! VSplitIfNotOpen(...)
 endfunction
 
 command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
-autocmd * call coc#config('python', {'pythonPath': $HOME . '.pyenv/shims/python'})
 
 map <C-m> :CocCommand explorer --no-focus --width=30<CR>
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
