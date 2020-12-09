@@ -82,6 +82,7 @@ plugins=(
     terraform
     tmux
     fzf-tab
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,11 +96,20 @@ SPACESHIP_PROMPT_ORDER=(
   golang        # Go section
   pyenv         # Pyenv section
   kubecontext   # Kubectl context section
+  time
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
   exit_code     # Exit code section
   char          # Prompt character
 )
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_PREFIX='now '
+
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 $realpath'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
+zstyle ':completion:*:lsd' file-sort modification
+zstyle ':completion:*:lsd' sort false
 
 alias vi=nvim
 
@@ -108,8 +118,10 @@ export LC_ALL=en_US.UTF-8
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 
+alias l='ls -l'
+alias ls='lsd'
+alias la='lsd -al'
 alias k=kubectl
-alias ky='kubectl -o=yaml'
 alias ksys='kubectl -n kube-system'
 alias kd='kubectl debug'
 alias kns=kubens
