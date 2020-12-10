@@ -3,7 +3,6 @@
     "suggest.triggerAfterInsertEnter": true,
     "tsserver.trace.server": "verbose",
     "coc.preferences.jumpCommand": "CocVSplitIfNotOpen",
-     // "python.pythonPath": "/Users/Jun/.pyenv/shims/python",
     "python.linting.enabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "/Users/Jun/.local/bin/flake8",
@@ -11,5 +10,12 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.file.showHiddenFiles": true,
     "explorer.floating.border.enable": false,
-    "git.removedSign.text": "-"
+    "explorer.keyMappings.global": {
+        "v": "open:vsplit"
+    },
+    "explorer.previewAction.onHover": false,
+    "git.removedSign.text": "-",
+    "yaml.schemas": {
+        "kubernetes": "/*.yaml"
+    }
 }

@@ -5,12 +5,10 @@ if has("termguicolors")
     " fix bug for vim
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    " enable true color
-    set termguicolors
 endif
 
 packadd! dracula
-" set termguicolors
+set termguicolors
 let g:dracula_italic = 0
 set background=dark
 " colorscheme solarized
@@ -52,6 +50,7 @@ autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType go setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=120 noexpandtab
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -178,9 +177,10 @@ let g:airline#extensions#tabline#enabled = 1
 " let g:javascript_plugin_flow = 1
 
 " INDENTLINE
-let g:indentLine_conceallevel=1
+let g:indentLine_conceallevel = 1
 let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
+autocmd FileType json,markdown let g:indentLine_conceallevel=0
 
 " NERDCOMMENTER
 let g:NERDSpaceDelims = 1
@@ -191,7 +191,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " COC
-let g:coc_global_extensions = ["coc-json", "coc-pyright", "coc-go", "coc-yank", "coc-explorer", "coc-git"]
+let g:coc_global_extensions = ["coc-json", "coc-pyright", "coc-go", "coc-yank", "coc-explorer", "coc-git", "coc-yaml", "coc-highlight", "coc-tabnine"]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
@@ -201,6 +201,7 @@ nmap <silent> <c-e> <Plug>(coc-diagnostic-next)
 " nmap <silent> <c-E> <Plug>(coc-diagnostic-prev)
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -246,16 +247,16 @@ if !has('nvim')
     tnoremap <silent> <C-w> <C-w>.
 endif
 
-nnoremap <c-j> :tabnext<cr>
-nnoremap <c-k> :tabprevious<cr>
+" nnoremap <c-j> :tabnext<cr>
+" nnoremap <c-k> :tabprevious<cr>
 
 nnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
 nnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
 tnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
 tnoremap <c-l> <C-\><C-n>:FloatermNew<cr>
 tnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
-tnoremap <c-j> <C-\><C-n>:FloatermNext<cr>
-tnoremap <c-k> <C-\><C-n>:FloatermPrev<cr>
+" tnoremap <c-j> <C-\><C-n>:FloatermNext<cr>
+" tnoremap <c-k> <C-\><C-n>:FloatermPrev<cr>
 
 " FZF
 set rtp+=/usr/local/opt/fzf

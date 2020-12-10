@@ -69,7 +69,6 @@ ZSH_THEME="spaceship"
 ZSH_CUSTOM=~/.dotfiles/.oh-my-zsh
 
 plugins=(
-    git
     autojump
     vi-mode
     zsh-autosuggestions
@@ -83,6 +82,7 @@ plugins=(
     tmux
     fzf-tab
     extract
+    gitignore
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,10 +106,11 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_PREFIX='now '
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 $realpath'
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --style=numbers --color=always --line-range :500 $realpath 2> /dev/null || lsd -alF --color=always $realpath'
 zstyle ':completion:*:lsd' file-sort modification
 zstyle ':completion:*:lsd' sort false
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup # tmux 3.2
 
 alias vi=nvim
 
@@ -118,9 +119,10 @@ export LC_ALL=en_US.UTF-8
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 
-alias l='ls -l'
+alias l='ls -lF'
 alias ls='lsd'
-alias la='lsd -al'
+alias la='lsd -alF'
+alias cat='bat --style=numbers'
 alias k=kubectl
 alias ksys='kubectl -n kube-system'
 alias kd='kubectl debug'
@@ -147,8 +149,11 @@ export GPG_TTY=$(tty)
 export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
 
 export FZF_COMPLETION_TRIGGER='~~'
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+--height 40%
+--reverse
+--bind 'ctrl-f:preview-page-down,ctrl-b:preview-page-up'
 --color=light
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-'
+"
