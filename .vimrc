@@ -34,17 +34,17 @@ set showmatch
 set ignorecase
 set matchtime=1
 set backspace=2
+set hidden
+set wildmenu
 
-set ai
-set si
 set autoindent
+set smartindent
+set cindent
 set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
-set hidden
-set wildmenu
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -67,6 +67,7 @@ set history=300
 set formatoptions=tcrqn
 set nobackup
 set noswapfile
+set autoread
 set autowrite
 set foldmethod=indent
 set nofoldenable

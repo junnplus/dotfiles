@@ -74,3 +74,6 @@
 [submodule ".oh-my-zsh/plugins/fzf-tab"]
 	path = .oh-my-zsh/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
+	path = .vim/pack/plugins/start/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
