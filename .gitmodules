@@ -77,3 +77,6 @@
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+[submodule ".vim/pack/plugins/start/typescript-vim"]
+	path = .vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
