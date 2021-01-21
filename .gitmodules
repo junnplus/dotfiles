@@ -80,3 +80,6 @@
 [submodule ".vim/pack/plugins/start/typescript-vim"]
 	path = .vim/pack/plugins/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/pack/plugins/start/coc-fzf"]
+	path = .vim/pack/plugins/start/coc-fzf
+	url = https://github.com/antoinemadec/coc-fzf.git
