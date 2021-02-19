@@ -82,6 +82,7 @@ plugins=(
     tmux
     fzf-tab
     extract
+    git
     gitignore
 )
 
@@ -137,7 +138,6 @@ export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
 
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct
-export GOPRIVATE=git.qutoutiao.net
 
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
@@ -146,7 +146,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export GPG_TTY=$(tty)
 
-export PATH="$HOME/.local/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
+export PATH="/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:${HOME}/.krew/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
 
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"

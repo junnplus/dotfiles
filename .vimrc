@@ -54,7 +54,7 @@ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType javascript,javascript.jsx,javascriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType javascript,javascript.jsx,javascriptreact,typescript,typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
@@ -192,7 +192,10 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " COC
-let g:coc_global_extensions = ["coc-json", "coc-pyright", "coc-go", "coc-yank", "coc-explorer", "coc-git", "coc-yaml", "coc-highlight", "coc-tabnine"]
+let g:coc_global_extensions = [
+    \ "coc-json", "coc-pyright", "coc-go", "coc-tsserver",
+    \ "coc-yank", "coc-explorer", "coc-git",
+    \ "coc-yaml", "coc-highlight", "coc-tabnine"]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
