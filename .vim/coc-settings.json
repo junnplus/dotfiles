@@ -1,11 +1,13 @@
 {
     "suggest.enablePreview": true,
     "suggest.triggerAfterInsertEnter": true,
+    "diagnostic.level": "information",
     "tsserver.trace.server": "verbose",
     "coc.preferences.jumpCommand": "CocVSplitIfNotOpen",
+    "coc.preferences.formatOnSaveFiletypes": ["go"],
     "python.linting.enabled": false,
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "/Users/Jun/.local/bin/flake8",
+    "python.linting.flake8Path": "~/.local/bin/flake8",
     "python.linting.flake8Args": ["--ignore=E501"],
     "explorer.icon.enableNerdfont": true,
     "explorer.file.showHiddenFiles": true,
@@ -16,6 +18,6 @@
     "explorer.previewAction.onHover": false,
     "git.removedSign.text": "-",
     "yaml.schemas": {
-        "kubernetes": "/*.yaml"
+        "./values.schema.json": "values*.yaml"
     }
 }
