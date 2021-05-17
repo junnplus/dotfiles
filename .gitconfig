@@ -15,7 +15,7 @@
     email = junnplus@gmail.com
     signingkey = 29B6CE45EEE801B6
 [core]
-    editor = vim
+    editor = nvim
 [url "https://"]
     insteadOf = git://
 [http "https://github.com"]

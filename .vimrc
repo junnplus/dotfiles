@@ -60,7 +60,7 @@ set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
 
 set showcmd
-set cmdheight=2
+" set cmdheight=1
 set updatetime=300
 set ruler
 set history=300
@@ -72,34 +72,6 @@ set autowrite
 set foldmethod=indent
 set nofoldenable
 set mouse=a
-
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "! ./%<"
-    elseif &filetype == 'python'
-        exec "!python %"
-    elseif &filetype == 'go'
-        exec "!go run %"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!java %<"
-    elseif &filetype == 'sh'
-        :!bash %
-    endif
-endfunc
-
-map <F8> :call Rungdb()<CR>
-func! Rungdb()
-    exec "w"
-    exec "!g++ % -g -o %<"
-    exec "!gdb ./%<"
-endfunc
 
 set completeopt=preview,menu
 filetype on
@@ -125,7 +97,6 @@ let g:NERDTreeHijackNetrw=1
 let g:NERDTreeWinPos = "left"
 
 " TAGBAR
-" map <C-m> :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
 
@@ -133,12 +104,12 @@ let g:tagbar_autofocus = 1
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_leader_key = '<Space>'
 
-map <Space>l <Plug>(easymotion-lineforward)
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
-map <Space>h <Plug>(easymotion-linebackward)
-map <Space>w <Plug>(easymotion-w)
-map <Space>b <Plug>(easymotion-b)
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>h <Plug>(easymotion-linebackward)
+map <leader>w <Plug>(easymotion-w)
+map <leader>b <Plug>(easymotion-b)
 
 " ALE
 let g:ale_linters = {
@@ -165,18 +136,6 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#enabled = 1
 
-" VIM-GO
-" autocmd FileType go nmap <c-j> <Plug>(go-def-vertical)
-" let g:go_def_mapping_enabled = 0 " fuck vim-go default def mapping
-" let g:go_highlight_methods = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
-
-" JAVASCRIPT
-" let g:javascript_plugin_flow = 1
-
 " INDENTLINE
 let g:indentLine_conceallevel = 1
 let g:indentLine_color_term = 239
@@ -186,10 +145,6 @@ autocmd FileType json,markdown let g:indentLine_conceallevel=0
 " NERDCOMMENTER
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
-
-" TERRAFORM
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
 
 " COC
 let g:coc_global_extensions = [
@@ -206,7 +161,7 @@ nmap <silent> <c-e> <Plug>(coc-diagnostic-next)
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 autocmd CursorHold * silent call CocActionAsync('highlight')
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <C-h> :call <SID>show_documentation()<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
@@ -232,19 +187,18 @@ endfunction
 
 command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
 
-map <C-m> :CocCommand explorer --no-focus --width=30<CR>
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
+" FLOATERM
+" let g:floaterm_autoclose = 2
+" let g:floaterm_autohide = v:false
+" let g:floaterm_height = 0.3
+" let g:floaterm_position = 'bottomright'
+" let g:floaterm_keymap_toggle = '<c-t>'
+
 nnoremap <leader>r V:FloatermSend<CR>
 vnoremap <leader>r :FloatermSend<CR>
-
-" FLOATERM
-let g:floaterm_autoclose = 2
-let g:floaterm_autohide = v:false
-let g:floaterm_height = 0.3
-let g:floaterm_position = 'bottomright'
-let g:floaterm_keymap_toggle = '<c-t>'
 
 " tnoremap <silent> <Esc><Esc> <C-\><C-n>
 " inoremap <silent> <Esc> <C-\><C-n>
@@ -252,16 +206,8 @@ if !has('nvim')
     tnoremap <silent> <C-w> <C-w>.
 endif
 
-" nnoremap <c-j> :tabnext<cr>
-" nnoremap <c-k> :tabprevious<cr>
-
 nnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
-nnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
 tnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
-tnoremap <c-l> <C-\><C-n>:FloatermNew<cr>
-tnoremap <c-h> <C-\><C-n>:FloatermHide!<cr>
-" tnoremap <c-j> <C-\><C-n>:FloatermNext<cr>
-" tnoremap <c-k> <C-\><C-n>:FloatermPrev<cr>
 
 " FZF
 set rtp+=/usr/local/opt/fzf
@@ -272,3 +218,39 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': {'height': 0.4, 'width': 0.6} }
+
+lua << EOF
+require('nvim-treesitter.configs').setup{
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+
+require("toggleterm").setup{
+  size = 20,
+  open_mapping = [[<c-t>]],
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 3,
+  start_in_insert = true,
+  persist_size = true,
+  direction = 'float',
+  close_on_exit = true,
+  float_opts = {
+    border = 'curved',
+    width = 150,
+    height = 30,
+    winblend = 3,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+    rol = 1
+  }
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()

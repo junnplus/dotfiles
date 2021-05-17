@@ -2,71 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jun/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="spaceship"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-ZSH_CUSTOM=~/.dotfiles/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.dotfiles/.oh-my-zsh
 
 plugins=(
     autojump
@@ -80,12 +18,18 @@ plugins=(
     helm
     terraform
     tmux
-    fzf-tab
     extract
     git
     gitignore
+
+    # custom
+    fzf-tab
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
 )
 
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 SPACESHIP_PROMPT_ORDER=(
@@ -107,22 +51,19 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_PREFIX='now '
 
-zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --style=numbers --color=always --line-range :500 $realpath 2> /dev/null || lsd -alF --color=always $realpath'
-zstyle ':completion:*:lsd' file-sort modification
-zstyle ':completion:*:lsd' sort false
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup # tmux 3.2
-
-alias vi=nvim
+# zstyle ':completion:*:lsd' file-sort modification
+# zstyle ':completion:*:lsd' sort false
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 
-alias l='ls -lF'
-alias ls='lsd'
+alias vi=nvim
+alias vim=nvim
 alias la='lsd -alF'
+alias ls='lsd -lF'
 alias cat='bat --style=numbers'
 alias k=kubectl
 alias ksys='kubectl -n kube-system'
@@ -133,21 +74,22 @@ alias g=git
 alias gti=git
 alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
-alias f='floaterm'
 
 export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
 
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct
 
-export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PTPYTHON_CONFIG_HOME=~/.config/ptpython
 
 export GPG_TTY=$(tty)
 
-export PATH="/usr/local/opt/gnu-getopt/bin:$HOME/.local/bin:${HOME}/.krew/bin:$GOPATH/bin:$PYENV_ROOT/shims:/usr/local/bin:/usr/bin:/bin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/sbin"
+export PATH="$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
+export PATH="/usr/local/opt/openresty/nginx/sbin:/usr/local/opt/gnu-getopt/bin:$PATH"
 
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"

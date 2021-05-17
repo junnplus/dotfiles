@@ -83,3 +83,15 @@
 [submodule ".vim/pack/plugins/start/coc-fzf"]
 	path = .vim/pack/plugins/start/coc-fzf
 	url = https://github.com/antoinemadec/coc-fzf.git
+[submodule ".oh-my-zsh/plugins/zsh-completions"]
+	path = .oh-my-zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule ".vim/pack/plugins/start/vimspector.git"]
+	path = .vim/pack/plugins/start/vimspector.git
+	url = https://github.com/puremourning/vimspector.git
+[submodule ".vim/pack/plugins/start/nvim-treesitter"]
+	path = .vim/pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".vim/pack/plugins/start/nvim-toggleterm"]
+	path = .vim/pack/plugins/start/nvim-toggleterm
+	url = https://github.com/akinsho/nvim-toggleterm.lua.git
