@@ -10,9 +10,6 @@
 [submodule ".vim/pack/plugins/start/vim-multiple-cursors"]
 	path = .vim/pack/plugins/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
-[submodule ".vim/pack/plugins/start/nerdtree"]
-	path = .vim/pack/plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule ".vim/pack/plugins/start/vim-easymotion"]
 	path = .vim/pack/plugins/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
