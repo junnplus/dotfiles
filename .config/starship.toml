@@ -1,0 +1,8 @@
+[character]
+vicmd_symbol = "[\\[I\\] >](bold green)"
+success_symbol = "[\\[N\\] >](bold green)"
+error_symbol = "[\\[N\\] >](bold red)"
+
+[kubernetes]
+disabled = false
+symbol = '☸️  '

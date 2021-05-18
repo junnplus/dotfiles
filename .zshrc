@@ -2,15 +2,15 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 ZSH_CUSTOM=$HOME/.dotfiles/.oh-my-zsh
 
 plugins=(
     autojump
     vi-mode
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+    git
     fzf
     pyenv
     pip
@@ -19,7 +19,6 @@ plugins=(
     terraform
     tmux
     extract
-    git
     gitignore
 
     # custom
@@ -32,38 +31,20 @@ plugins=(
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
-SPACESHIP_PROMPT_ORDER=(
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  package       # Package version
-  node          # Node.js section
-  golang        # Go section
-  pyenv         # Pyenv section
-  kubecontext   # Kubectl context section
-  time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
+eval "$(starship init zsh)"
 
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_TIME_PREFIX='now '
-
-# zstyle ':completion:*:lsd' file-sort modification
-# zstyle ':completion:*:lsd' sort false
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export EDITOR="/usr/local/bin/nvim"
 
 alias vi=nvim
 alias vim=nvim
-alias la='lsd -alF'
-alias ls='lsd -lF'
+alias la='exa -alF --icons'
+alias ls='exa -lF --icons'
 alias cat='bat --style=numbers'
 alias k=kubectl
 alias ksys='kubectl -n kube-system'

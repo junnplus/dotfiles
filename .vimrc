@@ -90,12 +90,6 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 let mapleader = "\<space>"
 
-" NERD TREE
-" autocmd vimenter * NERDTree | wincmd w
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeHijackNetrw=1
-let g:NERDTreeWinPos = "left"
-
 " TAGBAR
 let g:tagbar_left = 0
 let g:tagbar_autofocus = 1
@@ -191,11 +185,11 @@ autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " FLOATERM
-" let g:floaterm_autoclose = 2
-" let g:floaterm_autohide = v:false
-" let g:floaterm_height = 0.3
-" let g:floaterm_position = 'bottomright'
-" let g:floaterm_keymap_toggle = '<c-t>'
+let g:floaterm_autoclose = 2
+let g:floaterm_autohide = v:false
+let g:floaterm_height = 0.3
+let g:floaterm_position = 'bottomright'
+let g:floaterm_keymap_toggle = '<c-t>'
 
 nnoremap <leader>r V:FloatermSend<CR>
 vnoremap <leader>r :FloatermSend<CR>
@@ -227,29 +221,6 @@ require('nvim-treesitter.configs').setup{
   },
 }
 
-require("toggleterm").setup{
-  size = 20,
-  open_mapping = [[<c-t>]],
-  hide_numbers = true,
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = 3,
-  start_in_insert = true,
-  persist_size = true,
-  direction = 'float',
-  close_on_exit = true,
-  float_opts = {
-    border = 'curved',
-    width = 150,
-    height = 30,
-    winblend = 3,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    },
-    rol = 1
-  }
-}
 EOF
 
 set foldmethod=expr
