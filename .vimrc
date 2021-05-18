@@ -152,6 +152,9 @@ map <leader>h <Plug>(easymotion-linebackward)
 map <leader>w <Plug>(easymotion-w)
 map <leader>b <Plug>(easymotion-b)
 
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd silent! CocEnable
+
 " ALE
 let g:ale_linters = {
 \   'python': ['flake8'],
