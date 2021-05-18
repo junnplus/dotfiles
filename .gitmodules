@@ -92,3 +92,9 @@
 [submodule ".vim/pack/plugins/start/nvim-toggleterm"]
 	path = .vim/pack/plugins/start/nvim-toggleterm
 	url = https://github.com/akinsho/nvim-toggleterm.lua.git
+[submodule ".vim/pack/plugins/start/nvim-bufferline"]
+	path = .vim/pack/plugins/start/nvim-bufferline
+	url = https://github.com/akinsho/nvim-bufferline.lua.git
+[submodule ".vim/pack/plugins/start/nvim-web-devicons"]
+	path = .vim/pack/plugins/start/nvim-web-devicons
+	url = https://github.com/kyazdani42/nvim-web-devicons.git

@@ -1,50 +1,130 @@
 syntax on
 syntax enable
+filetype on
+filetype plugin indent on
 
-if has("termguicolors")
-    " fix bug for vim
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+lua << EOF
+local g = vim.g
+local cmd = vim.cmd
+local o, wo, bo = vim.o, vim.wo, vim.bo
+local map_key = vim.api.nvim_set_keymap
 
-packadd! dracula
-set termguicolors
+local function set(opt, v, scopes)
+  scopes = scopes or {o}
+  for _, s in ipairs(scopes) do s[opt] = v end
+end
+
+local function autocmd(group, cmds, clear)
+  clear = clear == nil and false or clear
+  if type(cmds) == 'string' then cmds = {cmds} end
+  cmd('augroup ' .. group)
+  if clear then cmd [[au!]] end
+  for _, c in ipairs(cmds) do cmd('autocmd ' .. c) end
+  cmd [[augroup END]]
+end
+
+local function map(modes, lhs, rhs, opts)
+  opts = opts or {}
+  opts.noremap = opts.noremap == nil and true or opts.noremap
+  if type(modes) == 'string' then modes = {modes} end
+  for _, mode in ipairs(modes) do map_key(mode, lhs, rhs, opts) end
+end
+
+-- Leader key
+g.mapleader = [[ ]]
+
+-- Color scheme
+set('background', 'dark')
+set('termguicolors', true)
+cmd[[packadd! dracula]]
+cmd[[colorscheme dracula]]
+
+-- Settings
+local buffer = {o, bo}
+local window = {o, wo}
+set('langmenu', 'zh_CN.UTF-8')
+set('helplang', 'cn')
+set('encoding', 'utf-8')
+set('fencs', 'utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936')
+set('hidden', true)
+set('wildmenu', true)
+set('hlsearch', true)
+set('incsearch', true)
+set('matchtime', 1)
+set('showmatch', true)
+set('updatetime', 300)
+set('ignorecase', true)
+set('smarttab', true)
+set('expandtab', true)
+set('laststatus', 2)
+set('showcmd', true)
+set('ruler', true)
+set('history', 300)
+set('backup', false)
+set('swapfile', false)
+set('foldenable', false)
+set('autoread', true)
+set('autowrite', true)
+set('mouse', 'a')
+
+set('number', true, window)
+set('cursorline', true, window)
+set('cursorcolumn', true, window)
+
+set('textwidth', 120, buffer)
+set('smartindent', true, buffer)
+set('autoindent', true, buffer)
+set('cindent', true, buffer)
+set('shiftwidth', 4, buffer)
+set('softtabstop', 4, buffer)
+set('tabstop', 4, buffer)
+
+-- Auto commands
+-- autocmd('', [[InsertLeave * se nocul]], true)
+-- autocmd('', [[InsertEnter * se cul]], true)
+
+-- Key bindings
+map('', '<c-a>', 'ggVG$"+y')
+map('v', '<c-c>', '"+y')
+map('n', '<tab>', 'V')
+map('n', '<s-tab>', 'V<')
+map('v', '<tab>', '>gv')
+map('v', '<s-tab>', '<gv')
+
+-- NVIM Treesitter
+require('nvim-treesitter.configs').setup{
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+set('foldmethod', 'expr')
+set('foldexpr', 'nvim_treesitter#foldexpr()')
+
+-- NVIM Web Devicons
+require'nvim-web-devicons'.setup {
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    name = "Zsh"
+  }
+ };
+ default = true;
+}
+
+-- NVIM Bufferline
+require("bufferline").setup{
+  options = {
+    show_buffer_icons = true,
+	indicator_icon = '▎',
+	show_close_icon = false
+  }
+}
+map('', '<leader><tab>', ':BufferLineCycleNext<CR>')
+EOF
+
 let g:dracula_italic = 0
-set background=dark
-" colorscheme solarized
-colorscheme dracula
-
-set nu
-set cul
-set cuc
-autocmd InsertLeave * se nocul
-autocmd InsertEnter * se cul
-
-set langmenu=zh_CN.UTF-8
-set helplang=cn
-
-set enc=utf-8
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-set encoding=utf-8
-set fileencodings=utf-8,ucs-bom,utf-8,cp936
-
-set hlsearch
-set incsearch 
-set showmatch 
-set ignorecase
-set matchtime=1
-set backspace=2
-set hidden
-set wildmenu
-
-set autoindent
-set smartindent
-set cindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -56,39 +136,7 @@ autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType javascript,javascript.jsx,javascriptreact,typescript,typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-set laststatus=2
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]
-
-set showcmd
-" set cmdheight=1
-set updatetime=300
-set ruler
-set history=300
-set formatoptions=tcrqn
-set nobackup
-set noswapfile
-set autoread
-set autowrite
-set foldmethod=indent
-set nofoldenable
-set mouse=a
-
-set completeopt=preview,menu
-filetype on
-filetype plugin indent on
-
-map <C-A> ggVG$"+y
-vmap <C-c> "+y
-
-" 缩进
-nmap <tab> V>
-nmap <s-tab> V<
-vmap <tab> >gv
-vmap <s-tab> <gv
-
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-let mapleader = "\<space>"
 
 " TAGBAR
 let g:tagbar_left = 0
@@ -96,7 +144,6 @@ let g:tagbar_autofocus = 1
 
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
-let g:EasyMotion_leader_key = '<Space>'
 
 map <leader>l <Plug>(easymotion-lineforward)
 map <leader>j <Plug>(easymotion-j)
@@ -128,7 +175,7 @@ endif
 let g:airline_left_alt_sep = '❯'
 let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.branch = '⎇'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 " INDENTLINE
 let g:indentLine_conceallevel = 1
@@ -152,6 +199,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <c-e> <Plug>(coc-diagnostic-next)
 " nmap <silent> <c-E> <Plug>(coc-diagnostic-prev)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -212,16 +262,3 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': {'height': 0.4, 'width': 0.6} }
-
-lua << EOF
-require('nvim-treesitter.configs').setup{
-  ensure_installed = "maintained",
-  highlight = {
-    enable = true,
-  },
-}
-
-EOF
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
