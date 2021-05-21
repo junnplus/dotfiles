@@ -22,18 +22,12 @@
 [submodule ".vim/pack/plugins/start/vim-fugitive"]
 	path = .vim/pack/plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/pack/plugins/start/vim-javascript"]
-	path = .vim/pack/plugins/start/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
 [submodule ".vim/pack/plugins/start/indentLine"]
 	path = .vim/pack/plugins/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
 [submodule ".vim/pack/plugins/start/nerdcommenter"]
 	path = .vim/pack/plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
-[submodule ".vim/pack/plugins/start/auto-pairs"]
-	path = .vim/pack/plugins/start/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule ".vim/pack/plugins/start/vim-wakatime"]
 	path = .vim/pack/plugins/start/vim-wakatime
 	url = https://github.com/wakatime/vim-wakatime.git
@@ -43,15 +37,9 @@
 [submodule ".oh-my-zsh/plugins/zsh-autosuggestions"]
 	path = .oh-my-zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule ".oh-my-zsh/themes/spaceship-prompt"]
-	path = .oh-my-zsh/themes/spaceship-prompt
-	url = https://github.com/denysdovhan/spaceship-prompt.git
 [submodule ".oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = .oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".vim/pack/plugins/start/vim-terraform"]
-	path = .vim/pack/plugins/start/vim-terraform
-	url = https://github.com/hashivim/vim-terraform.git
 [submodule ".vim/pack/plugins/start/coc.nvim"]
 	path = .vim/pack/plugins/start/coc.nvim
 	url = git@github.com:neoclide/coc.nvim.git
@@ -74,9 +62,6 @@
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
-[submodule ".vim/pack/plugins/start/typescript-vim"]
-	path = .vim/pack/plugins/start/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
 [submodule ".vim/pack/plugins/start/coc-fzf"]
 	path = .vim/pack/plugins/start/coc-fzf
 	url = https://github.com/antoinemadec/coc-fzf.git

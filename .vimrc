@@ -152,9 +152,6 @@ map <leader>h <Plug>(easymotion-linebackward)
 map <leader>w <Plug>(easymotion-w)
 map <leader>b <Plug>(easymotion-b)
 
-autocmd User EasyMotionPromptBegin silent! CocDisable
-autocmd User EasyMotionPromptEnd silent! CocEnable
-
 " ALE
 let g:ale_linters = {
 \   'python': ['flake8'],
@@ -193,7 +190,7 @@ let g:NERDDefaultAlign = 'left'
 " COC
 let g:coc_global_extensions = [
     \ "coc-json", "coc-pyright", "coc-go", "coc-tsserver",
-    \ "coc-yank", "coc-explorer", "coc-git",
+    \ "coc-yank", "coc-explorer", "coc-git", "coc-pairs",
     \ "coc-yaml", "coc-highlight", "coc-tabnine"]
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -244,8 +241,8 @@ let g:floaterm_height = 0.3
 let g:floaterm_position = 'bottomright'
 let g:floaterm_keymap_toggle = '<c-t>'
 
-nnoremap <leader>r V:FloatermSend<CR>
-vnoremap <leader>r :FloatermSend<CR>
+nnoremap <leader>r V:FloatermSend<CR>:FloatermToggle<CR>
+vnoremap <leader>r :FloatermSend<CR>:FloatermToggle<CR>
 
 " tnoremap <silent> <Esc><Esc> <C-\><C-n>
 " inoremap <silent> <Esc> <C-\><C-n>
