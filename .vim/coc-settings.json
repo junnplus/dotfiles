@@ -27,5 +27,6 @@
     "yaml.schemas": {
         "chart/values.schema.json": "values*.yaml"
     },
-    "json.format.enable": true
+    "json.format.enable": true,
+    "coc.preferences.extensionUpdateCheck": "daily"
 }

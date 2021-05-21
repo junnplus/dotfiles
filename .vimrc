@@ -36,7 +36,6 @@ g.mapleader = [[ ]]
 -- Color scheme
 set('background', 'dark')
 set('termguicolors', true)
-cmd[[packadd! dracula]]
 cmd[[colorscheme dracula]]
 
 -- Settings

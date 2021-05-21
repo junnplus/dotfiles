@@ -83,3 +83,9 @@
 [submodule ".vim/pack/plugins/start/nvim-web-devicons"]
 	path = .vim/pack/plugins/start/nvim-web-devicons
 	url = https://github.com/kyazdani42/nvim-web-devicons.git
+[submodule ".vim/pack/themes/start/tokyonight.nvim"]
+	path = .vim/pack/themes/start/tokyonight.nvim
+	url = https://github.com/folke/tokyonight.nvim.git
+[submodule ".vim/pack/themes/start/edge"]
+	path = .vim/pack/themes/start/edge
+	url = https://github.com/sainnhe/edge.git
