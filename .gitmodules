@@ -89,3 +89,6 @@
 [submodule ".vim/pack/themes/start/edge"]
 	path = .vim/pack/themes/start/edge
 	url = https://github.com/sainnhe/edge.git
+[submodule ".oh-my-zsh/themes/dracula"]
+	path = .oh-my-zsh/themes/dracula
+	url = https://github.com/dracula/zsh.git

@@ -36,7 +36,7 @@ g.mapleader = [[ ]]
 -- Color scheme
 set('background', 'dark')
 set('termguicolors', true)
-cmd[[colorscheme dracula]]
+cmd[[colorscheme tokyonight]]
 
 -- Settings
 local buffer = {o, bo}
@@ -232,6 +232,7 @@ command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
 
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+nnoremap <leader>e :CocCommand explorer --no-focus --width=30<cr>
 
 " FLOATERM
 let g:floaterm_autoclose = 2
@@ -257,7 +258,6 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>f :Ag<cr>
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': {'height': 0.4, 'width': 0.6} }

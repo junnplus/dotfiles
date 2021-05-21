@@ -1,0 +1,1 @@
+/Users/Jun/.dotfiles/.oh-my-zsh/themes/dracula/dracula.zsh-theme

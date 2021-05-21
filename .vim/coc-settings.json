@@ -20,7 +20,13 @@
     "explorer.file.showHiddenFiles": true,
     "explorer.floating.border.enable": false,
     "explorer.keyMappings.global": {
-        "v": "open:vsplit"
+        "s": "open:split",
+        "v": "open:vsplit",
+        "<c-s>": "open:split",
+        "<c-v>": "open:vsplit",
+        "d": "delete",
+        "<c-h>": "preview:labeling",
+        "<c-o>": ""
     },
     "explorer.previewAction.onHover": false,
     "git.removedSign.text": "-",
