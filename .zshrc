@@ -27,6 +27,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
+	wakatime
 )
 
 autoload -U compinit && compinit
@@ -38,8 +39,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export EDITOR="/usr/local/bin/nvim"
 
 alias vi=nvim
@@ -72,6 +73,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/sbin"
 export PATH="$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 export PATH="/usr/local/opt/openresty/nginx/sbin:/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"

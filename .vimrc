@@ -97,8 +97,8 @@ require('nvim-treesitter.configs').setup{
     enable = true,
   },
 }
-set('foldmethod', 'expr')
-set('foldexpr', 'nvim_treesitter#foldexpr()')
+--set('foldmethod', 'expr')
+--set('foldexpr', 'nvim_treesitter#foldexpr()')
 
 -- NVIM Web Devicons
 require'nvim-web-devicons'.setup {
@@ -121,9 +121,34 @@ require("bufferline").setup{
   }
 }
 map('', '<leader><tab>', ':BufferLineCycleNext<CR>')
+map('', '<leader>b', ':BufferLinePick<CR>')
+
+-- TAGBAR
+g.target_left = 0
+g.tagbar_autofocus = 1
+map('', '<leader>t', ':Tagbar<CR>')
+
+-- FLOATERM
+g.floaterm_autoclose = 2
+g.floaterm_autohide = 'v:false'
+g.floaterm_height = 0.3
+g.floaterm_position = 'bottomright'
+g.floaterm_keymap_toggle = '<c-t>'
+
+map('n', '<leader>r', 'V:FloatermSend<CR>:FloatermToggle<CR>')
+map('v', '<leader>r', ':FloatermSend<CR>:FloatermToggle<CR>')
+
+-- INDENTLINE
+g.indentLine_conceallevel = 1
+g.indentLine_color_term = 239
+g.indentLine_char = '¦'
+
+-- NERDCOMMENTER
+g.NERDSpaceDelims = 1
+g.NERDDefaultAlign = 'left'
 EOF
 
-let g:dracula_italic = 0
+autocmd FileType json,markdown let g:indentLine_conceallevel=0
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -137,10 +162,6 @@ autocmd FileType javascript,javascript.jsx,javascriptreact,typescript,typescript
 
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-" TAGBAR
-let g:tagbar_left = 0
-let g:tagbar_autofocus = 1
-
 " EASYMOTION
 let g:EasyMotion_smartcase = 1
 
@@ -149,23 +170,9 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 map <leader>h <Plug>(easymotion-linebackward)
 map <leader>w <Plug>(easymotion-w)
-map <leader>b <Plug>(easymotion-b)
-
-" ALE
-let g:ale_linters = {
-\   'python': ['flake8'],
-\   'jsx': ['stylelint', 'eslint'],
-\   'go': ['gopls'],
-\}
-let g:ale_enabled = 0
-let g:ale_python_flake8_options = '--ignore=E501'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-" RUST.VIM
-let g:rustfmt_autosave = 1
 
 " CTAGS
-set tags=./tags;/
+" set tags=./tags;/
 
 " ARTLINE
 if !exists('g:airline_symbols')
@@ -176,21 +183,11 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#tabline#enabled = 0
 
-" INDENTLINE
-let g:indentLine_conceallevel = 1
-let g:indentLine_color_term = 239
-let g:indentLine_char = '¦'
-autocmd FileType json,markdown let g:indentLine_conceallevel=0
-
-" NERDCOMMENTER
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-
 " COC
 let g:coc_global_extensions = [
     \ "coc-json", "coc-pyright", "coc-go", "coc-tsserver",
     \ "coc-yank", "coc-explorer", "coc-git", "coc-pairs",
-    \ "coc-yaml", "coc-highlight", "coc-tabnine"]
+    \ "coc-yaml", "coc-highlight", "coc-tabnine", "coc-clangd"]
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
@@ -199,6 +196,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <c-e> <Plug>(coc-diagnostic-next)
 " nmap <silent> <c-E> <Plug>(coc-diagnostic-prev)
 
+autocmd CompleteDone * call coc#float#check_related()
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
@@ -206,7 +204,7 @@ autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent> <C-h> :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
+    if (index(['help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
     else
         call CocAction('doHover')
@@ -232,26 +230,10 @@ command! -nargs=+ CocVSplitIfNotOpen :call VSplitIfNotOpen(<f-args>)
 
 autocmd VimEnter * CocCommand explorer --no-focus --width=30
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-nnoremap <leader>e :CocCommand explorer --no-focus --width=30<cr>
-
-" FLOATERM
-let g:floaterm_autoclose = 2
-let g:floaterm_autohide = v:false
-let g:floaterm_height = 0.3
-let g:floaterm_position = 'bottomright'
-let g:floaterm_keymap_toggle = '<c-t>'
-
-nnoremap <leader>r V:FloatermSend<CR>:FloatermToggle<CR>
-vnoremap <leader>r :FloatermSend<CR>:FloatermToggle<CR>
-
-" tnoremap <silent> <Esc><Esc> <C-\><C-n>
-" inoremap <silent> <Esc> <C-\><C-n>
-if !has('nvim')
-    tnoremap <silent> <C-w> <C-w>.
-endif
-
-nnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
-tnoremap <c-q> <C-\><C-n>:FloatermKill<cr>
+" nnoremap <leader>e :CocCommand explorer --no-focus --width=30<cr>
+" nnoremap <Leader>e :call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+nmap <leader>e 1<c-w>w
+nmap <leader>p :wincmd p<CR>
 
 " FZF
 set rtp+=/usr/local/opt/fzf

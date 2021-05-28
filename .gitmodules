@@ -1,6 +1,3 @@
-[submodule ".vim/pack/plugins/start/ale"]
-	path = .vim/pack/plugins/start/ale
-	url = https://github.com/w0rp/ale.git
 [submodule ".vim/pack/plugins/start/vim-airline"]
 	path = .vim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
@@ -92,3 +89,15 @@
 [submodule ".oh-my-zsh/themes/dracula"]
 	path = .oh-my-zsh/themes/dracula
 	url = https://github.com/dracula/zsh.git
+[submodule ".oh-my-zsh/plugins/wakatime"]
+	path = .oh-my-zsh/plugins/wakatime
+	url = https://github.com/sobolevn/wakatime-zsh-plugin.git
+[submodule ".vim/pack/plugins/start/popup.nvim"]
+	path = .vim/pack/plugins/start/popup.nvim
+	url = git@github.com:nvim-lua/popup.nvim.git
+[submodule ".vim/pack/plugins/start/plenary.nvim"]
+	path = .vim/pack/plugins/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule ".vim/pack/plugins/start/telescope.nvim"]
+	path = .vim/pack/plugins/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git

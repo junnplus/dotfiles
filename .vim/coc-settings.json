@@ -10,6 +10,7 @@
         "jsonc",
         "json"
     ],
+    "clangd.enabled": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "~/.local/bin/flake8",
@@ -17,6 +18,7 @@
         "--ignore=E501,E266"
     ],
     "explorer.icon.enableNerdfont": true,
+    "explorer.file.autoReveal": true,
     "explorer.file.showHiddenFiles": true,
     "explorer.floating.border.enable": false,
     "explorer.keyMappings.global": {
@@ -26,7 +28,9 @@
         "<c-v>": "open:vsplit",
         "d": "delete",
         "<c-h>": "preview:labeling",
-        "<c-o>": ""
+        "<c-o>": "",
+        "+": "gitStage",
+        "-": "gitUnstage"
     },
     "explorer.previewAction.onHover": false,
     "git.removedSign.text": "-",
@@ -34,5 +38,6 @@
         "chart/values.schema.json": "values*.yaml"
     },
     "json.format.enable": true,
-    "coc.preferences.extensionUpdateCheck": "daily"
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "clangd.path": "/usr/local/opt/llvm/bin/clangd"
 }
