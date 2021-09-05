@@ -101,3 +101,6 @@
 [submodule ".vim/pack/plugins/start/telescope.nvim"]
 	path = .vim/pack/plugins/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule ".vim/pack/plugins/start/vim-choosewin"]
+	path = .vim/pack/plugins/start/vim-choosewin
+	url = https://github.com/t9md/vim-choosewin.git
