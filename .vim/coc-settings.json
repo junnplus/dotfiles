@@ -1,24 +1,7 @@
 {
-    "suggest.enablePreview": true,
     "suggest.triggerAfterInsertEnter": true,
-    "diagnostic.level": "information",
-    "tsserver.trace.server": "verbose",
-    "coc.preferences.jumpCommand": "CocVSplitIfNotOpen",
-    "coc.preferences.formatOnSaveFiletypes": [
-        "go",
-        "python",
-        "jsonc",
-        "json"
-    ],
-    "clangd.enabled": true,
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "~/.local/bin/flake8",
-    "python.linting.flake8Args": [
-        "--ignore=E501,E266"
-    ],
     "explorer.icon.enableNerdfont": true,
-    "explorer.file.autoReveal": true,
+    "explorer.file.reveal.auto": true,
     "explorer.file.showHiddenFiles": true,
     "explorer.floating.border.enable": false,
     "explorer.keyMappings.global": {
@@ -37,7 +20,8 @@
     "yaml.schemas": {
         "chart/values.schema.json": "values*.yaml"
     },
-    "json.format.enable": true,
+    "json.format.enable": false,
     "coc.preferences.extensionUpdateCheck": "daily",
+    "clangd.enabled": true,
     "clangd.path": "/usr/local/opt/llvm/bin/clangd"
 }

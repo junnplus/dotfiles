@@ -104,3 +104,6 @@
 [submodule ".vim/pack/plugins/start/vim-choosewin"]
 	path = .vim/pack/plugins/start/vim-choosewin
 	url = https://github.com/t9md/vim-choosewin.git
+[submodule ".vim/pack/plugins/start/nvim-lspconfig"]
+	path = .vim/pack/plugins/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
