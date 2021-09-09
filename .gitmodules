@@ -47,9 +47,6 @@
 [submodule ".vim/pack/plugins/start/vim-floaterm"]
 	path = .vim/pack/plugins/start/vim-floaterm
 	url = https://github.com/voldikss/vim-floaterm.git
-[submodule ".vim/pack/plugins/start/fzf.vim"]
-	path = .vim/pack/plugins/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
 [submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.git
@@ -59,9 +56,6 @@
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
-[submodule ".vim/pack/plugins/start/coc-fzf"]
-	path = .vim/pack/plugins/start/coc-fzf
-	url = https://github.com/antoinemadec/coc-fzf.git
 [submodule ".oh-my-zsh/plugins/zsh-completions"]
 	path = .oh-my-zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
