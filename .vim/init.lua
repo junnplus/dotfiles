@@ -154,11 +154,12 @@ g.NERDDefaultAlign = 'left'
 
 -- EASYMOTION
 g.EasyMotion_smartcase = 1
-map('', '<leader>l', '<Plug>(easymotion-lineforward)', {noremap = false})
-map('', '<leader>j', '<Plug>(easymotion-j)', {noremap = false})
-map('', '<leader>k', '<Plug>(easymotion-k)', {noremap = false})
-map('', '<leader>h', '<Plug>(easymotion-linebackward)', {noremap = false})
-map('', '<leader>w', '<Plug>(easymotion-w)', {noremap = false})
+g.EasyMotion_do_mapping = 0
+-- map('', '<leader>l', '<Plug>(easymotion-lineforward)', {noremap = false})
+-- map('', '<leader>j', '<Plug>(easymotion-j)', {noremap = false})
+-- map('', '<leader>k', '<Plug>(easymotion-k)', {noremap = false})
+-- map('', '<leader>h', '<Plug>(easymotion-linebackward)', {noremap = false})
+-- map('', '<leader>w', '<Plug>(easymotion-w)', {noremap = false})
 map('', '<leader>s', '<Plug>(easymotion-overwin-f)', {noremap = false})
 cmd([[ autocmd User EasyMotionPromptBegin :lua vim.lsp.diagnostic.disable() ]])
 cmd([[ autocmd User EasyMotionPromptEnd :lua vim.lsp.diagnostic.enable() ]])
@@ -196,6 +197,12 @@ tabnine:setup({
     max_num_results = 20;
     sort = true;
 })
+
+-- LSP INSTALL
+require"lspinstall".setup()
+require"lspinstall".post_install_hook = function()
+    vim.cmd('bufdo e')
+end
 
 -- LSPCONFIG
 local nvim_lsp = require'lspconfig'
@@ -245,15 +252,12 @@ local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
 vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4 },
-  severity_sort = true,
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4 },
+    severity_sort = true,
 })
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'pyright', 'tsserver', 'gopls', 'vimls' }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
@@ -264,17 +268,46 @@ capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
 capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+
+local lua_settings = {
+  Lua = {
+    runtime = {
+      -- LuaJIT in the case of Neovim
+      version = "LuaJIT",
+      path = vim.split(package.path, ";"),
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = { "vim" },
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      checkThirdParty = false,
+      library = {
+        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+      },
+    },
+  },
+}
+
+-- local servers = { 'clangd', 'pyright', 'tsserver', 'gopls', 'vimls' }
+local servers = require"lspinstall".installed_servers()
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
+    local config = {
         capabilities = capabilities,
         on_attach = on_attach,
         flags = {
           debounce_text_changes = 150,
         }
     }
+    if lsp == 'lua' then
+        config.settings = lua_settings
+    end
+    nvim_lsp[lsp].setup(config)
 end
 -- vim.cmd [[ autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false}) ]]
---
+
 -- LSP COLORS
 require'lsp-colors'.setup{}
 
@@ -371,3 +404,6 @@ require('gitsigns').setup{
         ['+'] = '' , -- '₊',
     }
 }
+
+-- TODO COMMENTS
+require'todo-comments'.setup{}

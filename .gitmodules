@@ -137,3 +137,15 @@
 [submodule ".vim/pack/plugins/start/gitsigns.nvim"]
 	path = .vim/pack/plugins/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule ".vim/pack/plugins/start/lightspeed.nvim"]
+	path = .vim/pack/plugins/start/lightspeed.nvim
+	url = https://github.com/ggandor/lightspeed.nvim.git
+[submodule ".vim/pack/plugins/start/todo-comments.nvim"]
+	path = .vim/pack/plugins/start/todo-comments.nvim
+	url = https://github.com/folke/todo-comments.nvim.git
+[submodule ".vim/pack/plugins/start/zen-mode.nvim"]
+	path = .vim/pack/plugins/start/zen-mode.nvim
+	url = https://github.com/folke/zen-mode.nvim.git
+[submodule ".vim/pack/plugins/start/nvim-lspinstall"]
+	path = .vim/pack/plugins/start/nvim-lspinstall
+	url = https://github.com/kabouzeid/nvim-lspinstall.git
