@@ -113,3 +113,27 @@
 [submodule ".vim/pack/plugins/start/nvim-dap"]
 	path = .vim/pack/plugins/start/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap.git
+[submodule ".vim/pack/plugins/start/nvim-cmp"]
+	path = .vim/pack/plugins/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule ".vim/pack/plugins/start/cmp-nvim-lsp"]
+	path = .vim/pack/plugins/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule ".vim/pack/plugins/start/cmp-tabnine"]
+	path = .vim/pack/plugins/start/cmp-tabnine
+	url = https://github.com/tzachar/cmp-tabnine.git
+[submodule ".vim/pack/plugins/start/nvim-autopairs"]
+	path = .vim/pack/plugins/start/nvim-autopairs
+	url = https://github.com/windwp/nvim-autopairs.git
+[submodule ".vim/pack/plugins/start/cmp-buffer"]
+	path = .vim/pack/plugins/start/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer.git
+[submodule ".vim/pack/plugins/start/trouble.nvim"]
+	path = .vim/pack/plugins/start/trouble.nvim
+	url = https://github.com/folke/trouble.nvim.git
+[submodule ".vim/pack/plugins/start/lsp-colors.nvim"]
+	path = .vim/pack/plugins/start/lsp-colors.nvim
+	url = https://github.com/folke/lsp-colors.nvim.git
+[submodule ".vim/pack/plugins/start/gitsigns.nvim"]
+	path = .vim/pack/plugins/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
