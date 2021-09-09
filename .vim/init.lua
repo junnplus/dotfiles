@@ -25,7 +25,6 @@ ncmd('filetype plugin indent on')
 -- Color scheme
 set('background', 'dark')
 set('termguicolors', true)
-cmd [[set termguicolors]]
 cmd [[colorscheme tokyonight]]
 
 -- Settings
@@ -67,10 +66,6 @@ set('cindent', true, buffer)
 set('shiftwidth', 4, buffer)
 set('softtabstop', 4, buffer)
 set('tabstop', 4, buffer)
-
--- Auto commands
--- autocmd('', [[InsertLeave * se nocul]], true)
--- autocmd('', [[InsertEnter * se cul]], true)
 
 cmd [[ autocmd FileType json,markdown let g:indentLine_conceallevel=0 ]]
 cmd [[ autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]]
@@ -264,6 +259,7 @@ g.nvim_tree_hijack_netrw = 0
 g.nvim_tree_lsp_diagnostics = 1
 require'nvim-tree.events'.on_nvim_tree_ready(function ()
     vim.cmd('NvimTreeToggle')
+    vim.cmd('wincmd p')
     -- vim.cmd('NvimTreeRefresh')
 end)
 -- local tree_cb = require'nvim-tree.config'.nvim_tree_callback

@@ -110,3 +110,6 @@
 [submodule ".vim/pack/plugins/start/nvim-tree"]
 	path = .vim/pack/plugins/start/nvim-tree
 	url = https://github.com/kyazdani42/nvim-tree.lua.git
+[submodule ".vim/pack/plugins/start/nvim-dap"]
+	path = .vim/pack/plugins/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
