@@ -25,7 +25,8 @@ ncmd('filetype plugin indent on')
 -- Color scheme
 set('background', 'dark')
 set('termguicolors', true)
-cmd[[colorscheme tokyonight]]
+cmd [[set termguicolors]]
+cmd [[colorscheme tokyonight]]
 
 -- Settings
 local buffer = {o, bo}
@@ -218,17 +219,6 @@ for _, lsp in ipairs(servers) do
 end
 -- vim.cmd [[ autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false}) ]]
 
--- COC
-g.coc_global_extensions = {
-    "coc-yank", "coc-explorer", "coc-git", "coc-pairs",
-    "coc-yaml", "coc-highlight", "coc-tabnine", "coc-clangd"
-}
-
-map('', '<leader>e', ':CocCommand explorer --no-focus --width=30<CR>', {silent=false})
-
-cmd [[ autocmd VimEnter * CocCommand explorer --no-focus --width=30 ]]
-cmd [[ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif ]]
-
 -- AIRLINE
 g.airline_left_alt_sep = '❯'
 g.airline_right_alt_sep = '❮'
@@ -236,35 +226,19 @@ g.airline_symbols = {
     ['branch'] = '⎇'
 }
 
--- FZF
--- map('n', '<C-p>', ':Files<CR>')
--- map('n', '<leader>b', ':Buffers<CR>')
--- map('n', '<leader>f', ':Ag<CR>')
--- ncmd('set rtp+=/usr/local/opt/fzf')
--- g.fzf_action = {
---   ['ctrl-s'] = 'split',
---   ['ctrl-v'] = 'vsplit'
--- }
--- g.fzf_layout = {
---   ['window'] = {
---     ['height'] = 0.4,
---     ['width'] = 0.6
---   }
--- }
-
 -- TELESCOPE
 local actions = require('telescope.actions')
 require'telescope'.setup{
     defaults = {
         layout_config = {
             horizontal = {
-                width = 0.6,
-                height = 0.4
+                width = 0.75,
+                height = 0.5
             }
         },
         mappings = {
             i = {
-                ["<esc>"] = actions.close,
+                ['<esc>'] = actions.close,
             },
         }
     }
@@ -272,3 +246,28 @@ require'telescope'.setup{
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+
+-- NVIM TREE
+g.nvim_tree_side = 'left'
+g.nvim_tree_width = 35
+g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' }
+-- g.nvim_tree_auto_open = 1
+g.nvim_tree_auto_close = 1
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_hijack_cursor = 0
+g.nvim_tree_disable_default_keybindings = 1
+g.nvim_tree_follow_update_path = 1
+g.nvim_tree_follow = 1
+g.nvim_tree_highlight_opened_files = 1
+g.nvim_tree_git_hl = 1
+g.nvim_tree_hijack_netrw = 0
+g.nvim_tree_lsp_diagnostics = 1
+require'nvim-tree.events'.on_nvim_tree_ready(function ()
+    vim.cmd('NvimTreeToggle')
+    -- vim.cmd('NvimTreeRefresh')
+end)
+-- local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+-- g.nvim_tree_bindings = {
+--     {key='s', cb=tree_cb('split')},
+--     {key='v', cb=tree_cb('vsplit')},
+-- }

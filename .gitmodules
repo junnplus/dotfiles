@@ -107,3 +107,6 @@
 [submodule ".vim/pack/plugins/start/nvim-lspconfig"]
 	path = .vim/pack/plugins/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".vim/pack/plugins/start/nvim-tree"]
+	path = .vim/pack/plugins/start/nvim-tree
+	url = https://github.com/kyazdani42/nvim-tree.lua.git
