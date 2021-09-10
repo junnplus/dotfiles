@@ -164,3 +164,9 @@
 [submodule ".vim/pack/plugins/start/lua-dev.nvim"]
 	path = .vim/pack/plugins/start/lua-dev.nvim
 	url = https://github.com/folke/lua-dev.nvim.git
+[submodule ".vim/pack/plugins/start/nvim-lsputils"]
+	path = .vim/pack/plugins/start/nvim-lsputils
+	url = https://github.com/RishabhRD/nvim-lsputils.git
+[submodule ".vim/pack/plugins/start/popfix"]
+	path = .vim/pack/plugins/start/popfix
+	url = https://github.com/RishabhRD/popfix.git
