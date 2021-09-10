@@ -56,9 +56,10 @@ set('autowrite', true)
 set('mouse', 'a')
 
 set('number', true, window)
+set('relativenumber', true, window)
 set('cursorline', true, window)
 set('cursorcolumn', true, window)
-set('signcolumn', 'auto:3')
+set('signcolumn', 'auto:2')
 
 set('textwidth', 120, buffer)
 set('smartindent', true, buffer)
@@ -101,6 +102,18 @@ require'nvim-treesitter.configs'.setup{
     highlight = {
         enable = true,
     },
+    playground = {
+        enable = true,
+    },
+    refactor = {
+        highlight_definitions = { enable = true },
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = 'gnr',
+            }
+        }
+    }
 }
 ncmd('set foldmethod=expr')
 ncmd('set foldexpr=nvim_treesitter#foldexpr()')
@@ -168,7 +181,8 @@ cmd([[ autocmd User EasyMotionPromptEnd :lua vim.lsp.diagnostic.enable() ]])
 map('n', '-', '<Plug>(choosewin)', {noremap = false})
 
 -- NVIM CMP
-require'cmp'.setup{
+local cmp = require'cmp'
+cmp.setup{
     formatting = {
         format = function(entry, vim_item)
             -- set a name for each source
@@ -181,6 +195,15 @@ require'cmp'.setup{
             })[entry.source.name]
             return vim_item
         end
+    },
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
+    mapping = {
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     },
     completion = {
         completeopt = 'menu,menuone,noinsert',
@@ -248,15 +271,77 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+local if_nil = vim.F.if_nil
+local publish_diagnostic = function(_, params, ctx, config)
+    local uri = params.uri
+    local client_id = ctx.client_id
+
+    local bufnr = vim.uri_to_bufnr(uri)
+    if not bufnr then
+        return
+    end
+
+    local diagnostics = params.diagnostics
+    config = config or {}
+
+    if if_nil(config.severity_sort, false) then
+        table.sort(diagnostics, function(a, b) return a.severity > b.severity end)
+    end
+
+    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+
+    if not vim.api.nvim_buf_is_loaded(bufnr) then
+        return
+    end
+    -- don't mutate the original diagnostic because it would interfere with
+    -- code action (and probably other stuff, too)
+    local prefixed_diagnostics = vim.deepcopy(diagnostics)
+    for i, v in pairs(diagnostics) do
+      prefixed_diagnostics[i].message = string.format("%s: %s", v.source, v.message)
+    end
+
+    vim.lsp.diagnostic.display(prefixed_diagnostics, bufnr, client_id, config)
+end
+
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
 vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(publish_diagnostic, {
     underline = true,
-    update_in_insert = false,
+    update_in_insert = true,
     virtual_text = { spacing = 4 },
     severity_sort = true,
 })
+--
+local orig_set_signs = vim.lsp.diagnostic.set_signs
+local set_signs_limited = function (diagnostics, bufnr, client_id, sign_ns, opts)
+    if not diagnostics then
+        return
+    end
+
+    local max_severity_per_line = {}
+    for _,d in pairs(diagnostics) do
+        if max_severity_per_line[d.range.start.line] then
+            local current_d = max_severity_per_line[d.range.start.line]
+            if d.severity < current_d.severity then
+                max_severity_per_line[d.range.start.line] = d
+            end
+        else
+            max_severity_per_line[d.range.start.line] = d
+        end
+    end
+
+    local filtered_diagnostics = {}
+    for _,v in pairs(max_severity_per_line) do
+        table.insert(filtered_diagnostics, v)
+    end
+
+    -- call original function
+    opts = opts or {}
+    opts.priority = 10
+    orig_set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
+end
+vim.lsp.diagnostic.set_signs = set_signs_limited
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -269,26 +354,30 @@ capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- LuaJIT in the case of Neovim
-      version = "LuaJIT",
-      path = vim.split(package.path, ";"),
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = { "vim" },
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      checkThirdParty = false,
-      library = {
-        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-      },
-    },
-  },
+local luadev = require'lua-dev'.setup{
+    lspconfig = {
+        settings = {
+            Lua = {
+                -- runtime = {
+                --   -- LuaJIT in the case of Neovim
+                --   version = "LuaJIT",
+                --   path = vim.split(package.path, ";"),
+                -- },
+                diagnostics = {
+                  -- Get the language server to recognize the `vim` global
+                  globals = { "vim" },
+                },
+                workspace = {
+                  -- Make the server aware of Neovim runtime files
+                  checkThirdParty = false,
+                  -- library = {
+                  --   [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                  --   [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                  -- },
+                },
+            }
+        },
+    }
 }
 
 -- local servers = { 'clangd', 'pyright', 'tsserver', 'gopls', 'vimls' }
@@ -302,7 +391,7 @@ for _, lsp in ipairs(servers) do
         }
     }
     if lsp == 'lua' then
-        config.settings = lua_settings
+        config = vim.tbl_deep_extend('force', config, luadev)
     end
     nvim_lsp[lsp].setup(config)
 end
@@ -346,7 +435,6 @@ g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' }
 g.nvim_tree_auto_close = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_hijack_cursor = 0
--- g.nvim_tree_disable_default_keybindings = 1
 g.nvim_tree_follow_update_path = 1
 g.nvim_tree_follow = 1
 g.nvim_tree_highlight_opened_files = 1
@@ -369,10 +457,12 @@ g.nvim_tree_icons = {
 }
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 g.nvim_tree_bindings = {
-    s = tree_cb('split'),
-    v = tree_cb('vsplit'),
+    { key = "<C-v>", cb = tree_cb("vsplit") },
+    { key = "<C-s>", cb = tree_cb("split") },
+    { key = "v", cb = tree_cb("vsplit") },
+    { key = "s", cb = tree_cb("split") },
+    { key = "-", cb = '<Plug>(choosewin)' },
 }
---
 
 -- NVIM AUTOPAIRS
 require'nvim-autopairs'.setup{}
@@ -385,12 +475,15 @@ require('gitsigns').setup{
     signs = {
         add          = {hl = 'GitSignsAdd'   , text = '▍', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
         change       = {hl = 'GitSignsChange', text = '▍', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-        delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-        topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-        changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+        delete       = {hl = 'GitSignsDelete', text = '>', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+        topdelete    = {hl = 'GitSignsDelete', text = '<', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+        changedelete = {hl = 'GitSignsChange', text = '≃', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
     word_diff = true,
     current_line_blame = true,
+    linehl = true,
+    numhl = true,
+    sign_priority = 6,
     count_chars = {
         [1]   = '1', -- '₁',
         [2]   = '2', -- '₂',

@@ -143,3 +143,24 @@
 [submodule ".vim/pack/plugins/start/nvim-lspinstall"]
 	path = .vim/pack/plugins/start/nvim-lspinstall
 	url = https://github.com/kabouzeid/nvim-lspinstall.git
+[submodule ".vim/pack/plugins/start/playground"]
+	path = .vim/pack/plugins/start/playground
+	url = https://github.com/nvim-treesitter/playground.git
+[submodule ".vim/pack/plugins/start/beacon.nvim"]
+	path = .vim/pack/plugins/start/beacon.nvim
+	url = https://github.com/DanilaMihailov/beacon.nvim.git
+[submodule ".vim/pack/plugins/start/nvim-treesitter-refactor"]
+	path = .vim/pack/plugins/start/nvim-treesitter-refactor
+	url = https://github.com/nvim-treesitter/nvim-treesitter-refactor.git
+[submodule ".vim/pack/plugins/start/vim-vsnip"]
+	path = .vim/pack/plugins/start/vim-vsnip
+	url = https://github.com/hrsh7th/vim-vsnip.git
+[submodule ".vim/pack/plugins/start/vim-vsnip-integ"]
+	path = .vim/pack/plugins/start/vim-vsnip-integ
+	url = https://github.com/hrsh7th/vim-vsnip-integ.git
+[submodule ".vim/pack/plugins/start/friendly-snippets"]
+	path = .vim/pack/plugins/start/friendly-snippets
+	url = https://github.com/rafamadriz/friendly-snippets.git
+[submodule ".vim/pack/plugins/start/lua-dev.nvim"]
+	path = .vim/pack/plugins/start/lua-dev.nvim
+	url = https://github.com/folke/lua-dev.nvim.git
