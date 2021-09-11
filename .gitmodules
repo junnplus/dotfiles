@@ -1,181 +1,18 @@
-[submodule "nvim/pack/plugins/start/vim-airline"]
-	path = nvim/pack/plugins/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "nvim/pack/plugins/start/vim-surround"]
-	path = nvim/pack/plugins/start/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule "nvim/pack/plugins/start/vim-multiple-cursors"]
-	path = nvim/pack/plugins/start/vim-multiple-cursors
-	url = https://github.com/terryma/vim-multiple-cursors
-[submodule "nvim/pack/plugins/start/vim-easymotion"]
-	path = nvim/pack/plugins/start/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
-[submodule "nvim/pack/plugins/start/tagbar"]
-	path = nvim/pack/plugins/start/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "nvim/pack/plugins/start/jedi-vim"]
-	path = nvim/pack/plugins/start/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim
-[submodule "nvim/pack/plugins/start/vim-fugitive"]
-	path = nvim/pack/plugins/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "nvim/pack/plugins/start/indentLine"]
-	path = nvim/pack/plugins/start/indentLine
-	url = https://github.com/Yggdroot/indentLine.git
-[submodule "nvim/pack/plugins/start/nerdcommenter"]
-	path = nvim/pack/plugins/start/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
-[submodule "nvim/pack/plugins/start/vim-wakatime"]
-	path = nvim/pack/plugins/start/vim-wakatime
-	url = https://github.com/wakatime/vim-wakatime.git
-[submodule "nvim/pack/plugins/start/tern_for_vim"]
-	path = nvim/pack/plugins/start/tern_for_vim
-	url = https://github.com/ternjs/tern_for_vim.git
 [submodule ".oh-my-zsh/plugins/zsh-autosuggestions"]
 	path = .oh-my-zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule ".oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = .oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "nvim/pack/plugins/start/coc.nvim"]
-	path = nvim/pack/plugins/start/coc.nvim
-	url = git@github.com:neoclide/coc.nvim.git
-	branch = release
-[submodule "nvim/pack/themes/start/dracula"]
-	path = nvim/pack/themes/start/dracula
-	url = https://github.com/dracula/vim.git
-[submodule "nvim/pack/plugins/start/vim-floaterm"]
-	path = nvim/pack/plugins/start/vim-floaterm
-	url = https://github.com/voldikss/vim-floaterm.git
-[submodule "nvim/pack/plugins/start/fzf"]
-	path = nvim/pack/plugins/start/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule ".oh-my-zsh/plugins/fzf-tab"]
 	path = .oh-my-zsh/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
-[submodule "nvim/pack/plugins/start/vim-python-pep8-indent"]
-	path = nvim/pack/plugins/start/vim-python-pep8-indent
-	url = https://github.com/Vimjas/vim-python-pep8-indent.git
 [submodule ".oh-my-zsh/plugins/zsh-completions"]
 	path = .oh-my-zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "nvim/pack/plugins/start/vimspector.git"]
-	path = nvim/pack/plugins/start/vimspector.git
-	url = https://github.com/puremourning/vimspector.git
-[submodule "nvim/pack/plugins/start/nvim-treesitter"]
-	path = nvim/pack/plugins/start/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/pack/plugins/start/nvim-toggleterm"]
-	path = nvim/pack/plugins/start/nvim-toggleterm
-	url = https://github.com/akinsho/nvim-toggleterm.lua.git
-[submodule "nvim/pack/plugins/start/nvim-bufferline"]
-	path = nvim/pack/plugins/start/nvim-bufferline
-	url = https://github.com/akinsho/nvim-bufferline.lua.git
-[submodule "nvim/pack/plugins/start/nvim-web-devicons"]
-	path = nvim/pack/plugins/start/nvim-web-devicons
-	url = https://github.com/kyazdani42/nvim-web-devicons.git
-[submodule "nvim/pack/themes/start/tokyonight.nvim"]
-	path = nvim/pack/themes/start/tokyonight.nvim
-	url = https://github.com/folke/tokyonight.nvim.git
-[submodule "nvim/pack/themes/start/edge"]
-	path = nvim/pack/themes/start/edge
-	url = https://github.com/sainnhe/edge.git
 [submodule ".oh-my-zsh/themes/dracula"]
 	path = .oh-my-zsh/themes/dracula
 	url = https://github.com/dracula/zsh.git
 [submodule ".oh-my-zsh/plugins/wakatime"]
 	path = .oh-my-zsh/plugins/wakatime
 	url = https://github.com/sobolevn/wakatime-zsh-plugin.git
-[submodule "nvim/pack/plugins/start/popup.nvim"]
-	path = nvim/pack/plugins/start/popup.nvim
-	url = git@github.com:nvim-lua/popup.nvim.git
-[submodule "nvim/pack/plugins/start/plenary.nvim"]
-	path = nvim/pack/plugins/start/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-[submodule "nvim/pack/plugins/start/telescope.nvim"]
-	path = nvim/pack/plugins/start/telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "nvim/pack/plugins/start/vim-choosewin"]
-	path = nvim/pack/plugins/start/vim-choosewin
-	url = https://github.com/t9md/vim-choosewin.git
-[submodule "nvim/pack/plugins/start/nvim-lspconfig"]
-	path = nvim/pack/plugins/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "nvim/pack/plugins/start/nvim-tree"]
-	path = nvim/pack/plugins/start/nvim-tree
-	url = https://github.com/kyazdani42/nvim-tree.lua.git
-[submodule "nvim/pack/plugins/start/nvim-dap"]
-	path = nvim/pack/plugins/start/nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git
-[submodule "nvim/pack/plugins/start/nvim-cmp"]
-	path = nvim/pack/plugins/start/nvim-cmp
-	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "nvim/pack/plugins/start/cmp-nvim-lsp"]
-	path = nvim/pack/plugins/start/cmp-nvim-lsp
-	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "nvim/pack/plugins/start/cmp-tabnine"]
-	path = nvim/pack/plugins/start/cmp-tabnine
-	url = https://github.com/tzachar/cmp-tabnine.git
-[submodule "nvim/pack/plugins/start/nvim-autopairs"]
-	path = nvim/pack/plugins/start/nvim-autopairs
-	url = https://github.com/windwp/nvim-autopairs.git
-[submodule "nvim/pack/plugins/start/cmp-buffer"]
-	path = nvim/pack/plugins/start/cmp-buffer
-	url = https://github.com/hrsh7th/cmp-buffer.git
-[submodule "nvim/pack/plugins/start/trouble.nvim"]
-	path = nvim/pack/plugins/start/trouble.nvim
-	url = https://github.com/folke/trouble.nvim.git
-[submodule "nvim/pack/plugins/start/lsp-colors.nvim"]
-	path = nvim/pack/plugins/start/lsp-colors.nvim
-	url = https://github.com/folke/lsp-colors.nvim.git
-[submodule "nvim/pack/plugins/start/gitsigns.nvim"]
-	path = nvim/pack/plugins/start/gitsigns.nvim
-	url = https://github.com/lewis6991/gitsigns.nvim.git
-[submodule "nvim/pack/plugins/start/lightspeed.nvim"]
-	path = nvim/pack/plugins/start/lightspeed.nvim
-	url = https://github.com/ggandor/lightspeed.nvim.git
-[submodule "nvim/pack/plugins/start/todo-comments.nvim"]
-	path = nvim/pack/plugins/start/todo-comments.nvim
-	url = https://github.com/folke/todo-comments.nvim.git
-[submodule "nvim/pack/plugins/start/zen-mode.nvim"]
-	path = nvim/pack/plugins/start/zen-mode.nvim
-	url = https://github.com/folke/zen-mode.nvim.git
-[submodule "nvim/pack/plugins/start/nvim-lspinstall"]
-	path = nvim/pack/plugins/start/nvim-lspinstall
-	url = https://github.com/kabouzeid/nvim-lspinstall.git
-[submodule "nvim/pack/plugins/start/playground"]
-	path = nvim/pack/plugins/start/playground
-	url = https://github.com/nvim-treesitter/playground.git
-[submodule "nvim/pack/plugins/start/beacon.nvim"]
-	path = nvim/pack/plugins/start/beacon.nvim
-	url = https://github.com/DanilaMihailov/beacon.nvim.git
-[submodule "nvim/pack/plugins/start/nvim-treesitter-refactor"]
-	path = nvim/pack/plugins/start/nvim-treesitter-refactor
-	url = https://github.com/nvim-treesitter/nvim-treesitter-refactor.git
-[submodule "nvim/pack/plugins/start/vim-vsnip"]
-	path = nvim/pack/plugins/start/vim-vsnip
-	url = https://github.com/hrsh7th/vim-vsnip.git
-[submodule "nvim/pack/plugins/start/vim-vsnip-integ"]
-	path = nvim/pack/plugins/start/vim-vsnip-integ
-	url = https://github.com/hrsh7th/vim-vsnip-integ.git
-[submodule "nvim/pack/plugins/start/friendly-snippets"]
-	path = nvim/pack/plugins/start/friendly-snippets
-	url = https://github.com/rafamadriz/friendly-snippets.git
-[submodule "nvim/pack/plugins/start/lua-dev.nvim"]
-	path = nvim/pack/plugins/start/lua-dev.nvim
-	url = https://github.com/folke/lua-dev.nvim.git
-[submodule "nvim/pack/plugins/start/nvim-lsputils"]
-	path = nvim/pack/plugins/start/nvim-lsputils
-	url = https://github.com/RishabhRD/nvim-lsputils.git
-[submodule "nvim/pack/plugins/start/popfix"]
-	path = nvim/pack/plugins/start/popfix
-	url = https://github.com/RishabhRD/popfix.git
-[submodule "nvim/pack/plugins/start/indent-blankline.nvim"]
-	path = nvim/pack/plugins/start/indent-blankline.nvim
-	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
-[submodule "nvim/pack/plugins/start/lspkind-nvim"]
-	path = nvim/pack/plugins/start/lspkind-nvim
-	url = https://github.com/onsails/lspkind-nvim.git
-[submodule "nvim/pack/plugins/start/twilight.nvim"]
-	path = nvim/pack/plugins/start/twilight.nvim
-	url = https://github.com/folke/twilight.nvim.git
