@@ -13,4 +13,12 @@ function M.set(opt, v, scopes)
     for _, s in ipairs(scopes) do s[opt] = v end
 end
 
+function M.t(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function M.input(keys, mode)
+    vim.api.nvim_feedkeys(M.t(keys), mode or "i", true)
+end
+
 return M

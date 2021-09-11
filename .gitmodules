@@ -173,3 +173,6 @@
 [submodule ".vim/pack/plugins/start/indent-blankline.nvim"]
 	path = .vim/pack/plugins/start/indent-blankline.nvim
 	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
+[submodule ".vim/pack/plugins/start/lspkind-nvim"]
+	path = .vim/pack/plugins/start/lspkind-nvim
+	url = https://github.com/onsails/lspkind-nvim.git

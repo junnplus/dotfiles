@@ -1,8 +1,21 @@
-local cmp = require'cmp'
+local cmp = require('cmp')
+local types = require('cmp.types')
+local util = require('util')
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
 
 cmp.setup{
     formatting = {
         format = function(entry, vim_item)
+            vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+
             -- set a name for each source
             vim_item.menu = ({
                 buffer = "[Buf]",
@@ -23,27 +36,30 @@ cmp.setup{
         -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<Tab>'] = function (fallback)
             if vim.fn.pumvisible() == 1 then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n', true)
+                util.input("<C-n>", "n")
             elseif vim.fn['vsnip#available']() == 1 then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-expand-or-jump)', true, true, true), '', true)
+                util.input('<Plug>(vsnip-expand-or-jump)')
+            elseif check_back_space() then
+                util.input('<Tab>')
             else
                 fallback()
             end
         end,
         ['<S-Tab>'] = function (fallback)
             if vim.fn.pumvisible() == 1 then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n', true)
-            elseif vim.fn['vsnip#available']() == -1 then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-prev)', true, true, true), '', true)
+                util.input("<C-p>", "n")
+            elseif vim.fn['vsnip#jumpable']() == -1 then
+                util.input("<Plug>(vsnip-jump-prev)")
             else
                 fallback()
             end
         end,
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
     },
     completion = {
         completeopt = 'menu,menuone,noinsert',
     },
+    preselect = types.cmp.PreselectMode.None,
     sources = {
         { name = 'nvim_lsp' },
         { name = 'cmp_tabnine' },

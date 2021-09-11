@@ -12,7 +12,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local if_nil = vim.F.if_nil
 local publish_diagnostic = function(_, params, ctx, config)
     local uri = params.uri
     local client_id = ctx.client_id
@@ -25,7 +24,7 @@ local publish_diagnostic = function(_, params, ctx, config)
     local diagnostics = params.diagnostics
     config = config or {}
 
-    if if_nil(config.severity_sort, false) then
+    if vim.F.if_nil(config.severity_sort, false) then
         table.sort(diagnostics, function(a, b) return a.severity > b.severity end)
     end
 
