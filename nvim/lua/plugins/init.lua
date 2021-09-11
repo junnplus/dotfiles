@@ -1,7 +1,6 @@
 return require('packer').startup(function (use)
-    use { 'folke/tokyonight.nvim' }
-
-    use { 'dracula/vim' }
+    use 'wbthomason/packer.nvim'
+    use 'folke/tokyonight.nvim'
 
     use {
         'vim-airline/vim-airline',
