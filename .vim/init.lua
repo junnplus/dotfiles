@@ -9,10 +9,9 @@ g.mapleader = [[ ]]
 cmd([[ autocmd BufReadPost * normal! g`" ]])
 
 ncmd('filetype plugin indent on')
-cmd([[ autocmd FileType json,markdown let g:indentLine_conceallevel=0 ]])
 cmd([[ autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]])
 cmd([[ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 ]])
-cmd([[ autocmd FileType json setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab ]])
+cmd([[ autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab ]])
 cmd([[ autocmd FileType go setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=120 noexpandtab ]])
 cmd([[ autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 ]])
 cmd([[ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 expandtab ]])

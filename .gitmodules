@@ -170,3 +170,6 @@
 [submodule ".vim/pack/plugins/start/popfix"]
 	path = .vim/pack/plugins/start/popfix
 	url = https://github.com/RishabhRD/popfix.git
+[submodule ".vim/pack/plugins/start/indent-blankline.nvim"]
+	path = .vim/pack/plugins/start/indent-blankline.nvim
+	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
