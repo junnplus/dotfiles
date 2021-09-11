@@ -1,8 +1,6 @@
 return require('packer').startup(function (use)
     use { 'folke/tokyonight.nvim' }
 
-    use { 'sainnhe/edge' }
-
     use { 'dracula/vim' }
 
     use {

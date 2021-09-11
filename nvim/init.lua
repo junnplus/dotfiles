@@ -1,6 +1,6 @@
 local g = vim.g
 local cmd = vim.cmd
---
+
 -- Leader key
 g.mapleader = [[ ]]
 
