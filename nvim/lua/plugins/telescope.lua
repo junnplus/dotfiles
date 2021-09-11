@@ -19,3 +19,4 @@ require'telescope'.setup{
 util.map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 util.map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 util.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+util.map('n', ';', '<cmd>Telescope commands<cr>')
