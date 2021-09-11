@@ -12,7 +12,7 @@ g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_hijack_netrw = 0
 g.nvim_tree_lsp_diagnostics = 1
-require'nvim-tree.events'.on_nvim_tree_ready(function ()
+require('nvim-tree.events').on_nvim_tree_ready(function ()
     vim.cmd('NvimTreeToggle')
     vim.cmd('wincmd p')
     -- vim.cmd('NvimTreeRefresh')
@@ -26,7 +26,7 @@ g.nvim_tree_icons = {
         error = '',
     }
 }
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
 g.nvim_tree_bindings = {
     { key = "<C-v>", cb = tree_cb("vsplit") },
     { key = "<C-s>", cb = tree_cb("split") },

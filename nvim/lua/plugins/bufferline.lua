@@ -1,4 +1,4 @@
-require'bufferline'.setup{
+require('bufferline').setup{
     options = {
         show_buffer_icons = true,
         diagnostics = 'nvim_lsp',

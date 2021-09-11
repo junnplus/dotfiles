@@ -1,6 +1,6 @@
 local ncmd = vim.api.nvim_command
 
-require'nvim-treesitter.configs'.setup{
+require('nvim-treesitter.configs').setup{
     ensure_installed = "maintained",
     highlight = {
         enable = true,
