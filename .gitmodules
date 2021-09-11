@@ -176,3 +176,6 @@
 [submodule "nvim/pack/plugins/start/lspkind-nvim"]
 	path = nvim/pack/plugins/start/lspkind-nvim
 	url = https://github.com/onsails/lspkind-nvim.git
+[submodule "nvim/pack/plugins/start/twilight.nvim"]
+	path = nvim/pack/plugins/start/twilight.nvim
+	url = https://github.com/folke/twilight.nvim.git
