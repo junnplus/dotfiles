@@ -23,6 +23,7 @@ cmp.setup{
                 luasnip = "[Snip]",
                 nvim_lua = "[Lua]",
                 latex_symbols = "[Latex]",
+                cmp_tabnine = "[TN]",
             })[entry.source.name]
             return vim_item
         end
@@ -39,8 +40,6 @@ cmp.setup{
                 util.input("<C-n>", "n")
             elseif vim.fn['vsnip#available']() == 1 then
                 util.input('<Plug>(vsnip-expand-or-jump)')
-            elseif check_back_space() then
-                util.input('<Tab>')
             else
                 fallback()
             end

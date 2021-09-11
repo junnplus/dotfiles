@@ -16,7 +16,12 @@ require('nvim-treesitter.configs').setup{
                 smart_rename = 'gnr',
             }
         }
-    }
+    },
+    indent = { enable = true },
+    autopairs = { enable = true },
+    rainbow = { enable = true },
+    autotag = { enable = true },
+    context_commentstring = { enable = true },
 }
 ncmd('set foldmethod=expr')
 ncmd('set foldexpr=nvim_treesitter#foldexpr()')
