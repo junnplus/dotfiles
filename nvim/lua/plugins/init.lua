@@ -83,6 +83,14 @@ return require('packer').startup(function (use)
     }
 
     use {
+        'wfxr/minimap.vim',
+        run = ':!cargo install --locked code-minimap',
+        config = function ()
+            require('plugins.minimap')
+        end
+    }
+
+    use {
         'folke/todo-comments.nvim',
         requires = { {'nvim-lua/plenary.nvim'} },
         config = function ()
@@ -167,6 +175,13 @@ return require('packer').startup(function (use)
         config = function ()
             require('plugins.cmp')
         end
+    }
+
+    use {
+        'RishabhRD/nvim-lsputils',
+        requires = {
+            'RishabhRD/popfix'
+        }
     }
 
     use {

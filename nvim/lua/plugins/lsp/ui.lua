@@ -45,7 +45,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(publish_diagn
     severity_sort = true,
 })
 -- vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
--- vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+local function compat_handler(stable_fn)
+	return function(err, result, ctx, config)
+		stable_fn(err, ctx.method, result, ctx.client_id, ctx.bufnr, config)
+	end
+end
+vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.handlers['textDocument/references'] = compat_handler(require('lsputil.locations').references_handler)
 
 local signs = { Error = "", Warning = "", Hint = "", Information = "" }
 
