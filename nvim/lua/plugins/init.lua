@@ -58,7 +58,8 @@ return require('packer').startup(function (use)
     }
 
     use {
-        'Vimjas/vim-python-pep8-indent'
+        'Vimjas/vim-python-pep8-indent',
+        ft = { "python" }
     }
 
     use {
@@ -107,7 +108,11 @@ return require('packer').startup(function (use)
 
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-github.nvim',
+            'nvim-telescope/telescope-packer.nvim'
+        },
         config = function ()
             require('plugins.telescope')
         end
@@ -203,4 +208,12 @@ return require('packer').startup(function (use)
             require('plugins.twilight')
         end
     }
+
+    -- use {
+    --     'gelguy/wilder.nvim',
+    --     run = ':UpdateRemotePlugins',
+    --     config = function ()
+    --         require('plugins.wilder')
+    --     end
+    -- }
 end)
