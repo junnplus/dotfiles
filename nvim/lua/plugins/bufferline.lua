@@ -1,3 +1,5 @@
+local map = require('util').map
+
 require('bufferline').setup{
     options = {
         show_buffer_icons = true,
@@ -7,3 +9,5 @@ require('bufferline').setup{
         modified_icon = '✥',
     }
 }
+
+map('', '=', '<cmd>BufferLinePick<cr>')

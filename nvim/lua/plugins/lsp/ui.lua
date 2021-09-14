@@ -1,7 +1,7 @@
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 
-cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
-cmd([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
+-- cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
+-- cmd([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
 -- cmd [[ autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false}) ]]
 
 local publish_diagnostic = function(_, params, ctx, config)
@@ -41,7 +41,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(publish_diagnostic, {
     underline = true,
     update_in_insert = false,
-    virtual_text = { spacing = 4 },
+    virtual_text = { spacing = 4, prefix = "●" },
     severity_sort = true,
 })
 -- vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
@@ -53,7 +53,7 @@ end
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 vim.lsp.handlers['textDocument/references'] = compat_handler(require('lsputil.locations').references_handler)
 
-local signs = { Error = "", Warning = "", Hint = "", Information = "" }
+local signs = { Error = "", Warning = "", Hint = "", Information = "" }
 
 for type, icon in pairs(signs) do
   local hl = "LspDiagnosticsSign" .. type

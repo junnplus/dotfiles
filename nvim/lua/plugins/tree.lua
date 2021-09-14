@@ -24,9 +24,9 @@ g.nvim_tree_icons = {
     symlink = '',
     lsp = {
         hint = '',
-        info = '',
-        warning = '',
-        error = '',
+        info = '',
+        warning = '',
+        error = '',
     }
 }
 g.nvim_tree_bindings = {
