@@ -12,6 +12,10 @@ require'telescope'.setup{
         mappings = {
             i = {
                 ['<esc>'] = actions.close,
+                ['<C-l>'] = { "<Right>", type = "command"},
+                ['<C-h>'] = { "<Left>", type = "command"},
+                ['<C-f>'] = actions.preview_scrolling_down,
+                ['<C-b>'] = actions.preview_scrolling_up,
             },
         }
     }
