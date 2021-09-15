@@ -1,11 +1,19 @@
 require('packer').startup(function (use)
     use 'wbthomason/packer.nvim'
-    use 'folke/tokyonight.nvim'
+    use 'tjdevries/colorbuddy.nvim'
+    
+    use {
+        'folke/tokyonight.nvim',
+        config = function ()
+            require('plugins.tokyonight')
+        end
+    }
 
     use {
-        'vim-airline/vim-airline',
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function ()
-            require('plugins.airline')
+            require('plugins.line')
         end
     }
 
@@ -100,6 +108,10 @@ require('packer').startup(function (use)
     }
 
     use {
+        'andymass/vim-matchup'
+    }
+
+    use {
         'windwp/nvim-autopairs',
         config = function ()
             require('plugins.autopairs')
@@ -164,6 +176,7 @@ require('packer').startup(function (use)
     use {
         'tzachar/cmp-tabnine',
         run = './install.sh',
+        requires = 'hrsh7th/nvim-cmp'
     }
 
     use {
@@ -174,7 +187,6 @@ require('packer').startup(function (use)
             'rafamadriz/friendly-snippets',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
-            'tzachar/cmp-tabnine',
             'onsails/lspkind-nvim',
         },
         config = function ()
@@ -195,7 +207,8 @@ require('packer').startup(function (use)
             'kabouzeid/nvim-lspinstall',
             'folke/lsp-colors.nvim',
             'RishabhRD/nvim-lsputils',
-            'folke/lua-dev.nvim'
+            'folke/lua-dev.nvim',
+            'ray-x/lsp_signature.nvim'
         },
         config = function ()
             require('plugins.lsp')

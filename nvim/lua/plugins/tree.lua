@@ -27,6 +27,9 @@ g.nvim_tree_icons = {
         info = '',
         warning = '',
         error = '',
+    },
+    git = {
+        untracked = '?'
     }
 }
 g.nvim_tree_bindings = {

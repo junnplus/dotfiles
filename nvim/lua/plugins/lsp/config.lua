@@ -12,7 +12,7 @@ capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 
-local luadev = require'lua-dev'.setup{
+local luadev = require('lua-dev').setup{
     lspconfig = {
         settings = {
             Lua = {
@@ -65,7 +65,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- local servers = { 'clangd', 'pyright', 'tsserver', 'gopls', 'vimls' }
-local servers = require"lspinstall".installed_servers()
+local servers = require("lspinstall").installed_servers()
 for _, lsp in ipairs(servers) do
     local config = {
         capabilities = capabilities,
@@ -91,3 +91,5 @@ for _, lsp in ipairs(servers) do
     -- end
     nvim_lsp[lsp].setup(config)
 end
+
+require('lsp_signature').setup{}
