@@ -2,15 +2,6 @@ local cmp = require('cmp')
 local types = require('cmp.types')
 local util = require('util')
 
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
-end
-
 cmp.setup{
     formatting = {
         format = function(entry, vim_item)
@@ -31,6 +22,7 @@ cmp.setup{
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
+            -- vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
@@ -54,12 +46,18 @@ cmp.setup{
             end
         end,
         ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        ['<CR>'] = function (fallback)
+            fallback()
+        end,
     },
     completion = {
         completeopt = 'menu,menuone,noinsert',
     },
     preselect = types.cmp.PreselectMode.None,
     sources = {
+        { name = 'vsnip' },
+        -- { name = 'luasnip' },
+        -- { name = 'ultisnips' },
         { name = 'nvim_lsp' },
         { name = 'cmp_tabnine' },
         { name = 'buffer' },

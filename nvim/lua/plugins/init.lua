@@ -1,10 +1,10 @@
-require('packer').startup(function (use)
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tjdevries/colorbuddy.nvim'
-    
+
     use {
         'folke/tokyonight.nvim',
-        config = function ()
+        config = function()
             require('plugins.tokyonight')
         end
     }
@@ -12,7 +12,7 @@ require('packer').startup(function (use)
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        config = function ()
+        config = function()
             require('plugins.line')
         end
     }
@@ -23,21 +23,21 @@ require('packer').startup(function (use)
 
     use {
         'easymotion/vim-easymotion',
-        config = function ()
+        config = function()
             require('plugins.easymotion')
         end
     }
 
     use {
         'voldikss/vim-floaterm',
-        config = function ()
+        config = function()
             require('plugins.floaterm')
         end
     }
 
     use {
         'majutsushi/tagbar',
-        config = function ()
+        config = function()
             require('plugins.tagbar')
         end
     }
@@ -52,7 +52,7 @@ require('packer').startup(function (use)
 
     use {
         'scrooloose/nerdcommenter',
-        config = function ()
+        config = function()
             require('plugins.nerdcommenter')
         end
     }
@@ -66,27 +66,26 @@ require('packer').startup(function (use)
     }
 
     use {
-        'Vimjas/vim-python-pep8-indent',
-        ft = { "python" }
+        'Vimjas/vim-python-pep8-indent'
     }
 
     use {
         't9md/vim-choosewin',
-        config = function ()
+        config = function()
             require('plugins.choosewin')
         end
     }
 
     use {
         'kyazdani42/nvim-web-devicons',
-        config = function ()
+        config = function()
             require('plugins.devicons')
         end
     }
 
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = function ()
+        config = function()
             require('plugins.indentline')
         end
     }
@@ -94,7 +93,7 @@ require('packer').startup(function (use)
     use {
         'wfxr/minimap.vim',
         run = ':!cargo install --locked code-minimap',
-        config = function ()
+        config = function()
             require('plugins.minimap')
         end
     }
@@ -102,8 +101,9 @@ require('packer').startup(function (use)
     use {
         'folke/todo-comments.nvim',
         requires = { {'nvim-lua/plenary.nvim'} },
-        config = function ()
-            require('plugins.todo')
+        config = function()
+            -- require('plugins.todo')
+            require('todo-comments').setup{}
         end
     }
 
@@ -113,7 +113,7 @@ require('packer').startup(function (use)
 
     use {
         'windwp/nvim-autopairs',
-        config = function ()
+        config = function()
             require('plugins.autopairs')
         end
     }
@@ -125,7 +125,7 @@ require('packer').startup(function (use)
             'nvim-telescope/telescope-github.nvim',
             'nvim-telescope/telescope-packer.nvim'
         },
-        config = function ()
+        config = function()
             require('plugins.telescope')
         end
     }
@@ -147,19 +147,43 @@ require('packer').startup(function (use)
     }
 
     use {
-        'folke/trouble.nvim',
-        config = function ()
-            require('plugins.trouble')
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('plugins.gitsigns')
         end
     }
 
     use {
-        'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function ()
-            require('plugins.gitsigns')
+        'mfussenegger/nvim-dap',
+        config = function()
+            require('plugins.dap')
         end
     }
+
+    use {
+        'mfussenegger/nvim-dap-python',
+        requires = {
+            'mfussenegger/nvim-dap'
+        },
+        config = function()
+            require('dap-python').setup('python')
+        end
+    }
+
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {
+            "mfussenegger/nvim-dap"
+        },
+        config = function()
+            require("dapui").setup()
+        end
+    }
+
+    -- use {
+    --     'puremourning/vimspector'
+    -- }
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -168,7 +192,7 @@ require('packer').startup(function (use)
             'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-refactor'
         },
-        config = function ()
+        config = function()
             require('plugins.treesitter')
         end
     }
@@ -182,14 +206,17 @@ require('packer').startup(function (use)
     use {
         'hrsh7th/nvim-cmp',
         requires = {
+            'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
             'hrsh7th/vim-vsnip-integ',
             'rafamadriz/friendly-snippets',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind-nvim',
+            'quangnguyen30192/cmp-nvim-ultisnips',
+            'SirVer/ultisnips'
         },
-        config = function ()
+        config = function()
             require('plugins.cmp')
         end
     }
@@ -210,23 +237,15 @@ require('packer').startup(function (use)
             'folke/lua-dev.nvim',
             'ray-x/lsp_signature.nvim'
         },
-        config = function ()
+        config = function()
             require('plugins.lsp')
         end
     }
 
     use {
         'folke/twilight.nvim',
-        config = function ()
+        config = function()
             require('plugins.twilight')
         end
     }
-
-    -- use {
-    --     'gelguy/wilder.nvim',
-    --     run = ':UpdateRemotePlugins',
-    --     config = function ()
-    --         require('plugins.wilder')
-    --     end
-    -- }
 end)
