@@ -49,9 +49,10 @@ cmp.setup{
         ['<CR>'] = function (fallback)
             fallback()
         end,
+        ['<C-n>'] = cmp.mapping.complete(),
     },
     completion = {
-        completeopt = 'menu,menuone,noinsert',
+        completeopt = 'menu,menuone,noselect',
     },
     preselect = types.cmp.PreselectMode.None,
     sources = {

@@ -92,4 +92,4 @@ for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup(config)
 end
 
--- require('lsp_signature').setup{}
+require('lsp_signature').setup{}

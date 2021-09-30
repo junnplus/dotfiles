@@ -1,6 +1,7 @@
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tjdevries/colorbuddy.nvim'
+    use 'Pocco81/Catppuccino.nvim'
 
     use {
         'folke/tokyonight.nvim',
@@ -21,10 +22,18 @@ require('packer').startup(function(use)
         'tpope/vim-surround'
     }
 
+    -- use {
+    --     'easymotion/vim-easymotion',
+    --     config = function()
+    --         require('plugins.easymotion')
+    --     end
+    -- }
+
     use {
-        'easymotion/vim-easymotion',
-        config = function()
-            require('plugins.easymotion')
+        'phaazon/hop.nvim',
+        as = 'hop',
+        config = function ()
+            require('plugins.hop')
         end
     }
 

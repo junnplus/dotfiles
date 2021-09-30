@@ -41,7 +41,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(publish_diagnostic, {
     underline = true,
     update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
+    virtual_text = { spacing = 4, prefix = "☻" },
     severity_sort = true,
 })
 -- vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
