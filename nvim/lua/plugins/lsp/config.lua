@@ -71,7 +71,7 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
         on_attach = on_attach,
         flags = {
-          debounce_text_changes = 500,
+          debounce_text_changes = 150,
         }
     }
     if lsp == 'lua' then
@@ -92,4 +92,4 @@ for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup(config)
 end
 
-require('lsp_signature').setup{}
+-- require('lsp_signature').setup{}

@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_icons = {
     symlink = '',
@@ -12,7 +11,19 @@ g.nvim_tree_icons = {
     },
     git = {
         untracked = '?'
+    },
+    folder = {
+        arrow_open = '',
+        arrow_closed = '',
+        default = '',
+        open = '',
     }
+}
+g.nvim_tree_show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1
 }
 
 local tree_cb = require('nvim-tree.config').nvim_tree_callback

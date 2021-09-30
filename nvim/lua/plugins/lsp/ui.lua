@@ -53,7 +53,7 @@ end
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 vim.lsp.handlers['textDocument/references'] = compat_handler(require('lsputil.locations').references_handler)
 
-local signs = { Error = "", Warning = "", Hint = "", Information = "" }
+local signs = { Error = "", Warning = "", Hint = "", Information = "" }
 
 for type, icon in pairs(signs) do
   local hl = "LspDiagnosticsSign" .. type
