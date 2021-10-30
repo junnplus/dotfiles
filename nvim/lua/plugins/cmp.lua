@@ -49,7 +49,7 @@ cmp.setup{
         ['<CR>'] = function (fallback)
             fallback()
         end,
-        ['<C-n>'] = cmp.mapping.complete(),
+        -- ['<C-n>'] = cmp.mapping.complete(),
     },
     completion = {
         completeopt = 'menu,menuone,noselect',
