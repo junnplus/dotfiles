@@ -16,3 +16,6 @@
 [submodule ".oh-my-zsh/plugins/wakatime"]
 	path = .oh-my-zsh/plugins/wakatime
 	url = https://github.com/sobolevn/wakatime-zsh-plugin.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
