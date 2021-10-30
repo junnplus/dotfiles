@@ -67,6 +67,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PTPYTHON_CONFIG_HOME=~/.config/ptpython
 
+export CARGO_PATH=$HOME/.cargo
+
 export GPG_TTY=$(tty)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/sbin"
