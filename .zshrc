@@ -71,8 +71,8 @@ export CARGO_PATH=$HOME/.cargo
 
 export GPG_TTY=$(tty)
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/sbin"
-export PATH="$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 export PATH="/usr/local/opt/openresty/nginx/sbin:/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
