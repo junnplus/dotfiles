@@ -15,8 +15,7 @@ echo "Linking dotfile..."
 for FILE in ${FILES[@]}; do
     ln -sfv ~/.dotfiles/$FILE ~/$FILE;
 done
-ln -sfvn ~/.dotfiles/.vim ~/.vim
-ln -sfvn ~/.dotfiles/.vim ~/.config/nvim
+ln -sfvn ~/.dotfiles/nvim ~/.config/nvim
 
 if test ! $(which brew); then
     echo "Installing homebrew..."
@@ -42,4 +41,4 @@ echo "Dumping brew dependencies..."
 brew bundle dump --global -f
 
 echo "Installing powerline fonts"
-cd /tmp && git clone https://github.com/powerline/fonts && ./fonts/install.sh
+cd /tmp && rm -rf fonts && git clone https://github.com/powerline/fonts && ./fonts/install.sh
