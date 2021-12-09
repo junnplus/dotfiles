@@ -99,12 +99,12 @@ require('packer').startup(function(use)
         end
     }
 
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('plugins.indentline')
-        end
-    }
+    -- use {
+    --     'lukas-reineke/indent-blankline.nvim',
+    --     config = function()
+    --         require('plugins.indentline')
+    --     end
+    -- }
 
     use {
         'wfxr/minimap.vim',
@@ -170,32 +170,32 @@ require('packer').startup(function(use)
         end
     }
 
-    use {
-        'mfussenegger/nvim-dap',
-        config = function()
-            require('plugins.dap')
-        end
-    }
+    -- use {
+    --     'mfussenegger/nvim-dap',
+    --     config = function()
+    --         require('plugins.dap')
+    --     end
+    -- }
 
-    use {
-        'mfussenegger/nvim-dap-python',
-        requires = {
-            'mfussenegger/nvim-dap'
-        },
-        config = function()
-            require('dap-python').setup('python')
-        end
-    }
+    -- use {
+    --     'mfussenegger/nvim-dap-python',
+    --     requires = {
+    --         'mfussenegger/nvim-dap'
+    --     },
+    --     config = function()
+    --         require('dap-python').setup('python')
+    --     end
+    -- }
 
-    use {
-        "rcarriga/nvim-dap-ui",
-        requires = {
-            "mfussenegger/nvim-dap"
-        },
-        config = function()
-            require("dapui").setup()
-        end
-    }
+    -- use {
+    --     "rcarriga/nvim-dap-ui",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    --     config = function()
+    --         require("dapui").setup()
+    --     end
+    -- }
 
     -- use {
     --     'puremourning/vimspector'
@@ -247,7 +247,7 @@ require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'kabouzeid/nvim-lspinstall',
+            'williamboman/nvim-lsp-installer',
             'folke/lsp-colors.nvim',
             'RishabhRD/nvim-lsputils',
             'folke/lua-dev.nvim',
@@ -259,9 +259,6 @@ require('packer').startup(function(use)
     }
 
     use {
-        'folke/twilight.nvim',
-        config = function()
-            require('plugins.twilight')
-        end
+        'github/copilot.vim'
     }
 end)

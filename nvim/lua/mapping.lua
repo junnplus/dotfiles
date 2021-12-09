@@ -3,8 +3,8 @@ local map = require('util').map
 -- Key bindings
 map('', '<c-a>', 'ggVG$"+y')
 map('v', '<c-c>', '"+y')
-map('n', '<tab>', 'V')
-map('n', '<s-tab>', 'V<')
+-- map('n', '<tab>', 'V')
+-- map('n', '<s-tab>', 'V<')
 map('v', '<tab>', '>gv')
 map('v', '<s-tab>', '<gv')
 map('i', '<c-b>', '<c-o>b')
