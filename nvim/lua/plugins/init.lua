@@ -29,13 +29,6 @@ require('packer').startup(function(use)
         'tpope/vim-surround'
     }
 
-    -- use {
-    --     'easymotion/vim-easymotion',
-    --     config = function()
-    --         require('plugins.easymotion')
-    --     end
-    -- }
-
     use {
         'phaazon/hop.nvim',
         as = 'hop',
@@ -105,14 +98,6 @@ require('packer').startup(function(use)
     --         require('plugins.indentline')
     --     end
     -- }
-
-    use {
-        'wfxr/minimap.vim',
-        run = ':!cargo install --locked code-minimap',
-        config = function()
-            require('plugins.minimap')
-        end
-    }
 
     use {
         'folke/todo-comments.nvim',
