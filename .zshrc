@@ -1,37 +1,27 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+source /opt/homebrew/share/antigen/antigen.zsh
 
-# Path to your oh-my-zsh installation.
+antigen use oh-my-zsh
+antigen bundle autojump
+antigen bundle vi-mode
+antigen bundle git
+antigen bundle fzf
+antigen bundle pyenv
+antigen bundle pip
+antigen bundle kubectl
+antigen bundle helm
+antigen bundle terraform
+antigen bundle tmux
+antigen bundle extract
+antigen bundle gitignore
 
-ZSH=$HOME/.oh-my-zsh
-# ZSH_THEME="spaceship"
-ZSH_CUSTOM=$HOME/.dotfiles/.oh-my-zsh
-ZSH_THEME="dracula"
+antigen bundle Aloxaf/fzf-tab
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle dracula/zsh
+antigen bundle dracula/zsh-syntax-highlighting
 
-plugins=(
-    autojump
-    vi-mode
-    git
-    fzf
-    pyenv
-    pip
-    kubectl
-    helm
-    terraform
-    tmux
-    extract
-    gitignore
-
-    # custom
-    fzf-tab
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-completions
-	wakatime
-)
-
-autoload -U compinit && compinit
-source $ZSH/oh-my-zsh.sh
+antigen apply
 
 eval "$(starship init zsh)"
 
@@ -41,7 +31,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
-export EDITOR="/usr/local/bin/nvim"
 
 alias vi=nvim
 alias vim=nvim
