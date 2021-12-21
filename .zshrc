@@ -46,6 +46,7 @@ alias g=git
 alias gti=git
 alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
+alias q=exit
 
 export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
 

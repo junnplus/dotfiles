@@ -246,4 +246,15 @@ require('packer').startup(function(use)
     use {
         'github/copilot.vim'
     }
+
+    use {
+        'liuchengxu/vista.vim',
+    }
+
+    use {
+        'dwrdx/mywords.nvim',
+        config = function ()
+            require('plugins.mywords')
+        end
+    }
 end)
