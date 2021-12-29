@@ -41,13 +41,16 @@ require('nvim-tree').setup {
             }
         }
     },
+    diagnostics = {
+        enable = true,
+    },
     update_focused_file = {
         enable = true,
     },
     auto_close = true,
-    follow = true,
-    hijack_netrw = false,
-    lsp_diagnostics = true,
+    hijack_netrw = true,
+    focus_tree = false,
+    open_on_setup = true,
 }
 
 require('nvim-tree.events').on_nvim_tree_ready(function()
