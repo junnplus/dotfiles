@@ -62,6 +62,7 @@ brew "hbase", restart_service: true
 brew "helm"
 brew "httpie"
 brew "hub"
+brew "ipfs", restart_service: true
 brew "istioctl"
 brew "jq"
 brew "jsonnet"
@@ -77,6 +78,7 @@ brew "kustomize", link: false
 brew "lcov"
 brew "ldns"
 brew "libfido2"
+brew "libmemcached"
 brew "libslirp"
 brew "libssh2"
 brew "qemu"
@@ -89,6 +91,7 @@ brew "lua@5.3"
 brew "luarocks"
 brew "mosh"
 brew "mtr"
+brew "mycli"
 brew "mysql", restart_service: true
 brew "neovim"
 brew "nghttp2"
