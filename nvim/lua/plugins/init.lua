@@ -18,6 +18,10 @@ require('packer').startup(function(use)
     }
 
     use {
+        'arkav/lualine-lsp-progress'
+    }
+
+    use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function()
@@ -37,12 +41,12 @@ require('packer').startup(function(use)
         end
     }
 
-    use {
-        'voldikss/vim-floaterm',
-        config = function()
-            require('plugins.floaterm')
-        end
-    }
+    -- use {
+    --     'voldikss/vim-floaterm',
+    --     config = function()
+    --         require('plugins.floaterm')
+    --     end
+    -- }
 
     use {
         'majutsushi/tagbar',
@@ -255,6 +259,13 @@ require('packer').startup(function(use)
         'dwrdx/mywords.nvim',
         config = function ()
             require('plugins.mywords')
+        end
+    }
+
+    use {
+        'akinsho/toggleterm.nvim',
+        config = function()
+            require('plugins.toggleterm')
         end
     }
 end)
