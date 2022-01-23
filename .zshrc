@@ -1,4 +1,4 @@
-source /opt/homebrew/share/antigen/antigen.zsh
+source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundle autojump
@@ -40,6 +40,7 @@ alias cat='bat --style=numbers'
 alias k=kubectl
 alias ksys='kubectl -n kube-system'
 alias kd='kubectl debug'
+alias kk='kubectl krew'
 alias kns=kubens
 alias kctx=kubectx
 alias g=git
@@ -47,6 +48,7 @@ alias gti=git
 alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
 alias q=exit
+alias nerdctl="lima sudo nerdctl"
 
 export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
 
