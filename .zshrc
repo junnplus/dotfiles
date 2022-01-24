@@ -1,3 +1,14 @@
+export GOPATH=$HOME/.go
+export GOPROXY=https://goproxy.cn,direct
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PTPYTHON_CONFIG_HOME=~/.config/ptpython
+
+export CARGO_PATH=$HOME/.cargo
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -49,22 +60,17 @@ alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
 alias q=exit
 alias nerdctl="lima sudo nerdctl"
+alias docker="lima sudo docker"
+
+function workup {
+    tmux ls -F '#{session_name}' |
+    fzf --bind=enter:replace-query+print-query |
+    read session && tmux attach -t ${session:-default} || tmux new -s ${session:-default}
+}
 
 export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
-
-export GOPATH=$HOME/.go
-export GOPROXY=https://goproxy.cn,direct
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PTPYTHON_CONFIG_HOME=~/.config/ptpython
-
-export CARGO_PATH=$HOME/.cargo
-
 export GPG_TTY=$(tty)
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 export PATH="/usr/local/opt/openresty/nginx/sbin:/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
