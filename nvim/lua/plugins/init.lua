@@ -5,267 +5,229 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
-require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
-    use 'tjdevries/colorbuddy.nvim'
-    use 'Pocco81/Catppuccino.nvim'
+require('packer').startup({
+    config = {
+        compile_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim/plugin/packer.lua',
+    },
+    function(use)
+        use 'wbthomason/packer.nvim'
+        use 'tjdevries/colorbuddy.nvim'
+        use 'Pocco81/Catppuccino.nvim'
 
-    use {
-        'folke/tokyonight.nvim',
-        config = function()
-            require('plugins.tokyonight')
-        end
-    }
-
-    use {
-        'arkav/lualine-lsp-progress'
-    }
-
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        config = function()
-            require('plugins.line')
-        end
-    }
-
-    use {
-        'tpope/vim-surround'
-    }
-
-    use {
-        'phaazon/hop.nvim',
-        as = 'hop',
-        config = function ()
-            require('plugins.hop')
-        end
-    }
-
-    -- use {
-    --     'voldikss/vim-floaterm',
-    --     config = function()
-    --         require('plugins.floaterm')
-    --     end
-    -- }
-
-    use {
-        'majutsushi/tagbar',
-        config = function()
-            require('plugins.tagbar')
-        end
-    }
-
-    use {
-        'terryma/vim-multiple-cursors'
-    }
-
-    use {
-        'tpope/vim-fugitive',
-    }
-
-    use {
-        'scrooloose/nerdcommenter',
-        config = function()
-            require('plugins.nerdcommenter')
-        end
-    }
-
-    use {
-        'wakatime/vim-wakatime',
-    }
-
-    use {
-        'ternjs/tern_for_vim',
-    }
-
-    use {
-        'Vimjas/vim-python-pep8-indent'
-    }
-
-    use {
-        't9md/vim-choosewin',
-        config = function()
-            require('plugins.choosewin')
-        end
-    }
-
-    use {
-        'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('plugins.devicons')
-        end
-    }
-
-    -- use {
-    --     'lukas-reineke/indent-blankline.nvim',
-    --     config = function()
-    --         require('plugins.indentline')
-    --     end
-    -- }
-
-    use {
-        'folke/todo-comments.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
-        config = function()
-            -- require('plugins.todo')
-            require('todo-comments').setup{}
-        end
-    }
-
-    use {
-        'andymass/vim-matchup'
-    }
-
-    use {
-        'windwp/nvim-autopairs',
-        config = function()
-            require('plugins.autopairs')
-        end
-    }
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-github.nvim',
-            'nvim-telescope/telescope-packer.nvim'
-        },
-        config = function()
-            require('plugins.telescope')
-        end
-    }
-
-    use {
-        'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('plugins.bufferline')
-        end
-    }
-
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('plugins.tree')
-        end
-    }
-
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require('plugins.gitsigns')
-        end
-    }
-
-    -- use {
-    --     'mfussenegger/nvim-dap',
-    --     config = function()
-    --         require('plugins.dap')
-    --     end
-    -- }
-
-    -- use {
-    --     'mfussenegger/nvim-dap-python',
-    --     requires = {
-    --         'mfussenegger/nvim-dap'
-    --     },
-    --     config = function()
-    --         require('dap-python').setup('python')
-    --     end
-    -- }
-
-    -- use {
-    --     "rcarriga/nvim-dap-ui",
-    --     requires = {
-    --         "mfussenegger/nvim-dap"
-    --     },
-    --     config = function()
-    --         require("dapui").setup()
-    --     end
-    -- }
-
-    -- use {
-    --     'puremourning/vimspector'
-    -- }
-
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        requires = {
-            'nvim-treesitter/playground',
-            'nvim-treesitter/nvim-treesitter-refactor'
-        },
-        config = function()
-            require('plugins.treesitter')
-        end
-    }
-
-    use {
-        'tzachar/cmp-tabnine',
-        run = './install.sh',
-        requires = 'hrsh7th/nvim-cmp'
-    }
-
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/vim-vsnip-integ',
-            'rafamadriz/friendly-snippets',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-nvim-lsp',
-            'onsails/lspkind-nvim',
-            'quangnguyen30192/cmp-nvim-ultisnips',
-            'SirVer/ultisnips'
-        },
-        config = function()
-            require('plugins.cmp')
-        end
-    }
-
-    use {
-        'RishabhRD/nvim-lsputils',
-        requires = {
-            'RishabhRD/popfix'
+        use {
+            'folke/tokyonight.nvim',
+            config = function()
+                require('plugins.tokyonight')
+            end
         }
-    }
 
-    use {
-        'neovim/nvim-lspconfig',
-        requires = {
-            'williamboman/nvim-lsp-installer',
-            'folke/lsp-colors.nvim',
-            'RishabhRD/nvim-lsputils',
-            'folke/lua-dev.nvim',
-            'ray-x/lsp_signature.nvim'
-        },
-        config = function()
-            require('plugins.lsp')
-        end
-    }
+        use {
+            'hoob3rt/lualine.nvim',
+            requires = {'kyazdani42/nvim-web-devicons', opt = true},
+            config = function()
+                require('plugins.line')
+            end
+        }
 
-    use {
-        'github/copilot.vim'
-    }
+        use {
+            'tpope/vim-surround'
+        }
 
-    use {
-        'liuchengxu/vista.vim',
-    }
+        use {
+            'phaazon/hop.nvim',
+            as = 'hop',
+            config = function ()
+                require('plugins.hop')
+            end
+        }
 
-    use {
-        'dwrdx/mywords.nvim',
-        config = function ()
-            require('plugins.mywords')
-        end
-    }
+        use {
+            'majutsushi/tagbar',
+            config = function()
+                require('plugins.tagbar')
+            end
+        }
 
-    use {
-        'akinsho/toggleterm.nvim',
-        config = function()
-            require('plugins.toggleterm')
-        end
-    }
-end)
+        use {
+            'terryma/vim-multiple-cursors'
+        }
+
+        use {
+            'tpope/vim-fugitive',
+        }
+
+        use {
+            'scrooloose/nerdcommenter',
+            config = function()
+                require('plugins.nerdcommenter')
+            end
+        }
+
+        use {
+            'wakatime/vim-wakatime',
+        }
+
+        use {
+            'ternjs/tern_for_vim',
+        }
+
+        use {
+            'Vimjas/vim-python-pep8-indent'
+        }
+
+        use {
+            't9md/vim-choosewin',
+            config = function()
+                require('plugins.choosewin')
+            end
+        }
+
+        use {
+            'kyazdani42/nvim-web-devicons',
+            config = function()
+                require('plugins.devicons')
+            end
+        }
+
+        -- use {
+        --     'lukas-reineke/indent-blankline.nvim',
+        --     config = function()
+        --         require('plugins.indentline')
+        --     end
+        -- }
+
+        use {
+            'folke/todo-comments.nvim',
+            requires = { {'nvim-lua/plenary.nvim'} },
+            config = function()
+                -- require('plugins.todo')
+                require('todo-comments').setup{}
+            end
+        }
+
+        use {
+            'andymass/vim-matchup'
+        }
+
+        use {
+            'windwp/nvim-autopairs',
+            config = function()
+                require('plugins.autopairs')
+            end
+        }
+
+        use {
+            'nvim-telescope/telescope.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'nvim-telescope/telescope-github.nvim',
+                'nvim-telescope/telescope-packer.nvim'
+            },
+            config = function()
+                require('plugins.telescope')
+            end
+        }
+
+        use {
+            'akinsho/bufferline.nvim',
+            requires = 'kyazdani42/nvim-web-devicons',
+            config = function()
+                require('plugins.bufferline')
+            end
+        }
+
+        use {
+            'kyazdani42/nvim-tree.lua',
+            requires = 'kyazdani42/nvim-web-devicons',
+            config = function()
+                require('plugins.tree')
+            end
+        }
+
+        use {
+            'lewis6991/gitsigns.nvim',
+            requires = { 'nvim-lua/plenary.nvim' },
+            config = function()
+                require('plugins.gitsigns')
+            end
+        }
+
+        use {
+            'github/copilot.vim',
+            config = function()
+                local map = require('util').map
+                vim.g.copilot_no_tab_map = 1
+                map('i', '<C-e>', 'copilot#Accept()', {expr=true})
+            end
+        }
+
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run = ':TSUpdate',
+            requires = {
+                'nvim-treesitter/playground',
+                'nvim-treesitter/nvim-treesitter-refactor'
+            },
+            config = function()
+                require('plugins.treesitter')
+            end
+        }
+
+        use {
+            'hrsh7th/nvim-cmp',
+            requires = {
+                'hrsh7th/cmp-vsnip',
+                'hrsh7th/vim-vsnip',
+                'hrsh7th/vim-vsnip-integ',
+                'hrsh7th/cmp-buffer',
+                'hrsh7th/cmp-nvim-lsp',
+                'onsails/lspkind-nvim',
+            },
+            config = function()
+                require('plugins.cmp')
+            end
+        }
+
+        use {
+            'neovim/nvim-lspconfig',
+            requires = {
+                'williamboman/nvim-lsp-installer',
+                'folke/lsp-colors.nvim',
+                'folke/lua-dev.nvim',
+                'ray-x/lsp_signature.nvim'
+            },
+            config = function()
+                require('plugins.lsp')
+            end
+        }
+
+        use {
+            'liuchengxu/vista.vim',
+        }
+
+        use {
+            'dwrdx/mywords.nvim',
+            config = function ()
+                require('plugins.mywords')
+            end
+        }
+
+        use {
+            'akinsho/toggleterm.nvim',
+            config = function()
+                require('plugins.toggleterm')
+            end
+        }
+
+        use {
+            "folke/which-key.nvim",
+        }
+
+        use {
+            'j-hui/fidget.nvim',
+            config = function()
+                require('plugins.fidget')
+            end
+        }
+    end,
+})

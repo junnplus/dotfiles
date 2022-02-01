@@ -14,7 +14,6 @@ cmp.setup{
                 luasnip = "[Snip]",
                 nvim_lua = "[Lua]",
                 latex_symbols = "[Latex]",
-                cmp_tabnine = "[TN]",
             })[entry.source.name]
             return vim_item
         end
@@ -22,7 +21,6 @@ cmp.setup{
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
-            -- vim.fn["UltiSnips#Anon"](args.body)
         end,
     },
     mapping = {
@@ -49,27 +47,17 @@ cmp.setup{
         ['<CR>'] = function (fallback)
             fallback()
         end,
-        -- ['<C-n>'] = cmp.mapping.complete(),
     },
     completion = {
         completeopt = 'menu,menuone,noselect',
     },
     preselect = types.cmp.PreselectMode.None,
     sources = {
-        { name = 'vsnip' },
-        -- { name = 'luasnip' },
-        -- { name = 'ultisnips' },
         { name = 'nvim_lsp' },
-        { name = 'cmp_tabnine' },
         { name = 'buffer' },
+        { name = 'vsnip' },
     }
 }
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-    max_lines = 1000;
-    max_num_results = 20;
-    sort = true;
-})
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))

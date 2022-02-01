@@ -10,4 +10,4 @@ require("toggleterm").setup{
 }
 
 local map = require('util').map
-map('t', '<C-w>', [[<C-\><C-n><C-W>]], {noremap = true})
+map('t', '<C-]>', [[<C-\><C-n>]], {noremap = true})
