@@ -154,9 +154,11 @@ require('packer').startup({
 
         use {
             'github/copilot.vim',
+            setup = function()
+                require('plugins.copilot')
+            end,
             config = function()
                 local map = require('util').map
-                vim.g.copilot_no_tab_map = 1
                 map('i', '<C-e>', 'copilot#Accept()', {expr=true})
             end
         }

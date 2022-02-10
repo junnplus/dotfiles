@@ -38,17 +38,23 @@ require('nvim-tree').setup {
                 { key = "v", cb = tree_cb("vsplit") },
                 { key = "s", cb = tree_cb("split") },
                 { key = "-", cb = '<Plug>(choosewin)' },
+                { key = "<C-t>", cb = ':ToggleTerm<cr>'},
             }
         }
     },
     diagnostics = {
         enable = true,
     },
+    update_to_buf_dir = {
+        enable = true,
+        auto_update = true,
+    },
     update_focused_file = {
         enable = true,
     },
     auto_close = true,
     hijack_netrw = true,
+    update_cwd = true,
     focus_tree = false,
     open_on_setup = true,
 }

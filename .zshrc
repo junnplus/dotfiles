@@ -40,8 +40,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix openssl)/lib"
+export CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include"
 
 alias vi=nvim
 alias vim=nvim

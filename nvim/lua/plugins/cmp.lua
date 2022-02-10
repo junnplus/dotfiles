@@ -24,27 +24,21 @@ cmp.setup{
         end,
     },
     mapping = {
-        -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<S-Tab>'] = function (fallback)
             if vim.fn.pumvisible() == 1 then
-                util.input("<C-n>", "n")
-            elseif vim.fn['vsnip#available']() == 1 then
-                util.input('<Plug>(vsnip-expand-or-jump)')
+                util.input("<C-p>", "n")
+            elseif vim.fn['vsnip#jumpable']() == -1 then
+                util.input("<Plug>(vsnip-jump-prev)")
             else
                 fallback()
             end
         end,
-        -- ['<S-Tab>'] = function (fallback)
-        --     if vim.fn.pumvisible() == 1 then
-        --         util.input("<C-p>", "n")
-        --     elseif vim.fn['vsnip#jumpable']() == -1 then
-        --         util.input("<Plug>(vsnip-jump-prev)")
-        --     else
-        --         fallback()
-        --     end
-        -- end,
         ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         ['<CR>'] = function (fallback)
+            fallback()
+        end,
+        ['<C-e>'] = function (fallback)
             fallback()
         end,
     },

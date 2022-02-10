@@ -3,7 +3,7 @@ local ncmd = vim.api.nvim_command
 
 ncmd('filetype plugin indent on')
 cmd([[ autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]])
-cmd([[ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 ]])
+cmd([[ autocmd FileType python setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 ]])
 cmd([[ autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab ]])
 cmd([[ autocmd FileType go setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=120 noexpandtab ]])
 cmd([[ autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 ]])
