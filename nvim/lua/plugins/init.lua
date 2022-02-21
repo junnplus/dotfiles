@@ -1,5 +1,6 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local compile_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim/plugin/packer.lua'
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd 'packadd packer.nvim'
@@ -7,7 +8,7 @@ end
 
 require('packer').startup({
     config = {
-        compile_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim/plugin/packer.lua',
+        compile_path = compile_path,
     },
     function(use)
         use 'wbthomason/packer.nvim'
