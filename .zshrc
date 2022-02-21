@@ -68,7 +68,7 @@ function workup {
     read session && tmux attach -t ${session:-default} || tmux new -s ${session:-default}
 }
 
-export KUBECONFIG=$(echo `ls ~/.kube/*config` | sed 's/ /:/g')
+export KUBECONFIG=$(echo `/bin/ls ~/.kube/*config` | sed 's/ /:/g')
 export GPG_TTY=$(tty)
 
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
