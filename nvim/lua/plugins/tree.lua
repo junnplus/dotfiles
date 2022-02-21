@@ -3,12 +3,6 @@ local g = vim.g
 g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_icons = {
     symlink = '',
-    lsp = {
-        hint = '',
-        info = '',
-        warning = '',
-        error = '',
-    },
     git = {
         untracked = '?'
     },
@@ -38,12 +32,18 @@ require('nvim-tree').setup {
                 { key = "v", cb = tree_cb("vsplit") },
                 { key = "s", cb = tree_cb("split") },
                 { key = "-", cb = '<Plug>(choosewin)' },
-                { key = "<C-t>", cb = ':ToggleTerm<cr>'},
+                { key = "<C-t>", cb = ':ToggleTerm<cr>' },
             }
         }
     },
     diagnostics = {
         enable = true,
+        icons = {
+            error = '',
+            warning = '',
+            info = '',
+            hint = '',
+        }
     },
     update_to_buf_dir = {
         enable = true,
