@@ -1,10 +1,14 @@
-local o, wo, bo = vim.o, vim.wo, vim.bo
+local g = vim.g
 local cmd = vim.cmd
+local o, wo, bo = vim.o, vim.wo, vim.bo
 local set = require('util').set
 
 -- Color scheme
 set('background', 'dark')
 set('termguicolors', true)
+
+-- Leader key
+g.mapleader = [[ ]]
 cmd [[colorscheme tokyonight]]
 
 -- Settings
@@ -51,9 +55,13 @@ set('shiftwidth', 4, buffer)
 set('softtabstop', 4, buffer)
 set('tabstop', 4, buffer)
 
+-- copy highlight
 cmd [[
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=150}
 augroup END
 ]]
+
+-- reopen last position
+cmd([[ autocmd BufReadPost * normal! g`" ]])

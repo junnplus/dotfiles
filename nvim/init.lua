@@ -1,13 +1,4 @@
-local g = vim.g
-local cmd = vim.cmd
-
--- Leader key
-g.mapleader = [[ ]]
-
--- reopen last position
-cmd([[ autocmd BufReadPost * normal! g`" ]])
-
-require('plugins')
 require('core')
+require('plugins')
 require('mapping')
 require('filetype')

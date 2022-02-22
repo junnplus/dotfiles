@@ -156,7 +156,9 @@ require('packer').startup({
         use {
             'github/copilot.vim',
             setup = function()
-                require('plugins.copilot')
+                vim.g.copilot_no_tab_map = 1
+                vim.g.copilot_no_maps = 1
+                vim.g.copilot_assume_mapped = 1
             end,
             config = function()
                 local map = require('util').map
