@@ -1,4 +1,4 @@
-format = '$directory$git_branch$git_commit$git_state$git_status$golang$helm$java$nodejs$python$red$ruby$rust$kubernetes$custom$cmd_duration$lua$line_break$jobs$time$status$shell$character'
+format = '$directory$git_branch$git_commit$git_state$git_status$git_metrics$golang$helm$java$nodejs$python$red$ruby$rust$kubernetes$custom$cmd_duration$lua$line_break$jobs$time$status$shell$character'
 
 [character]
 vicmd_symbol = '[\[I\] ❯](bold green)'
@@ -13,5 +13,8 @@ commit_hash_length = 8
 
 [kubernetes]
 disabled = false
-symbol = '⎈  '
+symbol = '⎈ '
 format = 'at [$symbol$context \($namespace\)]($style) '
+
+[git_metrics]
+disabled = false
