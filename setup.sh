@@ -20,6 +20,7 @@ for FILE in ${FILES[@]}; do
     ln -sfv /Users/jun/.dotfiles/$FILE ~/$FILE;
 done
 ln -sfvn /Users/jun/.dotfiles/nvim ~/.config/nvim
+ln -sfvn /Users/jun/.dotfiles/wezterm ~/.config/wezterm
 
 if test ! $(which brew); then
     echo "Installing homebrew..."

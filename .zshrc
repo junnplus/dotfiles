@@ -19,8 +19,8 @@ antigen bundle fzf
 antigen bundle pyenv
 antigen bundle pip
 antigen bundle kubectl
-antigen bundle helm
-antigen bundle terraform
+# antigen bundle helm
+# antigen bundle terraform
 antigen bundle tmux
 antigen bundle extract
 antigen bundle gitignore
@@ -63,6 +63,10 @@ alias nerdctl="lima sudo nerdctl"
 alias docker="lima sudo docker"
 
 function workup {
+    if [[ -n "$TMUX" ]]
+    then
+        return 0
+    fi
     tmux ls -F '#{session_name}' |
     fzf --bind=enter:replace-query+print-query |
     read session && tmux attach -t ${session:-default} || tmux new -s ${session:-default}
