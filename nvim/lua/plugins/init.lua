@@ -1,9 +1,9 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-local compile_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim/plugin/packer.lua'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local compile_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim/plugin/packer.lua'
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd 'packadd packer.nvim'
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    vim.cmd('packadd packer.nvim')
 end
 
 require('packer').startup({
@@ -11,84 +11,84 @@ require('packer').startup({
         compile_path = compile_path,
     },
     function(use)
-        use 'wbthomason/packer.nvim'
-        use 'tjdevries/colorbuddy.nvim'
-        use 'Pocco81/Catppuccino.nvim'
+        use('wbthomason/packer.nvim')
+        use('tjdevries/colorbuddy.nvim')
+        use('Pocco81/Catppuccino.nvim')
 
-        use {
+        use({
             'folke/tokyonight.nvim',
             config = function()
                 require('plugins.tokyonight')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'hoob3rt/lualine.nvim',
-            requires = {'kyazdani42/nvim-web-devicons', opt = true},
+            requires = { 'kyazdani42/nvim-web-devicons', opt = true },
             config = function()
                 require('plugins.line')
-            end
-        }
+            end,
+        })
 
-        use {
-            'tpope/vim-surround'
-        }
+        use({
+            'tpope/vim-surround',
+        })
 
-        use {
+        use({
             'phaazon/hop.nvim',
             as = 'hop',
-            config = function ()
+            config = function()
                 require('plugins.hop')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'majutsushi/tagbar',
             config = function()
                 require('plugins.tagbar')
-            end
-        }
+            end,
+        })
 
-        use {
-            'terryma/vim-multiple-cursors'
-        }
+        use({
+            'terryma/vim-multiple-cursors',
+        })
 
-        use {
+        use({
             'tpope/vim-fugitive',
-        }
+        })
 
-        use {
+        use({
             'scrooloose/nerdcommenter',
             config = function()
                 require('plugins.nerdcommenter')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'wakatime/vim-wakatime',
-        }
+        })
 
-        use {
+        use({
             'ternjs/tern_for_vim',
-        }
+        })
 
-        use {
-            'Vimjas/vim-python-pep8-indent'
-        }
+        use({
+            'Vimjas/vim-python-pep8-indent',
+        })
 
-        use {
+        use({
             't9md/vim-choosewin',
             config = function()
                 require('plugins.choosewin')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'kyazdani42/nvim-web-devicons',
             config = function()
                 require('plugins.devicons')
-            end
-        }
+            end,
+        })
 
         -- use {
         --     'lukas-reineke/indent-blankline.nvim',
@@ -97,63 +97,63 @@ require('packer').startup({
         --     end
         -- }
 
-        use {
+        use({
             'folke/todo-comments.nvim',
-            requires = { {'nvim-lua/plenary.nvim'} },
+            requires = { { 'nvim-lua/plenary.nvim' } },
             config = function()
                 -- require('plugins.todo')
-                require('todo-comments').setup{}
-            end
-        }
+                require('todo-comments').setup({})
+            end,
+        })
 
-        use {
-            'andymass/vim-matchup'
-        }
+        use({
+            'andymass/vim-matchup',
+        })
 
-        use {
+        use({
             'windwp/nvim-autopairs',
             config = function()
                 require('plugins.autopairs')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'nvim-telescope/telescope.nvim',
             requires = {
                 'nvim-lua/plenary.nvim',
                 'nvim-telescope/telescope-github.nvim',
-                'nvim-telescope/telescope-packer.nvim'
+                'nvim-telescope/telescope-packer.nvim',
             },
             config = function()
                 require('plugins.telescope')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'akinsho/bufferline.nvim',
             requires = 'kyazdani42/nvim-web-devicons',
             config = function()
                 require('plugins.bufferline')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
             config = function()
                 require('plugins.tree')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'lewis6991/gitsigns.nvim',
             requires = { 'nvim-lua/plenary.nvim' },
             config = function()
                 require('plugins.gitsigns')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'github/copilot.vim',
             setup = function()
                 vim.g.copilot_no_tab_map = 1
@@ -162,23 +162,23 @@ require('packer').startup({
             end,
             config = function()
                 local map = require('util').map
-                map('i', '<C-e>', 'copilot#Accept()', {expr=true})
-            end
-        }
+                map('i', '<C-e>', 'copilot#Accept()', { expr = true })
+            end,
+        })
 
-        use {
+        use({
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
             requires = {
                 'nvim-treesitter/playground',
-                'nvim-treesitter/nvim-treesitter-refactor'
+                'nvim-treesitter/nvim-treesitter-refactor',
             },
             config = function()
                 require('plugins.treesitter')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'hrsh7th/nvim-cmp',
             requires = {
                 'hrsh7th/cmp-vsnip',
@@ -190,49 +190,50 @@ require('packer').startup({
             },
             config = function()
                 require('plugins.cmp')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'neovim/nvim-lspconfig',
             requires = {
                 'williamboman/nvim-lsp-installer',
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
-                'ray-x/lsp_signature.nvim'
+                'ray-x/lsp_signature.nvim',
+                'jose-elias-alvarez/null-ls.nvim',
             },
             config = function()
                 require('plugins.lsp')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'liuchengxu/vista.vim',
-        }
+        })
 
-        use {
+        use({
             'dwrdx/mywords.nvim',
-            config = function ()
+            config = function()
                 require('plugins.mywords')
-            end
-        }
+            end,
+        })
 
-        use {
+        use({
             'akinsho/toggleterm.nvim',
             config = function()
                 require('plugins.toggleterm')
-            end
-        }
+            end,
+        })
 
-        use {
-            "folke/which-key.nvim",
-        }
+        use({
+            'folke/which-key.nvim',
+        })
 
-        use {
+        use({
             'j-hui/fidget.nvim',
             config = function()
                 require('plugins.fidget')
-            end
-        }
+            end,
+        })
     end,
 })

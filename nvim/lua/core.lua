@@ -9,11 +9,11 @@ set('termguicolors', true)
 
 -- Leader key
 g.mapleader = [[ ]]
-cmd [[colorscheme tokyonight]]
+cmd([[colorscheme tokyonight]])
 
 -- Settings
-local buffer = {o, bo}
-local window = {o, wo}
+local buffer = { o, bo }
+local window = { o, wo }
 
 set('langmenu', 'zh_CN.UTF-8')
 set('helplang', 'cn')
@@ -56,12 +56,12 @@ set('softtabstop', 4, buffer)
 set('tabstop', 4, buffer)
 
 -- copy highlight
-cmd [[
+cmd([[
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=150}
 augroup END
-]]
+]])
 
 -- reopen last position
 cmd([[ autocmd BufReadPost * normal! g`" ]])
