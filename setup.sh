@@ -1,5 +1,4 @@
 mkdir -p ~/.ssh
-mkdir -p ~/.pip
 mkdir -p ~/.kube
 mkdir -p ~/.antigen
 
@@ -8,9 +7,7 @@ curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
 FILES=(
     .zshrc
-    .pip/pip.conf
     .gitconfig
-    .tmux.conf
     .ssh/config
     .Brewfile
 )
@@ -19,6 +16,8 @@ echo "Linking dotfile..."
 for FILE in ${FILES[@]}; do
     ln -sfv /Users/jun/.dotfiles/$FILE ~/$FILE;
 done
+ln -sfvn /Users/jun/.dotfiles/pip ~/.config/pip
+ln -sfvn /Users/jun/.dotfiles/tmux ~/.config/tmux
 ln -sfvn /Users/jun/.dotfiles/nvim ~/.config/nvim
 ln -sfvn /Users/jun/.dotfiles/wezterm ~/.config/wezterm
 
@@ -29,10 +28,6 @@ fi
 
 #echo "Installing brewfile dependencies"
 #brew bundle -v --global
-
-echo "Syncing submodule..."
-git submodule init
-git submodule update --init --recursive
 
 #echo "Dumping brew dependencies..."
 #brew bundle dump --global -f
