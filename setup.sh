@@ -1,6 +1,5 @@
 mkdir -p ~/.ssh
 mkdir -p ~/.kube
-mkdir -p ~/.antigen
 
 echo "Installing antigen..."
 curl -L git.io/antigen > ~/.antigen/antigen.zsh

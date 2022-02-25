@@ -6,8 +6,10 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PTPYTHON_CONFIG_HOME=~/.config/ptpython
 
 export CARGO_PATH=$HOME/.cargo
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+
+export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
 source ~/.antigen/antigen.zsh
 
@@ -19,8 +21,6 @@ antigen bundle fzf
 antigen bundle pyenv
 antigen bundle pip
 antigen bundle kubectl
-# antigen bundle helm
-# antigen bundle terraform
 antigen bundle tmux
 antigen bundle extract
 antigen bundle gitignore
@@ -40,8 +40,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix openssl)/lib"
-export CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include"
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L$/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@3/include"
+export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 
 alias vi=nvim
 alias vim=nvim
@@ -74,10 +75,6 @@ function workup {
 
 export KUBECONFIG=$(echo `/bin/ls ~/.kube/*config` | sed 's/ /:/g')
 export GPG_TTY=$(tty)
-
-export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
-export PATH="/usr/local/opt/openresty/nginx/sbin:/usr/local/opt/gnu-getopt/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
