@@ -11,6 +11,8 @@ export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/s
 export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -34,6 +36,7 @@ antigen bundle dracula/zsh-syntax-highlighting
 
 antigen apply
 
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -42,7 +45,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L$/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@3/include"
-export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 
 alias vi=nvim
 alias vim=nvim

@@ -6,6 +6,7 @@ curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
 FILES=(
     .zshrc
+    .zlogin
     .gitconfig
     .ssh/config
     .Brewfile
@@ -13,12 +14,21 @@ FILES=(
 
 echo "Linking dotfile..."
 for FILE in ${FILES[@]}; do
-    ln -sfv /Users/jun/.dotfiles/$FILE ~/$FILE;
+    ln -sfv $HOME/.dotfiles/$FILE ~/$FILE;
 done
-ln -sfvn /Users/jun/.dotfiles/pip ~/.config/pip
-ln -sfvn /Users/jun/.dotfiles/tmux ~/.config/tmux
-ln -sfvn /Users/jun/.dotfiles/nvim ~/.config/nvim
-ln -sfvn /Users/jun/.dotfiles/wezterm ~/.config/wezterm
+
+DIRS=(
+    pip
+    tmux
+    nvim
+    wezterm
+    stylua
+    starship
+)
+echo "Linking config dir..."
+for DIR in ${DIRS[@]}; do
+    ln -sfvn $HOME/.dotfiles/$DIR ~/.config/$DIR;
+done
 
 if test ! $(which brew); then
     echo "Installing homebrew..."
@@ -30,6 +40,3 @@ fi
 
 #echo "Dumping brew dependencies..."
 #brew bundle dump --global -f
-
-# echo "Installing powerline fonts"
-# cd /tmp && rm -rf fonts && git clone https://github.com/powerline/fonts && ./fonts/install.sh

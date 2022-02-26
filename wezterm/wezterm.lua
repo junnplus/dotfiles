@@ -15,10 +15,19 @@ return {
     window_frame = {
         font_size = 14.0,
     },
-    -- window_decorations = 'RESIZE',
-    -- use_fancy_tab_bar = true,
+    window_padding = {
+        left = 5,
+        right = 5,
+        top = 0,
+        bottom = 0,
+    },
+    foreground_text_hsb = {
+        hue = 1.0,
+        saturation = 1.0,
+        brightness = 1.2,
+    },
     use_ime = true, -- fixed chinese input
-    default_cwd = '/Users/jun/Documents/workspace',
+    default_cwd = '$HOME/Documents/workspace',
     keys = {
         { key = 'l', mods = 'CMD', action = 'ShowLauncher' },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
