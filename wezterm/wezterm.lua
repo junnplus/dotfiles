@@ -1,7 +1,7 @@
 local wezterm = require('wezterm')
 
 return {
-    font = wezterm.font('Hack Nerd Font Mono'),
+    font = wezterm.font('Hack Nerd Font'),
     font_size = 14,
     colors = {
         tab_bar = {
@@ -27,7 +27,7 @@ return {
         brightness = 1.2,
     },
     use_ime = true, -- fixed chinese input
-    default_cwd = '$HOME/Documents/workspace',
+    default_cwd = wezterm.home_dir .. '/Documents/workspace',
     keys = {
         { key = 'l', mods = 'CMD', action = 'ShowLauncher' },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
