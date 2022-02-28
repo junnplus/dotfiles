@@ -1,3 +1,5 @@
+export EDITOR=nvim
+
 export GOPATH=$HOME/.go
 export GOPROXY=https://goproxy.cn,direct
 

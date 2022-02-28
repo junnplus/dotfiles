@@ -90,12 +90,12 @@ require('packer').startup({
             end,
         })
 
-        -- use {
-        --     'lukas-reineke/indent-blankline.nvim',
-        --     config = function()
-        --         require('plugins.indentline')
-        --     end
-        -- }
+        use({
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('plugins.indentline')
+            end,
+        })
 
         use({
             'folke/todo-comments.nvim',
