@@ -54,10 +54,6 @@ require('packer').startup({
         })
 
         use({
-            'tpope/vim-fugitive',
-        })
-
-        use({
             'scrooloose/nerdcommenter',
             config = function()
                 require('plugins.nerdcommenter')
@@ -233,6 +229,13 @@ require('packer').startup({
             'j-hui/fidget.nvim',
             config = function()
                 require('plugins.fidget')
+            end,
+        })
+
+        use({
+            'sindrets/diffview.nvim',
+            config = function()
+                require('plugins.diffview')
             end,
         })
     end,

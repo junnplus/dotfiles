@@ -16,6 +16,7 @@
     signingkey = 29B6CE45EEE801B6
 [core]
     editor = nvim
+    excludesfile = ~/.config/git/ignore
 [url "https://"]
     insteadOf = git://
 [gpg]
