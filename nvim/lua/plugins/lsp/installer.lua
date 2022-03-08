@@ -15,7 +15,6 @@ local servers = {
 for _, name in pairs(servers) do
     local found, server = lsp_installer.get_server(name)
     if found and not server:is_installed() then
-        print('Installing ' .. name)
         server:install()
     end
 end

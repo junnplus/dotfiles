@@ -25,7 +25,7 @@ antigen bundle fzf
 antigen bundle pyenv
 antigen bundle pip
 antigen bundle kubectl
-antigen bundle tmux
+# antigen bundle tmux
 antigen bundle extract
 antigen bundle gitignore
 
@@ -65,7 +65,7 @@ alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
 alias q=exit
 alias nerdctl="lima sudo nerdctl"
-alias docker="lima sudo docker"
+# alias docker="lima sudo docker"
 
 function workup {
     if [[ -n "$TMUX" ]]
