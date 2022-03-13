@@ -22,10 +22,10 @@ DeactivateKeys=
 0=Control+space
 
 [Hotkey/PrevPage]
-0=bracketleft
+0=minus
 
 [Hotkey/NextPage]
-0=bracketright
+0=equal
 
 [Hotkey/PrevCandidate]
 0=Shift+Tab
