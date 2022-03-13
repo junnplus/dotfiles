@@ -11,7 +11,7 @@
     ds = diff --staged
     dc = diff --cached
 [user]
-    name = ye.sijun
+    name = Ye Sijun
     email = junnplus@gmail.com
     signingkey = 29B6CE45EEE801B6
 [core]

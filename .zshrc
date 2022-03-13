@@ -45,7 +45,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L$/opt/homebrew/opt/openssl@3/lib"
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@3/include"
 
 alias vi=nvim
