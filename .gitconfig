@@ -13,7 +13,7 @@
 [user]
     name = Ye Sijun
     email = junnplus@gmail.com
-    signingkey = 29B6CE45EEE801B6
+    signingkey = 0582626C83FA9CD0
 [core]
     editor = nvim
     excludesfile = ~/.config/git/ignore
@@ -22,4 +22,4 @@
 [gpg]
     program = gpg
 [commit]
-    gpgsign = false
+    gpgsign = true
