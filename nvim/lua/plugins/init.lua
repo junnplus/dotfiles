@@ -136,6 +136,7 @@ require('packer').startup({
         use({
             'kyazdani42/nvim-tree.lua',
             requires = 'kyazdani42/nvim-web-devicons',
+            commit = 'ba121f0244a3bd16919ba75c5ea12806a0538bd3',
             config = function()
                 require('plugins.tree')
             end,
