@@ -24,12 +24,21 @@ return {
     foreground_text_hsb = {
         hue = 1.0,
         saturation = 1.0,
-        brightness = 1.2,
+        brightness = 1.4,
     },
     use_ime = true, -- fixed chinese input
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
+    ssh_domains = {
+        {
+            name = 'archlinux',
+            remote_address = '192.168.50.231',
+            username = 'jun',
+            multiplexing = 'None',
+        },
+    },
     keys = {
-        { key = 'l', mods = 'CMD', action = 'ShowLauncher' },
+        { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'FUZZY|DOMAINS' } }) },
+        { key = 's', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'FUZZY|WORKSPACES' } }) },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
     },
 }
