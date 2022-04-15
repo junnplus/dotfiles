@@ -23,8 +23,8 @@ cmp.setup({
             vim.fn['vsnip#anonymous'](args.body)
         end,
     },
-    mapping = {
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    mapping = cmp.mapping.preset.insert({
+        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Select }),
         ['<S-Tab>'] = function(fallback)
             if vim.fn.pumvisible() == 1 then
                 util.input('<C-p>', 'n')
@@ -41,7 +41,7 @@ cmp.setup({
         ['<C-e>'] = function(fallback)
             fallback()
         end,
-    },
+    }),
     completion = {
         completeopt = 'menu,menuone,noselect',
     },
