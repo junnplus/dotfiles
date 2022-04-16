@@ -1,4 +1,4 @@
-local map = require('util').map
+local map = require('utils').map
 
 -- Key bindings
 map('', '<c-a>', 'ggVG$"+y')

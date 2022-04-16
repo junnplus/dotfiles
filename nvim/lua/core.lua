@@ -1,10 +1,10 @@
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
-local set = require('util').set
+local set = require('utils').set
 
 -- Color scheme
-set('background', 'dark')
+-- set('background', 'dark')
 set('termguicolors', true)
 
 -- Leader key

@@ -12,8 +12,8 @@ require('packer').startup({
     },
     function(use)
         use('wbthomason/packer.nvim')
-        use('tjdevries/colorbuddy.nvim')
-        use('Pocco81/Catppuccino.nvim')
+        -- use('tjdevries/colorbuddy.nvim')
+        -- use('Pocco81/Catppuccino.nvim')
 
         use({
             'folke/tokyonight.nvim',
@@ -94,15 +94,6 @@ require('packer').startup({
         })
 
         use({
-            'folke/todo-comments.nvim',
-            requires = { { 'nvim-lua/plenary.nvim' } },
-            config = function()
-                -- require('plugins.todo')
-                require('todo-comments').setup({})
-            end,
-        })
-
-        use({
             'andymass/vim-matchup',
         })
 
@@ -158,7 +149,7 @@ require('packer').startup({
                 vim.g.copilot_assume_mapped = 1
             end,
             config = function()
-                local map = require('util').map
+                local map = require('utils').map
                 map('i', '<C-e>', 'copilot#Accept()', { expr = true })
             end,
         })
@@ -205,17 +196,6 @@ require('packer').startup({
         })
 
         use({
-            'liuchengxu/vista.vim',
-        })
-
-        use({
-            'dwrdx/mywords.nvim',
-            config = function()
-                require('plugins.mywords')
-            end,
-        })
-
-        use({
             'akinsho/toggleterm.nvim',
             config = function()
                 require('plugins.toggleterm')
@@ -227,16 +207,9 @@ require('packer').startup({
         })
 
         use({
-            'j-hui/fidget.nvim',
+            'j-hui/fidget.nvim', -- nvim-lsp progress
             config = function()
                 require('plugins.fidget')
-            end,
-        })
-
-        use({
-            'sindrets/diffview.nvim',
-            config = function()
-                require('plugins.diffview')
             end,
         })
     end,

@@ -1,5 +1,5 @@
 local g = vim.g
-local map = require('util').map
+local map = require('utils').map
 
 g.floaterm_autoclose = 2
 g.floaterm_autohide = 'v:false'

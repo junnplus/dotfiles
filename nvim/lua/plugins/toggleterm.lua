@@ -9,5 +9,5 @@ require('toggleterm').setup({
     end,
 })
 
-local map = require('util').map
+local map = require('utils').map
 map('t', '<C-]>', [[<C-\><C-n>]], { noremap = true })

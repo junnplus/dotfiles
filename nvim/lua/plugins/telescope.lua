@@ -1,4 +1,4 @@
-local util = require('util')
+local utils = require('utils')
 
 local actions = require('telescope.actions')
 require('telescope').setup({
@@ -24,7 +24,7 @@ require('telescope').setup({
 })
 require('telescope').load_extension('gh')
 require('telescope').load_extension('packer')
-util.map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-util.map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-util.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-util.map('n', ';', '<cmd>Telescope commands<cr>')
+utils.map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+utils.map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+utils.map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+utils.map('n', ';', '<cmd>Telescope commands<cr>')

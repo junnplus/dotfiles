@@ -1,6 +1,6 @@
 local cmp = require('cmp')
 local types = require('cmp.types')
-local util = require('util')
+local utils = require('utils')
 
 cmp.setup({
     formatting = {
@@ -27,9 +27,9 @@ cmp.setup({
         ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Select }),
         ['<S-Tab>'] = function(fallback)
             if vim.fn.pumvisible() == 1 then
-                util.input('<C-p>', 'n')
+                utils.input('<C-p>', 'n')
             elseif vim.fn['vsnip#jumpable']() == -1 then
-                util.input('<Plug>(vsnip-jump-prev)')
+                utils.input('<Plug>(vsnip-jump-prev)')
             else
                 fallback()
             end
