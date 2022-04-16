@@ -1,51 +1,4 @@
-local api = vim.api
-
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-        api.nvim_buf_set_keymap(bufnr, ...)
-    end
-
-    local function buf_set_option(...)
-        api.nvim_buf_set_option(bufnr, ...)
-    end
-
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    local opts = { noremap = true, silent = true }
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    -- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-
-    buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd([[
-          augroup Format
-            au! * <buffer>
-            au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-          augroup END
-        ]])
-    end
-end
-
-local lsp_installer = require('nvim-lsp-installer')
+local utils = require('plugins.lsp.utils')
 
 local servers = {
     'eslint',
@@ -59,19 +12,13 @@ local servers = {
     'rust_analyzer',
 }
 
-for _, name in pairs(servers) do
-    local found, server = lsp_installer.get_server(name)
-    if found and not server:is_installed() then
-        server:install()
-    end
-end
-
-lsp_installer.on_server_ready(function(server)
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+utils.lsp_installer(servers).on_server_ready(function(server)
     local config = {
-        capabilities = capabilities,
-        on_attach = on_attach,
+        capabilities = utils.capabilities(),
+        on_attach = function(client, bufnr)
+            utils.mappings(bufnr)
+            utils.format_on_save(client)
+        end,
         flags = {
             debounce_text_changes = 150,
         },
@@ -89,15 +36,13 @@ lsp_installer.on_server_ready(function(server)
                 },
             },
         })
-        -- Avoiding LSP formatting conflicts.
-        -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
         config.on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
-            on_attach(client, bufnr)
+            utils.mappings(bufnr)
+            utils.disable_formating(client)
         end
         config = vim.tbl_deep_extend('force', config, luadev)
     end
+
     if server.name == 'gopls' then
         config.settings = {
             golsp = {
@@ -120,7 +65,10 @@ null_ls.setup({
             extra_args = { '--config-path', vim.fn.expand('~/.config/stylua/stylua.toml') },
         }),
     },
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        utils.mappings(bufnr)
+        utils.format_on_save(client)
+    end,
 })
 
 require('lsp_signature').setup({})
