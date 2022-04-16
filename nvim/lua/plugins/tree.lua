@@ -59,13 +59,8 @@ require('nvim-tree').setup({
     open_on_setup = true,
 })
 
--- require('nvim-tree.events').on_nvim_tree_ready(function()
---     vim.cmd('NvimTreeToggle')
---     vim.cmd('wincmd p')
--- end)
-
-vim.cmd([[
-augroup nvimtree
-  autocmd VimEnter * lua require('nvim-tree').toggle(false, true)
-augroup END
-]])
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        require('nvim-tree').toggle(false, true)
+    end,
+})

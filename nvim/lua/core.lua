@@ -4,7 +4,6 @@ local o, wo, bo = vim.o, vim.wo, vim.bo
 local set = require('utils').set
 
 -- Color scheme
--- set('background', 'dark')
 set('termguicolors', true)
 
 -- Leader key
@@ -30,7 +29,8 @@ set('updatetime', 100)
 set('ignorecase', true)
 set('smarttab', true)
 set('expandtab', true)
-set('laststatus', 2)
+-- laststatus = 3 (global statuline)
+set('laststatus', 3)
 set('showcmd', true)
 set('ruler', true)
 set('history', 300)
@@ -55,13 +55,24 @@ set('shiftwidth', 4, buffer)
 set('softtabstop', 4, buffer)
 set('tabstop', 4, buffer)
 
--- copy highlight
-cmd([[
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=150}
-augroup END
-]])
+-- highlight yanked text briefly
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 250,
+            on_visual = true,
+        })
+    end,
+})
 
 -- reopen last position
-cmd([[ autocmd BufReadPost * normal! g`" ]])
+vim.api.nvim_create_autocmd('BufReadPost', {
+    callback = function()
+        local previous_pos = vim.api.nvim_buf_get_mark(0, '"')[1]
+        local last_line = vim.api.nvim_buf_line_count(0)
+        if previous_pos >= 1 and previous_pos <= last_line and vim.bo.filetype ~= 'commit' then
+            vim.cmd('normal! g`"')
+        end
+    end,
+})
