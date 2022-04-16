@@ -185,7 +185,6 @@ require('packer').startup({
                 'hrsh7th/vim-vsnip',
                 'hrsh7th/vim-vsnip-integ',
                 'hrsh7th/cmp-buffer',
-                'hrsh7th/cmp-nvim-lsp',
                 'onsails/lspkind-nvim',
             },
             config = function()
@@ -201,6 +200,7 @@ require('packer').startup({
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
+                'hrsh7th/cmp-nvim-lsp',
             },
             config = function()
                 require('plugins.lsp')
