@@ -4,6 +4,7 @@ local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
         api.nvim_buf_set_keymap(bufnr, ...)
     end
+
     local function buf_set_option(...)
         api.nvim_buf_set_option(bufnr, ...)
     end
@@ -48,14 +49,6 @@ local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.on_server_ready(function(server)
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-    capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    -- capabilities.textDocument.completion.completionItem.preselectSupport = true
-    capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-    capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-    capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-    capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-    capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
     local config = {
         capabilities = capabilities,
         on_attach = on_attach,
@@ -76,6 +69,13 @@ lsp_installer.on_server_ready(function(server)
                 },
             },
         })
+        -- Avoiding LSP formatting conflicts.
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+        config.on_attach = function(client, bufnr)
+            client.resolved_capabilities.document_formatting = false
+            client.resolved_capabilities.document_range_formatting = false
+            on_attach(client, bufnr)
+        end
         config = vim.tbl_deep_extend('force', config, luadev)
     end
     if server.name == 'gopls' then
@@ -103,4 +103,4 @@ null_ls.setup({
     on_attach = on_attach,
 })
 
--- require('lsp_signature').setup{}
+require('lsp_signature').setup({})
