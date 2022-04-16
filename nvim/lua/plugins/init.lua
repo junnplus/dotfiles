@@ -64,9 +64,9 @@ require('packer').startup({
             'wakatime/vim-wakatime',
         })
 
-        use({
-            'ternjs/tern_for_vim',
-        })
+        -- use({
+        --     'ternjs/tern_for_vim',
+        -- })
 
         use({
             'Vimjas/vim-python-pep8-indent',
@@ -94,7 +94,7 @@ require('packer').startup({
         })
 
         use({
-            'andymass/vim-matchup',
+            'andymass/vim-matchup', -- extend % key
         })
 
         use({
@@ -131,6 +131,10 @@ require('packer').startup({
             config = function()
                 require('plugins.tree')
             end,
+        })
+
+        use({
+            'tpope/vim-fugitive',
         })
 
         use({

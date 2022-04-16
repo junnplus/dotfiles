@@ -27,6 +27,10 @@ require('nvim-treesitter.configs').setup({
     rainbow = { enable = true },
     autotag = { enable = true },
     context_commentstring = { enable = true },
+    matchup = {
+        -- matchup plugin
+        enable = true,
+    },
 })
 ncmd('set foldmethod=expr')
 ncmd('set foldexpr=nvim_treesitter#foldexpr()')
