@@ -54,16 +54,9 @@ require('packer').startup({
         })
 
         use({
-            'scrooloose/nerdcommenter',
-            config = function()
-                require('plugins.nerdcommenter')
-            end,
-        })
-
-        use({
             'numToStr/Comment.nvim',
             config = function()
-                require('Comment').setup()
+                require('plugins.comment')
             end,
         })
 
