@@ -172,6 +172,7 @@ require('packer').startup({
                 'nvim-treesitter/playground',
                 'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
+                'RRethy/nvim-treesitter-endwise',
             },
             config = function()
                 require('plugins.treesitter')

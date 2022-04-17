@@ -28,6 +28,10 @@ require('nvim-treesitter.configs').setup({
     rainbow = { enable = true },
     autotag = { enable = true },
     context_commentstring = { enable = true },
+    -- RRethy/nvim-treesitter-endwise
+    endwise = {
+        enable = true,
+    },
     -- andymass/vim-matchup
     matchup = {
         enable = true,
