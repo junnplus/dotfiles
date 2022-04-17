@@ -1,5 +1,14 @@
 local wezterm = require('wezterm')
 
+wezterm.on('format-tab-title', function(tab)
+    local pane = tab.active_pane
+    local title = tab.tab_index .. ': ' .. pane.title
+    if pane['domain_name'] then
+        title = title .. ' - (' .. pane.domain_name .. ')'
+    end
+    return title
+end)
+
 return {
     font = wezterm.font('Hack Nerd Font'),
     font_size = 14,
@@ -26,7 +35,6 @@ return {
         saturation = 1.0,
         brightness = 1.4,
     },
-    use_ime = true, -- fixed chinese input
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
     ssh_domains = {
         {
@@ -37,8 +45,7 @@ return {
         },
     },
     keys = {
-        { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'FUZZY|DOMAINS' } }) },
-        { key = 's', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'FUZZY|WORKSPACES' } }) },
+        { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'DOMAINS' } }) },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
     },
 }
