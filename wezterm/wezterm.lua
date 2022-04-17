@@ -2,7 +2,7 @@ local wezterm = require('wezterm')
 
 wezterm.on('format-tab-title', function(tab)
     local pane = tab.active_pane
-    local title = tab.tab_index .. ': ' .. pane.title
+    local title = tab.tab_index + 1 .. ': ' .. pane.title
     if pane['domain_name'] then
         title = title .. ' - (' .. pane.domain_name .. ')'
     end
@@ -27,7 +27,7 @@ return {
     window_padding = {
         left = 5,
         right = 5,
-        top = 0,
+        top = -3,
         bottom = 0,
     },
     foreground_text_hsb = {
