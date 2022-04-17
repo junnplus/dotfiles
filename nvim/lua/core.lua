@@ -55,8 +55,12 @@ set('shiftwidth', 4, buffer)
 set('softtabstop', 4, buffer)
 set('tabstop', 4, buffer)
 
+local init_lua_augroup = 'init_lua_augroup'
+vim.api.nvim_create_augroup(init_lua_augroup, { clear = true })
+
 -- highlight yanked text briefly
 vim.api.nvim_create_autocmd('TextYankPost', {
+    group = init_lua_augroup,
     callback = function()
         vim.highlight.on_yank({
             higroup = 'IncSearch',
@@ -68,6 +72,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- reopen last position
 vim.api.nvim_create_autocmd('BufReadPost', {
+    group = init_lua_augroup,
     callback = function()
         local previous_pos = vim.api.nvim_buf_get_mark(0, '"')[1]
         local last_line = vim.api.nvim_buf_line_count(0)

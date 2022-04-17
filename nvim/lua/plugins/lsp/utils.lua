@@ -52,7 +52,10 @@ end
 
 function M.format_on_save(client, bufnr)
     if client.resolved_capabilities.document_formatting then
+        local lsp_format_augroup = 'lsp_format_augroup'
+        vim.api.nvim_create_augroup(lsp_format_augroup, { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', {
+            group = lsp_format_augroup,
             buffer = bufnr,
             callback = function()
                 vim.lsp.buf.formatting_sync(nil, 1000)
