@@ -47,5 +47,21 @@ return {
     keys = {
         { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'DOMAINS' } }) },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
+        { key = 'd', mods = 'CMD', action = wezterm.action({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
+        {
+            key = 'd',
+            mods = 'CMD|SHIFT',
+            action = wezterm.action({ SplitVertical = { domain = 'CurrentPaneDomain' } }),
+        },
+        {
+            key = '[',
+            mods = 'CMD',
+            action = wezterm.action({ ActivatePaneDirection = 'Next' }),
+        },
+        {
+            key = ']',
+            mods = 'CMD',
+            action = wezterm.action({ ActivatePaneDirection = 'Prev' }),
+        },
     },
 }
