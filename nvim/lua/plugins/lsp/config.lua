@@ -38,7 +38,7 @@ utils.lsp_installer(servers).on_server_ready(function(server)
         })
         config.on_attach = function(client, bufnr)
             utils.mappings(bufnr)
-            utils.disable_formating(client)
+            utils.disable_formatting(client)
         end
         config = vim.tbl_deep_extend('force', config, luadev)
     end

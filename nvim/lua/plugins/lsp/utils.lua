@@ -16,7 +16,7 @@ function M.capabilities()
     return require('cmp_nvim_lsp').update_capabilities(capabilities)
 end
 
-function M.disable_formating(client)
+function M.disable_formatting(client)
     -- Avoiding LSP formatting conflicts.
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
     client.resolved_capabilities.document_formatting = false
