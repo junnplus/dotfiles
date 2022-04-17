@@ -17,7 +17,7 @@ utils.lsp_installer(servers).on_server_ready(function(server)
         capabilities = utils.capabilities(),
         on_attach = function(client, bufnr)
             utils.mappings(bufnr)
-            utils.format_on_save(client)
+            utils.format_on_save(client, bufnr)
         end,
         flags = {
             debounce_text_changes = 150,
@@ -67,7 +67,7 @@ null_ls.setup({
     },
     on_attach = function(client, bufnr)
         utils.mappings(bufnr)
-        utils.format_on_save(client)
+        utils.format_on_save(client, bufnr)
     end,
 })
 
