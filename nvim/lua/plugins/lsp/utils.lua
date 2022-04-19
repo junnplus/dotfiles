@@ -50,13 +50,13 @@ function M.mappings(bufnr)
     buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-function M.format_on_save(client, bufnr)
+function M.format_on_save(client)
     if client.resolved_capabilities.document_formatting then
         local lsp_format_augroup = 'lsp_format_augroup'
         vim.api.nvim_create_augroup(lsp_format_augroup, { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = lsp_format_augroup,
-            buffer = bufnr,
+            buffer = 0,
             callback = function()
                 vim.lsp.buf.formatting_sync(nil, 1000)
             end,
