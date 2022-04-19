@@ -56,7 +56,6 @@ function M.format_on_save(client)
         vim.api.nvim_create_augroup(lsp_format_augroup, { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = lsp_format_augroup,
-            buffer = 0,
             callback = function()
                 vim.lsp.buf.formatting_sync(nil, 1000)
             end,

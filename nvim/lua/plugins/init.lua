@@ -220,3 +220,13 @@ require('packer').startup({
         })
     end,
 })
+
+local packer_group = vim.api.nvim_create_augroup("packer_group", { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*.lua',
+    callback = function()
+        vim.cmd "source <afile>"
+        vim.cmd "PackerCompile"
+    end,
+    group = packer_group,
+})

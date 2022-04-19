@@ -6,7 +6,8 @@
     co = checkout
     cb = checkout -b
     br = branch
-    cm = commit -m
+    cm = commit -s -m
+    ca = commit --amend -s --no-edit
     d = diff
     ds = diff --staged
     dc = diff --cached
@@ -23,3 +24,12 @@
     program = gpg
 [commit]
     gpgsign = true
+[pager]
+    difftool = true
+[diff]
+    external = difft
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
