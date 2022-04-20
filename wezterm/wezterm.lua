@@ -44,6 +44,8 @@ return {
             multiplexing = 'None',
         },
     },
+    clean_exit_codes = { 0, 1, 130 },
+    -- exit_behavior = 'Close',
     keys = {
         { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'DOMAINS' } }) },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
