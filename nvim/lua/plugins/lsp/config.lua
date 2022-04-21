@@ -59,10 +59,16 @@ utils.lsp_installer(servers).on_server_ready(function(server)
     if server.name == 'rust-analyzer' then
         config.settings = {
             ['rust-analyzer'] = {
+                cargo = {
+                    loadOutDirsFromCheck = true,
+                },
+                procMacro = {
+                    enable = true,
+                },
                 checkOnSave = {
-                    command = "clippy"
-                }
-            }
+                    command = 'clippy',
+                },
+            },
         }
     end
     server:setup(config)
