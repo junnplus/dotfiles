@@ -187,15 +187,15 @@ require('packer').startup({
         })
 
         use({
-            'neovim/nvim-lspconfig',
+            '~/Documents/workspace/nvim-lsp-setup',
             requires = {
+                'neovim/nvim-lspconfig',
                 'williamboman/nvim-lsp-installer',
+                'hrsh7th/cmp-nvim-lsp',
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
-                'hrsh7th/cmp-nvim-lsp',
-                '~/Documents/workspace/nvim-lsp-setup',
             },
             config = function()
                 require('plugins.lsp')
