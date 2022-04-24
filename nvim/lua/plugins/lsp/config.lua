@@ -1,49 +1,51 @@
-local utils = require('plugins.lsp.utils')
+local utils = require('nvim-lsp-setup.utils')
 
-local servers = {
-    eslint = {},
-    pylsp = {},
-    jsonls = {},
-    bashls = {},
-    tsserver = {},
-    clangd = {},
-    awk_ls = {},
-    gopls = {
-        settings = {
-            golsp = {
-                gofumpt = true,
-                staticcheck = true,
-                useplaceholders = true,
-                codelenses = {
-                    gc_details = true,
+local settings = {
+    servers = {
+        eslint = {},
+        pylsp = {},
+        jsonls = {},
+        bashls = {},
+        tsserver = {},
+        clangd = {},
+        awk_ls = {},
+        gopls = {
+            settings = {
+                golsp = {
+                    gofumpt = true,
+                    staticcheck = true,
+                    useplaceholders = true,
+                    codelenses = {
+                        gc_details = true,
+                    },
                 },
             },
         },
-    },
-    sumneko_lua = vim.tbl_deep_extend('force', {
-        on_attach = function(client, bufnr)
-            utils.mappings(bufnr)
-            utils.disable_formatting(client)
-        end,
-    }, require('lua-dev').setup()),
-    rust_analyzer = {
-        settings = {
-            ['rust-analyzer'] = {
-                cargo = {
-                    loadOutDirsFromCheck = true,
+        sumneko_lua = vim.tbl_deep_extend('force', {
+            on_attach = function(client, bufnr)
+                utils.mappings(bufnr)
+                utils.disable_formatting(client)
+            end,
+        }, require('lua-dev').setup()),
+        rust_analyzer = {
+            settings = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        loadOutDirsFromCheck = true,
+                    },
+                    procMacro = {
+                        enable = true,
+                    },
+                    -- checkOnSave = {
+                    --     command = 'clippy',
+                    -- },
                 },
-                procMacro = {
-                    enable = true,
-                },
-                -- checkOnSave = {
-                --     command = 'clippy',
-                -- },
             },
         },
     },
 }
 
-utils.lsp_setup(servers)
+require('nvim-lsp-setup').setup(settings)
 
 local null_ls = require('null-ls')
 null_ls.setup({

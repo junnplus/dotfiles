@@ -195,6 +195,7 @@ require('packer').startup({
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
                 'hrsh7th/cmp-nvim-lsp',
+                'junnplus/nvim-lsp-setup',
             },
             config = function()
                 require('plugins.lsp')
@@ -221,12 +222,12 @@ require('packer').startup({
     end,
 })
 
-local packer_group = vim.api.nvim_create_augroup("packer_group", { clear = true })
+local packer_group = vim.api.nvim_create_augroup('packer_group', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = '*.lua',
     callback = function()
-        vim.cmd "source <afile>"
-        vim.cmd "PackerCompile"
+        vim.cmd('source <afile>')
+        vim.cmd('PackerCompile')
     end,
     group = packer_group,
 })
