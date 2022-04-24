@@ -1,9 +1,9 @@
 local utils = require('nvim-lsp-setup.utils')
 
 local mappings = {
-    gd = 'Telescope lsp_definitions',
-    gi = 'Telescope lsp_implementations',
-    gr = 'Telescope lsp_references',
+    gd = 'lua require"telescope.builtin".lsp_definitions()',
+    gi = 'lua require"telescope.builtin".lsp_implementations()',
+    gr = 'lua require"telescope.builtin".lsp_references()',
 }
 
 local settings = {
@@ -27,12 +27,13 @@ local settings = {
                 },
             },
         },
-        sumneko_lua = vim.tbl_deep_extend('force', {
-            on_attach = function(client, bufnr)
-                utils.mappings(bufnr, mappings)
-                utils.disable_formatting(client)
-            end,
-        }, require('lua-dev').setup()),
+        sumneko_lua = require('lua-dev').setup({
+            lspconfig = {
+                on_attach = function(client, _)
+                    utils.disable_formatting(client)
+                end,
+            },
+        }),
         rust_analyzer = {
             settings = {
                 ['rust-analyzer'] = {
