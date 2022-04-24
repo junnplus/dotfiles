@@ -1,50 +1,15 @@
 local utils = require('plugins.lsp.utils')
 
 local servers = {
-    'eslint',
-    'gopls',
-    'pylsp',
-    'jsonls',
-    'bashls',
-    'tsserver',
-    'clangd',
-    'sumneko_lua',
-    'rust_analyzer',
-}
-
-utils.lsp_installer(servers).on_server_ready(function(server)
-    local config = {
-        capabilities = utils.capabilities(),
-        on_attach = function(client, bufnr)
-            utils.mappings(bufnr)
-            utils.format_on_save(client, bufnr)
-        end,
-        flags = {
-            debounce_text_changes = 150,
-        },
-    }
-
-    if server.name == 'sumneko_lua' then
-        local luadev = require('lua-dev').setup({
-            lspconfig = {
-                settings = {
-                    Lua = {
-                        workspace = {
-                            checkThirdParty = false,
-                        },
-                    },
-                },
-            },
-        })
-        config.on_attach = function(client, bufnr)
-            utils.mappings(bufnr)
-            utils.disable_formatting(client)
-        end
-        config = vim.tbl_deep_extend('force', config, luadev)
-    end
-
-    if server.name == 'gopls' then
-        config.settings = {
+    eslint = {},
+    pylsp = {},
+    jsonls = {},
+    bashls = {},
+    tsserver = {},
+    clangd = {},
+    awk_ls = {},
+    gopls = {
+        settings = {
             golsp = {
                 gofumpt = true,
                 staticcheck = true,
@@ -53,11 +18,16 @@ utils.lsp_installer(servers).on_server_ready(function(server)
                     gc_details = true,
                 },
             },
-        }
-    end
-
-    if server.name == 'rust-analyzer' then
-        config.settings = {
+        },
+    },
+    sumneko_lua = vim.tbl_deep_extend('force', {
+        on_attach = function(client, bufnr)
+            utils.mappings(bufnr)
+            utils.disable_formatting(client)
+        end,
+    }, require('lua-dev').setup()),
+    rust_analyzer = {
+        settings = {
             ['rust-analyzer'] = {
                 cargo = {
                     loadOutDirsFromCheck = true,
@@ -65,14 +35,15 @@ utils.lsp_installer(servers).on_server_ready(function(server)
                 procMacro = {
                     enable = true,
                 },
-                checkOnSave = {
-                    command = 'clippy',
-                },
+                -- checkOnSave = {
+                --     command = 'clippy',
+                -- },
             },
-        }
-    end
-    server:setup(config)
-end)
+        },
+    },
+}
+
+utils.lsp_setup(servers)
 
 local null_ls = require('null-ls')
 null_ls.setup({

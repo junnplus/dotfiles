@@ -2,13 +2,35 @@ local M = {}
 
 function M.lsp_installer(servers)
     local lsp_installer = require('nvim-lsp-installer')
-    for _, name in pairs(servers) do
+    for name, _ in pairs(servers) do
         local found, server = lsp_installer.get_server(name)
         if found and not server:is_installed() then
             server:install()
         end
     end
     return lsp_installer
+end
+
+function M.lsp_setup(servers)
+    setmetatable(servers, {
+        __index = function()
+            return {
+                on_attach = function(client, bufnr)
+                    M.mappings(bufnr)
+                    M.format_on_save(client)
+                end,
+                capabilities = M.capabilities(),
+                settings = {},
+                flags = {
+                    debounce_text_changes = 150,
+                },
+            }
+        end,
+    })
+    M.lsp_installer(servers).on_server_ready(function(server)
+        local config = servers[server.name]
+        server:setup(config)
+    end)
 end
 
 function M.capabilities()
