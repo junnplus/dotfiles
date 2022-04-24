@@ -195,7 +195,7 @@ require('packer').startup({
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
                 'hrsh7th/cmp-nvim-lsp',
-                'junnplus/nvim-lsp-setup',
+                '~/Documents/workspace/nvim-lsp-setup',
             },
             config = function()
                 require('plugins.lsp')

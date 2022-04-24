@@ -1,6 +1,13 @@
 local utils = require('nvim-lsp-setup.utils')
 
+local mappings = {
+    gd = 'Telescope lsp_definitions',
+    gi = 'Telescope lsp_implementations',
+    gr = 'Telescope lsp_references',
+}
+
 local settings = {
+    mappings = mappings,
     servers = {
         eslint = {},
         pylsp = {},
@@ -8,7 +15,6 @@ local settings = {
         bashls = {},
         tsserver = {},
         clangd = {},
-        awk_ls = {},
         gopls = {
             settings = {
                 golsp = {
@@ -23,7 +29,7 @@ local settings = {
         },
         sumneko_lua = vim.tbl_deep_extend('force', {
             on_attach = function(client, bufnr)
-                utils.mappings(bufnr)
+                utils.mappings(bufnr, mappings)
                 utils.disable_formatting(client)
             end,
         }, require('lua-dev').setup()),
@@ -54,8 +60,7 @@ null_ls.setup({
             extra_args = { '--config-path', vim.fn.expand('~/.config/stylua/stylua.toml') },
         }),
     },
-    on_attach = function(client, bufnr)
-        utils.mappings(bufnr)
+    on_attach = function(client)
         utils.format_on_save(client)
     end,
 })
