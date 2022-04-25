@@ -8,6 +8,10 @@ local mappings = {
 
 local settings = {
     mappings = mappings,
+    on_attach = function(client)
+        utils.format_on_save(client)
+        require('illuminate').on_attach(client)
+    end,
     servers = {
         eslint = {},
         pylsp = {},
@@ -34,21 +38,23 @@ local settings = {
                 end,
             },
         }),
-        rust_analyzer = {
-            settings = {
-                ['rust-analyzer'] = {
-                    cargo = {
-                        loadOutDirsFromCheck = true,
+        rust_analyzer = require('nvim-lsp-setup.rust-tools').setup({
+            server = {
+                settings = {
+                    ['rust-analyzer'] = {
+                        cargo = {
+                            loadOutDirsFromCheck = true,
+                        },
+                        procMacro = {
+                            enable = true,
+                        },
+                        -- checkOnSave = {
+                        --     command = 'clippy',
+                        -- },
                     },
-                    procMacro = {
-                        enable = true,
-                    },
-                    -- checkOnSave = {
-                    --     command = 'clippy',
-                    -- },
                 },
             },
-        },
+        }),
     },
 }
 

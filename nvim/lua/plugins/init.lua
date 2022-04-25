@@ -187,7 +187,7 @@ require('packer').startup({
         })
 
         use({
-            '~/Documents/workspace/nvim-lsp-setup',
+            'junnplus/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',
                 'williamboman/nvim-lsp-installer',
@@ -196,6 +196,8 @@ require('packer').startup({
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
+                'RRethy/vim-illuminate',
+                { 'matze/rust-tools.nvim', branch = 'fix-175-migrate-to-lsp-hints' },
             },
             config = function()
                 require('plugins.lsp')
