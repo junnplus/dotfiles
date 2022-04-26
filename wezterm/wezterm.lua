@@ -66,4 +66,5 @@ return {
             action = wezterm.action({ ActivatePaneDirection = 'Prev' }),
         },
     },
+    quote_dropped_files = 'Posix',
 }
