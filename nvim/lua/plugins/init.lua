@@ -197,7 +197,7 @@ require('packer').startup({
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
                 'RRethy/vim-illuminate',
-                { 'matze/rust-tools.nvim', branch = 'fix-175-migrate-to-lsp-hints' },
+                'simrat39/rust-tools.nvim',
             },
             config = function()
                 require('plugins.lsp')
@@ -226,7 +226,7 @@ require('packer').startup({
 
 local packer_group = vim.api.nvim_create_augroup('packer_group', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*.lua',
+    pattern = '*/lua/*.lua',
     callback = function()
         vim.cmd('source <afile>')
         vim.cmd('PackerCompile')
