@@ -187,7 +187,7 @@ require('packer').startup({
         })
 
         use({
-            'junnplus/nvim-lsp-setup',
+            '~/Documents/workspace/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',
                 'williamboman/nvim-lsp-installer',
@@ -198,6 +198,7 @@ require('packer').startup({
                 'jose-elias-alvarez/null-ls.nvim',
                 'RRethy/vim-illuminate',
                 'simrat39/rust-tools.nvim',
+                'p00f/clangd_extensions.nvim',
             },
             config = function()
                 require('plugins.lsp')

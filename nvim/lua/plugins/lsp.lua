@@ -8,7 +8,7 @@ local mappings = {
 
 local settings = {
     mappings = mappings,
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
         utils.format_on_save(client)
         require('illuminate').on_attach(client)
     end,
@@ -18,7 +18,7 @@ local settings = {
         jsonls = {},
         bashls = {},
         tsserver = {},
-        clangd = {},
+        clangd = require('nvim-lsp-setup.clangd_extensions').setup(),
         gopls = {
             settings = {
                 golsp = {
@@ -73,3 +73,8 @@ null_ls.setup({
 })
 
 require('lsp_signature').setup({})
+require('lsp-colors').setup({})
+
+local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
