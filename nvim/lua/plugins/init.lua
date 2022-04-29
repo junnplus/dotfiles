@@ -12,8 +12,16 @@ require('packer').startup({
     },
     function(use)
         use('wbthomason/packer.nvim')
-        -- use('tjdevries/colorbuddy.nvim')
-        -- use('Pocco81/Catppuccino.nvim')
+
+        use('tpope/vim-surround')
+        use('ojroques/vim-oscyank')
+        use('terryma/vim-multiple-cursors')
+        use('wakatime/vim-wakatime')
+        use('Vimjas/vim-python-pep8-indent')
+        use('ternjs/tern_for_vim')
+        use('andymass/vim-matchup') -- extend % key
+        use('tpope/vim-fugitive')
+        use('folke/which-key.nvim')
 
         use({
             'folke/tokyonight.nvim',
@@ -28,10 +36,6 @@ require('packer').startup({
             config = function()
                 require('plugins.line')
             end,
-        })
-
-        use({
-            'tpope/vim-surround',
         })
 
         use({
@@ -50,26 +54,10 @@ require('packer').startup({
         })
 
         use({
-            'terryma/vim-multiple-cursors',
-        })
-
-        use({
             'numToStr/Comment.nvim',
             config = function()
                 require('plugins.comment')
             end,
-        })
-
-        use({
-            'wakatime/vim-wakatime',
-        })
-
-        -- use({
-        --     'ternjs/tern_for_vim',
-        -- })
-
-        use({
-            'Vimjas/vim-python-pep8-indent',
         })
 
         use({
@@ -91,10 +79,6 @@ require('packer').startup({
             config = function()
                 require('plugins.indentline')
             end,
-        })
-
-        use({
-            'andymass/vim-matchup', -- extend % key
         })
 
         use({
@@ -131,10 +115,6 @@ require('packer').startup({
             config = function()
                 require('plugins.tree')
             end,
-        })
-
-        use({
-            'tpope/vim-fugitive',
         })
 
         use({
@@ -210,10 +190,6 @@ require('packer').startup({
             config = function()
                 require('plugins.toggleterm')
             end,
-        })
-
-        use({
-            'folke/which-key.nvim',
         })
 
         use({

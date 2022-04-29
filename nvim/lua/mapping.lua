@@ -2,7 +2,8 @@ local map = require('utils').map
 
 -- Key bindings
 map('', '<c-a>', 'ggVG$"+y')
-map('v', '<c-c>', '"+y')
+-- map('v', '<c-c>', '"+y')
+map('v', '<c-c>', ':OSCYank<CR>')
 map('v', '<tab>', '>gv')
 map('v', '<s-tab>', '<gv')
 map('i', '<c-b>', '<c-o>b')
