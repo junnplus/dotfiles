@@ -176,7 +176,6 @@ require('packer').startup({
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
                 'jose-elias-alvarez/null-ls.nvim',
-                'RRethy/vim-illuminate',
                 'simrat39/rust-tools.nvim',
                 'p00f/clangd_extensions.nvim',
             },

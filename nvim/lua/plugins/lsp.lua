@@ -8,13 +8,10 @@ local mappings = {
 
 local settings = {
     mappings = mappings,
-    on_attach = function(client, bufnr)
-        utils.format_on_save(client)
-        require('illuminate').on_attach(client)
-    end,
     servers = {
         eslint = {},
         pylsp = {},
+        zk = {},
         jsonls = {},
         bashls = {},
         tsserver = {},
@@ -48,9 +45,6 @@ local settings = {
                         procMacro = {
                             enable = true,
                         },
-                        -- checkOnSave = {
-                        --     command = 'clippy',
-                        -- },
                     },
                 },
             },
@@ -66,6 +60,7 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua.with({
             extra_args = { '--config-path', vim.fn.expand('~/.config/stylua/stylua.toml') },
         }),
+        null_ls.builtins.formatting.taplo,
     },
     on_attach = function(client)
         utils.format_on_save(client)

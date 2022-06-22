@@ -14,7 +14,7 @@ require('gitsigns').setup({
         ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
     },
     word_diff = false,
-    current_line_blame = false,
+    current_line_blame = true,
     linehl = true,
     numhl = true,
     sign_priority = 6,
