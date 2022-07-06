@@ -15,6 +15,7 @@ local settings = {
         jsonls = {},
         bashls = {},
         tsserver = {},
+        clojure_lsp = {},
         clangd = require('nvim-lsp-setup.clangd_extensions').setup(),
         gopls = {
             settings = {
@@ -28,6 +29,7 @@ local settings = {
                 },
             },
         },
+        zls = {},
         sumneko_lua = require('lua-dev').setup({
             lspconfig = {
                 on_attach = function(client, _)

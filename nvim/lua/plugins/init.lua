@@ -41,6 +41,7 @@ require('packer').startup({
         use({
             'phaazon/hop.nvim',
             as = 'hop',
+            commit = 'cea96423874dd36a84a59b71796c43568202531a',
             config = function()
                 require('plugins.hop')
             end,
