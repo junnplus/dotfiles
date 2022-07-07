@@ -168,7 +168,8 @@ require('packer').startup({
         })
 
         use({
-            '~/Documents/workspace/nvim-lsp-setup',
+            'junnplus/nvim-lsp-setup',
+            -- '~/Documents/workspace/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',
                 'williamboman/nvim-lsp-installer',
@@ -196,6 +197,14 @@ require('packer').startup({
             'j-hui/fidget.nvim', -- nvim-lsp progress
             config = function()
                 require('plugins.fidget')
+            end,
+        })
+
+        use({
+            'kevinhwang91/nvim-ufo',
+            requires = 'kevinhwang91/promise-async',
+            config = function()
+                require('plugins.ufo')
             end,
         })
     end,
