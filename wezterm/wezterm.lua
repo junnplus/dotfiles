@@ -30,11 +30,13 @@ return {
         top = -3,
         bottom = 0,
     },
+    tab_max_width = 20,
     foreground_text_hsb = {
         hue = 1.0,
         saturation = 1.0,
         brightness = 1.4,
     },
+    default_cursor_style = 'BlinkingBlock',
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
     ssh_domains = {
         {
@@ -65,6 +67,7 @@ return {
             mods = 'CMD',
             action = wezterm.action({ ActivatePaneDirection = 'Prev' }),
         },
+        { key = 'Enter', mods = 'CMD', action = 'ToggleFullScreen' },
     },
     quote_dropped_files = 'Posix',
 }
