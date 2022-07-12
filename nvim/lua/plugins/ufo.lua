@@ -27,9 +27,9 @@ local fold_handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 require('ufo').setup({
-    provider_selector = function(bufnr, filetype)
-        return { 'treesitter', 'indent' }
-    end,
+    -- provider_selector = function(bufnr, filetype)
+    --     return { 'treesitter', 'indent' }
+    -- end,
     fold_virt_text_handler = fold_handler,
     preview = {
         win_config = {

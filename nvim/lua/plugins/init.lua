@@ -207,6 +207,8 @@ require('packer').startup({
                 require('plugins.ufo')
             end,
         })
+
+        use('whiteinge/diffconflicts')
     end,
 })
 

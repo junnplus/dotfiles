@@ -1,5 +1,3 @@
-local utils = require('nvim-lsp-setup.utils')
-
 local mappings = {
     gd = 'lua require"telescope.builtin".lsp_definitions()',
     gi = 'lua require"telescope.builtin".lsp_implementations()',
@@ -32,10 +30,19 @@ local settings = {
         zls = {},
         sumneko_lua = require('lua-dev').setup({
             lspconfig = {
-                on_attach = function(client, _)
-                    utils.disable_formatting(client)
-                end,
-            },
+                settings = {
+                    Lua = {
+                        format = {
+                            enable = true,
+                            -- defaultConfig = {
+                            --     indent_style = "space",
+                            --     indent_size = "4",
+                            -- },
+                        }
+                    }
+
+                }
+            }
         }),
         rust_analyzer = require('nvim-lsp-setup.rust-tools').setup({
             server = {
@@ -56,18 +63,19 @@ local settings = {
 
 require('nvim-lsp-setup').setup(settings)
 
-local null_ls = require('null-ls')
-null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.stylua.with({
-            extra_args = { '--config-path', vim.fn.expand('~/.config/stylua/stylua.toml') },
-        }),
-        null_ls.builtins.formatting.taplo,
-    },
-    on_attach = function(client)
-        utils.format_on_save(client)
-    end,
-})
+-- local utils = require('nvim-lsp-setup.utils')
+-- local null_ls = require('null-ls')
+-- null_ls.setup({
+--     sources = {
+--         null_ls.builtins.formatting.stylua.with({
+--             extra_args = { '--config-path', vim.fn.expand('~/.config/stylua/stylua.toml') },
+--         }),
+--         null_ls.builtins.formatting.taplo,
+--     },
+--     on_attach = function(client)
+--         utils.format_on_save(client)
+--     end,
+-- })
 
 require('lsp_signature').setup({})
 require('lsp-colors').setup({})
