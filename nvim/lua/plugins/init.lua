@@ -153,6 +153,14 @@ require('packer').startup({
             end,
         })
 
+        use {
+            'm-demare/hlargs.nvim',
+            requires = { 'nvim-treesitter/nvim-treesitter' },
+            config = function()
+                require('plugins.hlargs')
+            end
+        }
+
         use({
             'hrsh7th/nvim-cmp',
             requires = {
@@ -177,7 +185,6 @@ require('packer').startup({
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
-                'jose-elias-alvarez/null-ls.nvim',
                 'simrat39/rust-tools.nvim',
                 'p00f/clangd_extensions.nvim',
             },
