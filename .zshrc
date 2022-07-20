@@ -14,6 +14,7 @@ export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export ZSH_HIGHLIGHT_MAXLENGTH=60
 
 source ~/.antigen/antigen.zsh
 
@@ -28,6 +29,7 @@ antigen bundle kubectl
 # antigen bundle tmux
 antigen bundle extract
 antigen bundle gitignore
+antigen bundle nvm
 
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-autosuggestions
@@ -64,7 +66,7 @@ alias gti=git
 alias proxy="export all_proxy=socks5://127.0.0.1:6153"
 alias noproxy="unset all_proxy"
 alias q=exit
-alias nerdctl="lima sudo nerdctl"
+# alias nerdctl="lima sudo nerdctl"
 # alias docker="lima sudo docker"
 
 function workup {
