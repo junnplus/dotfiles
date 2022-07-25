@@ -40,7 +40,7 @@ require('packer').startup({
         use({
             'phaazon/hop.nvim',
             as = 'hop',
-            commit = 'cea96423874dd36a84a59b71796c43568202531a',
+            -- commit = 'cea96423874dd36a84a59b71796c43568202531a',
             config = function()
                 require('plugins.hop')
             end,
@@ -186,6 +186,7 @@ require('packer').startup({
                 'ray-x/lsp_signature.nvim',
                 'simrat39/rust-tools.nvim',
                 'p00f/clangd_extensions.nvim',
+                'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
             },
             config = function()
                 require('plugins.lsp')

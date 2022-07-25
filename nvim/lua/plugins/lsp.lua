@@ -62,9 +62,13 @@ local settings = {
 }
 
 require('nvim-lsp-setup').setup(settings)
+require('lsp_lines').setup()
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
-require('lsp_signature').setup({})
-require('lsp-colors').setup({})
+require('lsp_signature').setup()
+require('lsp-colors').setup()
 
 local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
