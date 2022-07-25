@@ -14,7 +14,6 @@ require('packer').startup({
         use('wbthomason/packer.nvim')
 
         use('tpope/vim-surround')
-        use('ojroques/vim-oscyank')
         use('terryma/vim-multiple-cursors')
         use('wakatime/vim-wakatime')
         use('Vimjas/vim-python-pep8-indent')
@@ -213,6 +212,13 @@ require('packer').startup({
             config = function()
                 require('plugins.ufo')
             end,
+        })
+
+        use({
+            'ojroques/nvim-osc52',
+            config = function()
+                require('plugins.osc52')
+            end
         })
 
         use('whiteinge/diffconflicts')
