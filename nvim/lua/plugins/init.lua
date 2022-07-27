@@ -176,10 +176,12 @@ require('packer').startup({
 
         use({
             'junnplus/nvim-lsp-setup',
+            branch = "mason",
             -- '~/Documents/workspace/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',
-                'williamboman/nvim-lsp-installer',
+                'williamboman/mason.nvim',
+                'williamboman/mason-lspconfig.nvim',
                 'hrsh7th/cmp-nvim-lsp',
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',

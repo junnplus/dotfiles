@@ -44,7 +44,7 @@ local settings = {
                 }
             }
         }),
-        rust_analyzer = require('nvim-lsp-setup.rust-tools').setup({
+        ["rust_analyzer@nightly"] = require('nvim-lsp-setup.rust-tools').setup({
             server = {
                 settings = {
                     ['rust-analyzer'] = {
