@@ -176,7 +176,6 @@ require('packer').startup({
 
         use({
             'junnplus/nvim-lsp-setup',
-            branch = "mason",
             -- '~/Documents/workspace/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',

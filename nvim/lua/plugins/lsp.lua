@@ -1,11 +1,9 @@
-local mappings = {
-    gd = 'lua require"telescope.builtin".lsp_definitions()',
-    gi = 'lua require"telescope.builtin".lsp_implementations()',
-    gr = 'lua require"telescope.builtin".lsp_references()',
-}
-
 local settings = {
-    mappings = mappings,
+    mappings = {
+        gd = 'lua require"telescope.builtin".lsp_definitions()',
+        gi = 'lua require"telescope.builtin".lsp_implementations()',
+        gr = 'lua require"telescope.builtin".lsp_references()',
+    },
     servers = {
         eslint = {},
         pylsp = {},
