@@ -6,6 +6,16 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd('packadd packer.nvim')
 end
 
+local packer_group = vim.api.nvim_create_augroup('packer_group', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group = packer_group,
+    pattern = '*/lua/*.lua',
+    callback = function()
+        vim.cmd('source <afile>')
+        vim.cmd('PackerCompile')
+    end,
+})
+
 require('packer').startup({
     config = {
         compile_path = compile_path,
@@ -13,7 +23,7 @@ require('packer').startup({
     function(use)
         use('wbthomason/packer.nvim')
 
-        use('tpope/vim-surround')
+        -- use('tpope/vim-surround')
         use('terryma/vim-multiple-cursors')
         use('wakatime/vim-wakatime')
         use('Vimjas/vim-python-pep8-indent')
@@ -39,8 +49,6 @@ require('packer').startup({
 
         use({
             'phaazon/hop.nvim',
-            as = 'hop',
-            -- commit = 'cea96423874dd36a84a59b71796c43568202531a',
             config = function()
                 require('plugins.hop')
             end,
@@ -209,14 +217,6 @@ require('packer').startup({
         })
 
         use({
-            'kevinhwang91/nvim-ufo',
-            requires = 'kevinhwang91/promise-async',
-            config = function()
-                require('plugins.ufo')
-            end,
-        })
-
-        use({
             'ojroques/nvim-osc52',
             config = function()
                 require('plugins.osc52')
@@ -225,14 +225,4 @@ require('packer').startup({
 
         use('whiteinge/diffconflicts')
     end,
-})
-
-local packer_group = vim.api.nvim_create_augroup('packer_group', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*/lua/*.lua',
-    callback = function()
-        vim.cmd('source <afile>')
-        vim.cmd('PackerCompile')
-    end,
-    group = packer_group,
 })

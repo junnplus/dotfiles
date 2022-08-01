@@ -12,7 +12,8 @@ local settings = {
         bashls = {},
         tsserver = {},
         clojure_lsp = {},
-        clangd = require('nvim-lsp-setup.clangd_extensions').setup(),
+        dockerls = {},
+        zls = {},
         gopls = {
             settings = {
                 golsp = {
@@ -22,10 +23,18 @@ local settings = {
                     codelenses = {
                         gc_details = true,
                     },
+                    -- hints = {
+                    --     assignVariableTypes = true,
+                    --     compositeLiteralFields = true,
+                    --     constantValues = true,
+                    --     functionTypeParameters = true,
+                    --     parameterNames = true,
+                    --     rangeVariableTypes = true
+                    -- }
                 },
             },
         },
-        zls = {},
+        clangd = require('nvim-lsp-setup.clangd_extensions').setup(),
         sumneko_lua = require('lua-dev').setup({
             lspconfig = {
                 settings = {
