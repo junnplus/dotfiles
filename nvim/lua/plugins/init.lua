@@ -24,11 +24,10 @@ require('packer').startup({
         use('wbthomason/packer.nvim')
 
         -- use('tpope/vim-surround')
+        -- use('Vimjas/vim-python-pep8-indent')
         use('terryma/vim-multiple-cursors')
         use('wakatime/vim-wakatime')
-        use('Vimjas/vim-python-pep8-indent')
         use('ternjs/tern_for_vim')
-        use('andymass/vim-matchup') -- extend % key
         use('tpope/vim-fugitive')
         use('folke/which-key.nvim')
 
@@ -55,13 +54,6 @@ require('packer').startup({
         })
 
         use({
-            'majutsushi/tagbar',
-            config = function()
-                require('plugins.tagbar')
-            end,
-        })
-
-        use({
             'numToStr/Comment.nvim',
             config = function()
                 require('plugins.comment')
@@ -69,9 +61,9 @@ require('packer').startup({
         })
 
         use({
-            't9md/vim-choosewin',
+            'tkmpypy/chowcho.nvim',
             config = function()
-                require('plugins.choosewin')
+                require('plugins.chowcho')
             end,
         })
 
@@ -154,19 +146,15 @@ require('packer').startup({
                 'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
                 'RRethy/nvim-treesitter-endwise',
+                'andymass/vim-matchup', -- extend % key
+                'yioneko/nvim-yati',
+                'm-demare/hlargs.nvim',
             },
             config = function()
+                require('plugins.hlargs')
                 require('plugins.treesitter')
             end,
         })
-
-        use {
-            'm-demare/hlargs.nvim',
-            requires = { 'nvim-treesitter/nvim-treesitter' },
-            config = function()
-                require('plugins.hlargs')
-            end
-        }
 
         use({
             'hrsh7th/nvim-cmp',

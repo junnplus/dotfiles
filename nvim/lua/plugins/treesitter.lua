@@ -43,6 +43,8 @@ require('nvim-treesitter.configs').setup({
             lookahead = true,
         },
     },
+    -- yioneko/nvim-yati
+    yati = { enable = true },
 })
 ncmd('set foldmethod=expr')
 ncmd('set foldexpr=nvim_treesitter#foldexpr()')
