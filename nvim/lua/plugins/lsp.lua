@@ -34,7 +34,7 @@ local settings = {
                 },
             },
         },
-        clangd = require('nvim-lsp-setup.clangd_extensions').setup(),
+        clangd = require('lsp-setup.clangd_extensions').setup(),
         sumneko_lua = require('lua-dev').setup({
             lspconfig = {
                 settings = {
@@ -51,7 +51,7 @@ local settings = {
                 }
             }
         }),
-        ["rust_analyzer@nightly"] = require('nvim-lsp-setup.rust-tools').setup({
+        ["rust_analyzer@nightly"] = require('lsp-setup.rust-tools').setup({
             server = {
                 settings = {
                     ['rust-analyzer'] = {
@@ -68,7 +68,7 @@ local settings = {
     },
 }
 
-require('nvim-lsp-setup').setup(settings)
+require('lsp-setup').setup(settings)
 require('lsp_lines').setup()
 vim.diagnostic.config({
     virtual_text = false,

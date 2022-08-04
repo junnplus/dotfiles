@@ -212,5 +212,12 @@ require('packer').startup({
         })
 
         use('whiteinge/diffconflicts')
+
+        use({
+            'AckslD/nvim-FeMaco.lua',
+            config = function()
+                require('plugins.femaco')
+            end,
+        })
     end,
 })
