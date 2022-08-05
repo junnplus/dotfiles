@@ -4,6 +4,10 @@ local settings = {
         gi = 'lua require"telescope.builtin".lsp_implementations()',
         gr = 'lua require"telescope.builtin".lsp_references()',
     },
+    on_attach = function(client, bufnr)
+        require('lsp-format').on_attach(client)
+        require('lsp-inlayhints').on_attach(bufnr, client)
+    end,
     servers = {
         eslint = {},
         pylsp = {},
@@ -23,54 +27,40 @@ local settings = {
                     codelenses = {
                         gc_details = true,
                     },
-                    -- hints = {
-                    --     assignVariableTypes = true,
-                    --     compositeLiteralFields = true,
-                    --     constantValues = true,
-                    --     functionTypeParameters = true,
-                    --     parameterNames = true,
-                    --     rangeVariableTypes = true
-                    -- }
                 },
             },
         },
-        clangd = require('lsp-setup.clangd_extensions').setup(),
-        sumneko_lua = require('lua-dev').setup({
-            lspconfig = {
-                settings = {
-                    Lua = {
-                        format = {
-                            enable = true,
-                            -- defaultConfig = {
-                            --     indent_style = "space",
-                            --     indent_size = "4",
-                            -- },
-                        }
-                    }
-
-                }
-            }
-        }),
-        ["rust_analyzer@nightly"] = require('lsp-setup.rust-tools').setup({
-            server = {
-                settings = {
-                    ['rust-analyzer'] = {
-                        cargo = {
-                            loadOutDirsFromCheck = true,
-                        },
-                        procMacro = {
-                            enable = true,
-                        },
+        clangd = {},
+        sumneko_lua = require('lua-dev').setup(),
+        ['rust_analyzer@nightly'] = {
+            settings = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        loadOutDirsFromCheck = true,
+                    },
+                    procMacro = {
+                        enable = true,
                     },
                 },
             },
-        }),
+        }
     },
 }
 
+require('lsp-format').setup({
+    lua = {
+        sync = true,
+    },
+})
+require('lsp-inlayhints').setup({
+    debug_mode = true,
+})
 require('lsp-setup').setup(settings)
 require('lsp_lines').setup()
+
+-- global config for diagnostic
 vim.diagnostic.config({
+    underline = true,
     virtual_text = false,
 })
 

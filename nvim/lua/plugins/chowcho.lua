@@ -1,3 +1,3 @@
 local map = require('utils').map
 
-map('n', '-', require("chowcho").run, { noremap = false })
+map('n', '-', require('chowcho').run, { noremap = false })

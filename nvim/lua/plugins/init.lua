@@ -181,9 +181,11 @@ require('packer').startup({
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
-                'simrat39/rust-tools.nvim',
-                'p00f/clangd_extensions.nvim',
+                -- 'simrat39/rust-tools.nvim',
+                -- 'p00f/clangd_extensions.nvim',
                 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+                'lukas-reineke/lsp-format.nvim',
+                'lvimuser/lsp-inlayhints.nvim',
             },
             config = function()
                 require('plugins.lsp')
@@ -204,12 +206,12 @@ require('packer').startup({
             end,
         })
 
-        use({
-            'ojroques/nvim-osc52',
-            config = function()
-                require('plugins.osc52')
-            end
-        })
+        -- use({
+        --     'ojroques/nvim-osc52',
+        --     config = function()
+        --         require('plugins.osc52')
+        --     end
+        -- })
 
         use('whiteinge/diffconflicts')
 

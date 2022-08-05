@@ -1,1 +1,1 @@
-require("femaco").setup()
+require('femaco').setup()
