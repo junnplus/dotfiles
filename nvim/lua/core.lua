@@ -34,6 +34,9 @@ vim.o.cursorline = true
 vim.o.relativenumber = false
 vim.o.cursorcolumn = true
 vim.o.signcolumn = 'auto:1'
+-- vim.o.cmdheight = 0
+vim.opt.list = true
+vim.opt.listchars:append('eol:↴')
 
 vim.o.textwidth = 120
 vim.o.smartindent = true
@@ -43,11 +46,10 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 
-local init_lua_augroup = vim.api.nvim_create_augroup('init_lua_augroup', { clear = true })
-
+vim.api.nvim_create_augroup('Init', { clear = true })
 -- highlight yanked text briefly
 vim.api.nvim_create_autocmd('TextYankPost', {
-    group = init_lua_augroup,
+    group = 'Init',
     callback = function()
         vim.highlight.on_yank({
             higroup = 'IncSearch',
@@ -59,7 +61,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- reopen last position
 vim.api.nvim_create_autocmd('BufReadPost', {
-    group = init_lua_augroup,
+    group = 'Init',
     callback = function()
         local previous_pos = vim.api.nvim_buf_get_mark(0, '"')[1]
         local last_line = vim.api.nvim_buf_line_count(0)

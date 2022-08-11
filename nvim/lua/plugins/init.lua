@@ -6,9 +6,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd('packadd packer.nvim')
 end
 
-local packer_group = vim.api.nvim_create_augroup('packer_group', { clear = true })
+vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
-    group = packer_group,
+    group = 'Packer',
     pattern = '*/lua/*.lua',
     callback = function()
         vim.cmd('source <afile>')
@@ -23,11 +23,8 @@ require('packer').startup({
     function(use)
         use('wbthomason/packer.nvim')
 
-        -- use('tpope/vim-surround')
-        -- use('Vimjas/vim-python-pep8-indent')
         use('terryma/vim-multiple-cursors')
         use('wakatime/vim-wakatime')
-        use('ternjs/tern_for_vim')
         use('tpope/vim-fugitive')
         use('folke/which-key.nvim')
 
@@ -145,6 +142,7 @@ require('packer').startup({
                 'nvim-treesitter/playground',
                 'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
+                'nvim-treesitter/nvim-treesitter-context',
                 'RRethy/nvim-treesitter-endwise',
                 'andymass/vim-matchup', -- extend % key
                 'yioneko/nvim-yati',
@@ -171,7 +169,7 @@ require('packer').startup({
         })
 
         use({
-            'junnplus/nvim-lsp-setup',
+            'junnplus/lsp-setup.nvim',
             -- '~/Documents/workspace/nvim-lsp-setup',
             requires = {
                 'neovim/nvim-lspconfig',
@@ -181,11 +179,11 @@ require('packer').startup({
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',
-                -- 'simrat39/rust-tools.nvim',
+                'simrat39/rust-tools.nvim',
                 -- 'p00f/clangd_extensions.nvim',
                 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-                'lukas-reineke/lsp-format.nvim',
-                'lvimuser/lsp-inlayhints.nvim',
+                -- 'lukas-reineke/lsp-format.nvim',
+                -- 'lvimuser/lsp-inlayhints.nvim',
             },
             config = function()
                 require('plugins.lsp')
@@ -212,8 +210,6 @@ require('packer').startup({
         --         require('plugins.osc52')
         --     end
         -- })
-
-        use('whiteinge/diffconflicts')
 
         use({
             'AckslD/nvim-FeMaco.lua',
