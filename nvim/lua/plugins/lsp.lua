@@ -4,10 +4,6 @@ local settings = {
         gi = 'lua require"telescope.builtin".lsp_implementations()',
         gr = 'lua require"telescope.builtin".lsp_references()',
     },
-    -- on_attach = function(client, bufnr)
-    --     require('lsp-format').on_attach(client)
-    --     require('lsp-inlayhints').on_attach(bufnr, client)
-    -- end,
     servers = {
         eslint = {},
         pylsp = {},
@@ -33,28 +29,21 @@ local settings = {
         clangd = {},
         solc = {},
         sumneko_lua = require('lua-dev').setup(),
-        ['rust_analyzer@nightly'] = require('lsp-setup.rust-tools').setup({
-            server = {
-                settings = {
-                    ['rust-analyzer'] = {
-                        cargo = {
-                            loadOutDirsFromCheck = true,
-                        },
-                        procMacro = {
-                            enable = true,
-                        },
+        ['rust_analyzer@nightly'] = {
+            settings = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        loadOutDirsFromCheck = true,
+                    },
+                    procMacro = {
+                        enable = true,
                     },
                 },
             },
-        })
+        }
     },
 }
 
--- require('lsp-format').setup({
---     lua = { sync = true },
---     rust = { sync = true },
--- })
--- require('lsp-inlayhints').setup()
 require('lsp-setup').setup(settings)
 require('lsp_lines').setup()
 
