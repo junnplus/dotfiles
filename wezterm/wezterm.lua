@@ -38,14 +38,6 @@ return {
     },
     default_cursor_style = 'BlinkingBlock',
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
-    ssh_domains = {
-        {
-            name = 'archlinux',
-            remote_address = '192.168.50.231',
-            username = 'jun',
-            multiplexing = 'None',
-        },
-    },
     clean_exit_codes = { 0, 1, 130 },
     -- exit_behavior = 'Close',
     keys = {

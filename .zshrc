@@ -31,9 +31,11 @@ antigen bundle extract
 antigen bundle gitignore
 antigen bundle nvm
 
+antigen bundle lukechilds/zsh-nvm
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle z-shell/F-Sy-H --branch=main
+# antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle dracula/zsh
 antigen bundle dracula/zsh-syntax-highlighting
