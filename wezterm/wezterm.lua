@@ -62,4 +62,14 @@ return {
         { key = 'Enter', mods = 'CMD', action = 'ToggleFullScreen' },
     },
     quote_dropped_files = 'Posix',
+    hyperlink_rules = {
+        {
+            regex = [[\b(https|http)://\S*\b]],
+            format = '$0',
+        },
+        {
+            regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+            format = 'https://www.github.com/$1/$3',
+        }
+    }
 }
