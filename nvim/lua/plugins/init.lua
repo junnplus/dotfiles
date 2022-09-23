@@ -158,6 +158,7 @@ require('packer').startup({
             'hrsh7th/nvim-cmp',
             requires = {
                 'hrsh7th/cmp-vsnip',
+                'hrsh7th/cmp-nvim-lsp',
                 'hrsh7th/vim-vsnip',
                 'hrsh7th/vim-vsnip-integ',
                 'hrsh7th/cmp-buffer',
@@ -175,7 +176,6 @@ require('packer').startup({
                 'neovim/nvim-lspconfig',
                 'williamboman/mason.nvim',
                 'williamboman/mason-lspconfig.nvim',
-                'hrsh7th/cmp-nvim-lsp',
                 'folke/lsp-colors.nvim',
                 'folke/lua-dev.nvim',
                 'ray-x/lsp_signature.nvim',

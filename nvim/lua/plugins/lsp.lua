@@ -13,6 +13,7 @@ local settings = {
         tsserver = {},
         clojure_lsp = {},
         dockerls = {},
+        jsonnet_ls = {},
         zls = {},
         gopls = {
             settings = {
