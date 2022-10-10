@@ -3,6 +3,7 @@ local settings = {
         gd = 'lua require"telescope.builtin".lsp_definitions()',
         gi = 'lua require"telescope.builtin".lsp_implementations()',
         gr = 'lua require"telescope.builtin".lsp_references()',
+        ['<space>f'] = 'lua vim.lsp.buf.format()',
     },
     servers = {
         eslint = {},

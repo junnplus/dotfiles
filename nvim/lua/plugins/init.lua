@@ -217,5 +217,27 @@ require('packer').startup({
                 require('plugins.femaco')
             end,
         })
+
+        use({
+            'krivahtoo/silicon.nvim',
+            run = './install.sh build',
+            branch = 'main',
+            config = function()
+                require('plugins.silicon')
+            end
+        })
+
+        use({
+            'gaoDean/autolist.nvim',
+            config = function()
+                require('plugins.autolist')
+            end,
+        })
+
+        use({ 'gen740/SmoothCursor.nvim',
+            config = function()
+                require('plugins.smoothcursor')
+            end
+        })
     end,
 })
