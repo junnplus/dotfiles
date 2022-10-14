@@ -239,5 +239,12 @@ require('packer').startup({
                 require('plugins.smoothcursor')
             end
         })
+
+        use({
+            'declancm/cinnamon.nvim',
+            config = function()
+                require('plugins.cinnamon')
+            end
+        })
     end,
 })

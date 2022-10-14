@@ -1,1 +1,1 @@
-require('autolist').setup({})
+require('autolist').setup()

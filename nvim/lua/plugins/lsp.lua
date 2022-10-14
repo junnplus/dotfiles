@@ -30,7 +30,7 @@ local settings = {
         },
         clangd = {},
         solc = {},
-        sumneko_lua = require('lua-dev').setup(),
+        sumneko_lua = require('neodev').setup(),
         ['rust_analyzer@nightly'] = {
             settings = {
                 ['rust-analyzer'] = {
