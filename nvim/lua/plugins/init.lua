@@ -13,7 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     "tpope/vim-fugitive",
-    "terryma/vim-multiple-cursors",
+    -- {
+    --     "terryma/vim-multiple-cursors",
+    --     keys = { 'C-n', { 'C-n', mode = 'v' } },
+    -- },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -53,12 +56,14 @@ local plugins = {
     },
     {
         'numToStr/comment.nvim',
+        keys = { 'gcc', 'gc', { 'gcc', mode = 'v' }, { 'gc', mode = 'v' } },
         config = function()
             require('plugins.comment')
         end,
     },
     {
         'tkmpypy/chowcho.nvim',
+        keys = { '-' },
         config = function()
             require('plugins.chowcho')
         end,
@@ -71,13 +76,14 @@ local plugins = {
     },
     {
         'windwp/nvim-autopairs',
-        lazy = true,
+        event = "InsertEnter",
         config = function()
             require('plugins.autopairs')
         end,
     },
     {
         'nvim-telescope/telescope.nvim',
+        keys = { '<leader>ff', '<leader>fg', '<leader>fb', ';' },
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-github.nvim',
@@ -169,6 +175,7 @@ local plugins = {
     },
     {
         'akinsho/toggleterm.nvim',
+        keys = { '<C-t>' },
         config = function()
             require('plugins.toggleterm')
         end,
