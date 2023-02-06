@@ -1,5 +1,4 @@
 -- Color scheme
-vim.cmd([[colorscheme tokyonight]])
 vim.o.termguicolors = true
 
 -- Leader key

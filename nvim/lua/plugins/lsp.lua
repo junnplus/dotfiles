@@ -7,7 +7,17 @@ local settings = {
     },
     servers = {
         eslint = {},
-        pylsp = {},
+        pylsp = {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        black = {
+                            enabled = true,
+                        }
+                    }
+                }
+            }
+        },
         zk = {},
         jsonls = {},
         bashls = {},
@@ -30,7 +40,7 @@ local settings = {
         },
         clangd = {},
         solc = {},
-        sumneko_lua = require('neodev').setup(),
+        sumneko_lua = {},
         ['rust_analyzer@nightly'] = {
             settings = {
                 ['rust-analyzer'] = {
@@ -46,6 +56,7 @@ local settings = {
     },
 }
 
+require('neodev').setup()
 require('lsp-setup').setup(settings)
 require('lsp_lines').setup()
 

@@ -1,7 +1,7 @@
 local ncmd = vim.api.nvim_command
 
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'c', 'lua', 'rust', 'go', 'python', 'zig', 'markdown', 'solidity', 'jsonnet' },
+    ensure_installed = { 'c', 'lua', 'rust', 'go', 'python', 'zig', 'markdown', 'solidity', 'jsonnet', 'vim' },
     highlight = {
         enable = true,
     },
@@ -23,7 +23,7 @@ require('nvim-treesitter.configs').setup({
             },
         },
     },
-    indent = { enable = true },
+    indent = { enable = false },
     autopairs = { enable = true },
     rainbow = { enable = true },
     autotag = { enable = true },
