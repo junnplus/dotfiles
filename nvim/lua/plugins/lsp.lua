@@ -40,7 +40,7 @@ local settings = {
         },
         clangd = {},
         solc = {},
-        sumneko_lua = {},
+        lua_ls = {},
         ['rust_analyzer@nightly'] = {
             settings = {
                 ['rust-analyzer'] = {
