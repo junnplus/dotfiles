@@ -28,10 +28,10 @@ local settings = {
         zls = {},
         gopls = {
             settings = {
-                golsp = {
+                gopls = {
                     gofumpt = true,
                     staticcheck = true,
-                    useplaceholders = true,
+                    usePlaceholders = true,
                     codelenses = {
                         gc_details = true,
                     },
