@@ -31,10 +31,6 @@ local plugins = {
         event = "InsertEnter",
     },
     {
-        "folke/which-key.nvim",
-        lazy = true
-    },
-    {
         'hoob3rt/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
@@ -116,8 +112,6 @@ local plugins = {
             vim.g.copilot_assume_mapped = 1
             vim.api.nvim_set_keymap("i", "<C-e>", "copilot#Accept()",
                 { noremap = true, silent = true, expr = true })
-            -- local map = require('utils').map
-            -- map('i', '<C-e>', 'copilot#Accept()', { expr = true })
         end,
     },
     {
@@ -167,7 +161,7 @@ local plugins = {
             -- 'simrat39/rust-tools.nvim',
             -- 'p00f/clangd_extensions.nvim',
             -- 'lukas-reineke/lsp-format.nvim',
-            -- 'lvimuser/lsp-inlayhints.nvim',
+            'lvimuser/lsp-inlayhints.nvim',
         },
         config = function()
             require('plugins.lsp')

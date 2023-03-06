@@ -30,11 +30,20 @@ local settings = {
             settings = {
                 gopls = {
                     gofumpt = true,
-                    staticcheck = true,
+                    -- staticcheck = true,
                     usePlaceholders = true,
                     codelenses = {
                         gc_details = true,
                     },
+                    hints = {
+                        rangeVariableTypes = true,
+                        parameterNames = true,
+                        constantValues = true,
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        functionTypeParameters = true,
+                    }
                 },
             },
         },
@@ -72,3 +81,18 @@ require('lsp-colors').setup()
 local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+
+require("lsp-inlayhints").setup()
+vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = "LspAttach_inlayhints",
+    callback = function(args)
+        if not (args.data and args.data.client_id) then
+            return
+        end
+
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        require("lsp-inlayhints").on_attach(client, bufnr)
+    end,
+})

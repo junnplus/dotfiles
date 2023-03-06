@@ -29,9 +29,9 @@ require('nvim-tree').setup({
             list = {
                 { key = '<C-v>', cb = tree_cb('vsplit') },
                 { key = '<C-s>', cb = tree_cb('split') },
-                { key = 'v', cb = tree_cb('vsplit') },
-                { key = 's', cb = tree_cb('split') },
-                { key = '-', cb = '<Plug>(choosewin)' },
+                { key = 'v',     cb = tree_cb('vsplit') },
+                { key = 's',     cb = tree_cb('split') },
+                { key = '-',     cb = '<Plug>(choosewin)' },
                 { key = '<C-t>', cb = ':ToggleTerm<cr>' },
             },
         },
