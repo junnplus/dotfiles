@@ -1,4 +1,4 @@
 require('core')
-require('plugins')
+require('plugin')
 require('mapping')
 require('filetype')

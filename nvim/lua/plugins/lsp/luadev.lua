@@ -1,4 +1,4 @@
 return {
-    'm-demare/hlargs.nvim',
+    'folke/neodev.nvim',
     config = true,
 }
