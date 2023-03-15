@@ -1,9 +1,9 @@
 local settings = {
     mappings = {
-        gd = 'lua require"telescope.builtin".lsp_definitions()',
-        gi = 'lua require"telescope.builtin".lsp_implementations()',
-        gr = 'lua require"telescope.builtin".lsp_references()',
-        ['<space>f'] = 'lua vim.lsp.buf.format()',
+        gd = require("telescope.builtin").lsp_definitions,
+        gi = require("telescope.builtin").lsp_implementations,
+        gr = require("telescope.builtin").lsp_references,
+        ['<space>f'] = vim.lsp.buf.format,
     },
     servers = {
         eslint = {},
@@ -15,6 +15,9 @@ local settings = {
                     configurationSources = { "flake8" },
                     plugins = {
                         pycodestyle = {
+                            enabled = false,
+                        },
+                        mccabe = {
                             enabled = false,
                         },
                         flake8 = {
@@ -56,8 +59,10 @@ local settings = {
                 },
             },
         },
-        clangd = {},
+        -- clangd = {},
         solc = {},
+        bufls = {},
+        html = {},
         lua_ls = {},
         ['rust_analyzer@nightly'] = {
             settings = {
@@ -91,7 +96,17 @@ local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
-require("lsp-inlayhints").setup()
+require("lsp-inlayhints").setup({
+    inlay_hints = {
+        parameter_hints = {
+            prefix = " <- ",
+        },
+        type_hints = {
+            prefix = " ",
+        },
+        labels_separator = "",
+    }
+})
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
     group = "LspAttach_inlayhints",

@@ -89,7 +89,7 @@ local plugins = {
         end,
     },
     {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('plugins.tree')
@@ -109,7 +109,7 @@ local plugins = {
             vim.g.copilot_no_tab_map = 1
             vim.g.copilot_no_maps = 1
             vim.g.copilot_assume_mapped = 1
-            vim.api.nvim_set_keymap("i", "<C-e>", "copilot#Accept()",
+            vim.keymap.set("i", "<C-e>", "copilot#Accept()",
                 { noremap = true, silent = true, expr = true })
         end,
     },
@@ -148,7 +148,7 @@ local plugins = {
     },
     {
         'junnplus/lsp-setup.nvim',
-        -- '~/Documents/workspace/nvim-lsp-setup',
+        -- dir = '~/Documents/workspace/nvim-lsp-setup',
         dependencies = {
             'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
@@ -168,7 +168,7 @@ local plugins = {
     },
     {
         'akinsho/toggleterm.nvim',
-        keys = { '<C-t>' },
+        -- keys = { '<C-t>' },
         config = function()
             require('plugins.toggleterm')
         end,
@@ -186,6 +186,12 @@ local plugins = {
             require('hlsearch').setup()
         end
     },
+    {
+        'petertriho/nvim-scrollbar',
+        config = function()
+            require('scrollbar').setup()
+        end
+    }
 }
 
 require("lazy").setup(plugins)
