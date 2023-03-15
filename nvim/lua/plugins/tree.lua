@@ -1,5 +1,18 @@
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
+local map = require('utils').map
+local api = require('nvim-tree.api')
+
 require('nvim-tree').setup({
+    on_attach = function(bufnr)
+        api.config.mappings.default_on_attach(bufnr)
+        map('n', '<C-v>', api.node.open.vertical, { buffer = bufnr })
+        map('n', '<C-s>', api.node.open.horizontal, { buffer = bufnr })
+        map('n', 'v', api.node.open.vertical, { buffer = bufnr })
+        map('n', 's', api.node.open.horizontal, { buffer = bufnr })
+        map('n', '<C-t>', ":ToggleTerm<CR>", { buffer = bufnr })
+        map('n', '-', "<Plug>(choosewin)", { buffer = bufnr })
+        map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
+        map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
+    end,
     renderer = {
         indent_markers = { enable = true },
         highlight_git = true,
@@ -32,16 +45,6 @@ require('nvim-tree').setup({
     view = {
         width = 35,
         side = 'left',
-        mappings = {
-            list = {
-                { key = '<C-v>', cb = tree_cb('vsplit') },
-                { key = '<C-s>', cb = tree_cb('split') },
-                { key = 'v',     cb = tree_cb('vsplit') },
-                { key = 's',     cb = tree_cb('split') },
-                { key = '-',     cb = '<Plug>(choosewin)' },
-                { key = '<C-t>', cb = ':ToggleTerm<cr>' },
-            },
-        },
     },
     diagnostics = {
         enable = true,
