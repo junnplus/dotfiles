@@ -57,27 +57,18 @@ require('nvim-tree').setup({
     },
     hijack_netrw = true,
     update_cwd = true,
+    reload_on_bufenter = true,
 })
 
-local function open_nvim_tree(data)
-    -- buffer is a real file on the disk
-    local real_file = vim.fn.filereadable(data.file) == 1
-
-    -- buffer is a [No Name]
-    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-
-    -- only files please
-    if not real_file and not no_name then
-        return
-    end
-
-    -- open the tree but don't focus it
+local function open_nvim_tree()
     require("nvim-tree.api").tree.toggle({ focus = false })
 end
 
 local function close_nvim_tree()
     local layout = vim.api.nvim_call_function("winlayout", {})
-    if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then
+    if layout[1] == "leaf"
+        and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+        and layout[3] == nil then
         vim.cmd("confirm quit")
     end
 end
