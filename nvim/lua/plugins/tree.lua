@@ -1,6 +1,6 @@
 return {
     'nvim-tree/nvim-tree.lua',
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     init = function()
         local function open_nvim_tree()
             require("nvim-tree.api").tree.find_file({ open = true })
