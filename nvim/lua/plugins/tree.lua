@@ -64,7 +64,7 @@ require('nvim-tree').setup({
 })
 
 local function open_nvim_tree()
-    require("nvim-tree.api").tree.toggle({ focus = false })
+    require("nvim-tree.api").tree.find_file({ open = true })
 end
 
 local function close_nvim_tree()
