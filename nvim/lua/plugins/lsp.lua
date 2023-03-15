@@ -10,7 +10,16 @@ local settings = {
         pylsp = {
             settings = {
                 pylsp = {
+                    -- PylspInstall python-lsp-black
+                    -- PylspInstall pyls-isort
+                    configurationSources = { "flake8" },
                     plugins = {
+                        pycodestyle = {
+                            enabled = false,
+                        },
+                        flake8 = {
+                            enabled = true,
+                        },
                         black = {
                             enabled = true,
                         }

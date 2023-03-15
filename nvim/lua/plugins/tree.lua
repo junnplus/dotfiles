@@ -1,27 +1,34 @@
-local g = vim.g
-
-g.nvim_tree_highlight_opened_files = 1
-g.nvim_tree_icons = {
-    symlink = '',
-    git = {
-        untracked = '?',
-    },
-    folder = {
-        arrow_open = '',
-        arrow_closed = '',
-        default = '',
-        open = '',
-    },
-}
-g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-}
-
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup({
+    renderer = {
+        indent_markers = { enable = true },
+        highlight_git = true,
+        highlight_opened_files = '1',
+        icons = {
+            glyphs = {
+                symlink = '',
+                git = {
+                    deleted = '',
+                    ignored = '◌',
+                    renamed = '➜',
+                    staged = '+',
+                    unmerged = '',
+                    untracked = '?',
+                    -- unstaged = 'ϟ',
+                },
+                folder = {
+                    arrow_open = '',
+                    arrow_closed = '',
+                    default = '',
+                    open = '',
+                    empty = '',
+                    empty_open = '',
+                    symlink = '',
+                    symlink_open = '',
+                },
+            }
+        }
+    },
     view = {
         width = 35,
         side = 'left',
@@ -45,22 +52,35 @@ require('nvim-tree').setup({
             hint = '',
         },
     },
-    update_to_buf_dir = {
-        enable = true,
-        auto_update = true,
-    },
     update_focused_file = {
         enable = true,
     },
-    auto_close = true,
     hijack_netrw = true,
     update_cwd = true,
-    focus_tree = false,
-    open_on_setup = true,
 })
 
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function()
-        require('nvim-tree').toggle(false, true)
-    end,
-})
+local function open_nvim_tree(data)
+    -- buffer is a real file on the disk
+    local real_file = vim.fn.filereadable(data.file) == 1
+
+    -- buffer is a [No Name]
+    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+    -- only files please
+    if not real_file and not no_name then
+        return
+    end
+
+    -- open the tree but don't focus it
+    require("nvim-tree.api").tree.toggle({ focus = false })
+end
+
+local function close_nvim_tree()
+    local layout = vim.api.nvim_call_function("winlayout", {})
+    if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then
+        vim.cmd("confirm quit")
+    end
+end
+
+vim.api.nvim_create_autocmd('VimEnter', { callback = open_nvim_tree })
+vim.api.nvim_create_autocmd("BufEnter", { callback = close_nvim_tree })
