@@ -18,12 +18,13 @@ return {
     opts = {
         inlay_hints = {
             parameter_hints = {
-                prefix = " <- ",
+                prefix = " 𝔽",
             },
             type_hints = {
-                prefix = " ",
+                prefix = " <= ",
             },
-            labels_separator = "",
+            labels_separator = " |",
+            highlight = "Comment",
         }
     },
 }

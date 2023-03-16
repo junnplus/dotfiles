@@ -11,10 +11,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("lazy.view.config").keys.close = "<esc>"
 require("lazy").setup({
     spec = {
         { import = "plugins" },
         { import = "plugins.lsp" },
+    },
+    ui = {
+        icons = {
+            task = " ",
+        }
     }
 })
 vim.keymap.set('n', '<leader>z', ':Lazy<cr>')
