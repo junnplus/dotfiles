@@ -8,7 +8,7 @@ return {
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/nvim-treesitter-context',
         'RRethy/nvim-treesitter-endwise',
-        'andymass/vim-matchup', -- extend % key
+        -- 'andymass/vim-matchup', -- extend % key
         'yioneko/nvim-yati',
     },
     init = function()
@@ -49,9 +49,9 @@ return {
             enable = true,
         },
         -- andymass/vim-matchup
-        matchup = {
-            enable = true,
-        },
+        -- matchup = {
+        --     enable = true,
+        -- },
         -- nvim-treesitter/nvim-treesitter-textobjects
         textobjects = {
             select = {

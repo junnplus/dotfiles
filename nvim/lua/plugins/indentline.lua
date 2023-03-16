@@ -1,5 +1,6 @@
 return {
     'lukas-reineke/indent-blankline.nvim',
+    event = 'BufRead',
     opts = {
         char = '|',
         buftype_exclude = { 'terminal', 'NvimTree', 'nofile' },

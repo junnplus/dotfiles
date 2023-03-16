@@ -18,6 +18,20 @@ return {
         local cmp = require('cmp')
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
         cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+        -- cmp.setup.cmdline(':', {
+        --     mapping = cmp.mapping.preset.cmdline(),
+        --     sources = cmp.config.sources({
+        --         { name = 'path' }
+        --     }, {
+        --         { name = 'cmdline' }
+        --     })
+        -- })
+        cmp.setup.cmdline({ '/', '?' }, {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
     end,
     opts = function()
         local cmp = require('cmp')
