@@ -36,10 +36,18 @@ return {
                 map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
             end,
             renderer = {
-                indent_markers = { enable = true },
+                indent_markers = {
+                    enable = true,
+                    icons = {
+                        item = '|',
+                        edge = "|",
+                        corner = "┗",
+                    }
+                },
                 highlight_git = true,
                 highlight_opened_files = '1',
                 icons = {
+                    git_placement = "after",
                     glyphs = {
                         symlink = '',
                         git = {

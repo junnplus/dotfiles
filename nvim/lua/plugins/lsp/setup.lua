@@ -24,10 +24,10 @@ return {
     end,
     opts = {
         mappings = {
-            gd = 'lua require("telescope.builtin").lsp_definitions()',
-            gi = 'lua require("telescope.builtin").lsp_implementations()',
-            gr = 'lua require("telescope.builtin").lsp_references()',
-            ['<space>f'] = 'lua vim.lsp.buf.format()',
+            gd = function() require("telescope.builtin").lsp_definitions() end,
+            gi = function() require("telescope.builtin").lsp_implementations() end,
+            gr = function() require("telescope.builtin").lsp_references() end,
+            ['<space>f'] = vim.lsp.buf.format,
         },
         servers = {
             eslint = {},
