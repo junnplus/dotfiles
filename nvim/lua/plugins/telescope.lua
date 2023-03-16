@@ -6,32 +6,28 @@ return {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-github.nvim',
     },
-    opts = function()
-        local actions = require('telescope.actions')
-        return {
-            defaults = {
-                layout_config = {
-                    horizontal = {
-                        width = 0.75,
-                        height = 0.5,
-                    },
-                },
-                mappings = {
-                    i = {
-                        ['<esc>'] = actions.close,
-                        ['<C-j>'] = actions.move_selection_previous,
-                        ['<C-k>'] = actions.move_selection_next,
-                        ['<C-l>'] = { '<Right>', type = 'command' },
-                        ['<C-h>'] = { '<Left>', type = 'command' },
-                        ['<C-f>'] = actions.preview_scrolling_down,
-                        ['<C-b>'] = actions.preview_scrolling_up,
-                    },
+    opts = {
+        defaults = {
+            layout_config = {
+                horizontal = {
+                    width = 0.75,
+                    height = 0.5,
                 },
             },
-        }
-    end,
-    config = function(_, opts)
-        require('telescope').setup(opts)
+            mappings = {
+                i = {
+                    ['<esc>'] = 'close',
+                    ['<C-j>'] = 'move_selection_previous',
+                    ['<C-k>'] = 'move_selection_next',
+                    ['<C-l>'] = { '<Right>', type = 'command' },
+                    ['<C-h>'] = { '<Left>', type = 'command' },
+                    ['<C-f>'] = 'preview_scrolling_down',
+                    ['<C-b>'] = 'preview_scrolling_up',
+                },
+            },
+        },
+    },
+    init = function()
         require('telescope').load_extension('gh')
         map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
         map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')

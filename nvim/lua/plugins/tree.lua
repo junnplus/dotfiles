@@ -18,79 +18,76 @@ return {
         vim.api.nvim_create_autocmd('VimEnter', { callback = open_nvim_tree })
         vim.api.nvim_create_autocmd("BufEnter", { callback = close_nvim_tree })
     end,
-    opts = function()
-        local map = require('utils').map
-        local api = require('nvim-tree.api')
-
-        return {
-            on_attach = function(bufnr)
-                api.config.mappings.default_on_attach(bufnr)
-                map('n', '<C-v>', api.node.open.vertical, { buffer = bufnr })
-                map('n', '<C-s>', api.node.open.horizontal, { buffer = bufnr })
-                map('n', 'v', api.node.open.vertical, { buffer = bufnr })
-                map('n', 's', api.node.open.horizontal, { buffer = bufnr })
-                map('n', '<C-t>', ":ToggleTerm<CR>", { buffer = bufnr })
-                map('n', '-', "<Plug>(choosewin)", { buffer = bufnr })
-                map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
-                map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
-                map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
-            end,
-            renderer = {
-                indent_markers = {
-                    enable = true,
-                    icons = {
-                        item = '|',
-                        edge = "|",
-                        corner = "┗",
-                    }
-                },
-                highlight_git = true,
-                highlight_opened_files = '1',
+    opts = {
+        on_attach = function(bufnr)
+            local map = require('utils').map
+            local api = require('nvim-tree.api')
+            api.config.mappings.default_on_attach(bufnr)
+            map('n', '<C-v>', api.node.open.vertical, { buffer = bufnr })
+            map('n', '<C-s>', api.node.open.horizontal, { buffer = bufnr })
+            map('n', 'v', api.node.open.vertical, { buffer = bufnr })
+            map('n', 's', api.node.open.horizontal, { buffer = bufnr })
+            map('n', '<C-t>', ":ToggleTerm<CR>", { buffer = bufnr })
+            map('n', '-', "<Plug>(choosewin)", { buffer = bufnr })
+            map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
+            map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
+            map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
+        end,
+        renderer = {
+            indent_markers = {
+                enable = true,
                 icons = {
-                    git_placement = "after",
-                    glyphs = {
-                        symlink = '',
-                        git = {
-                            deleted = '',
-                            ignored = '◌',
-                            renamed = '➜',
-                            staged = '+',
-                            unmerged = '',
-                            untracked = '?',
-                            -- unstaged = 'ϟ',
-                        },
-                        folder = {
-                            arrow_open = '',
-                            arrow_closed = '',
-                            default = '',
-                            open = '',
-                            empty = '',
-                            empty_open = '',
-                            symlink = '',
-                            symlink_open = '',
-                        },
-                    }
+                    item = '|',
+                    edge = "|",
+                    corner = "┗",
                 }
             },
-            view = {
-                width = 35,
-                side = 'left',
+            highlight_git = true,
+            highlight_opened_files = '1',
+            icons = {
+                git_placement = "after",
+                glyphs = {
+                    symlink = '',
+                    git = {
+                        deleted = '',
+                        ignored = '◌',
+                        renamed = '➜',
+                        staged = '+',
+                        unmerged = '',
+                        untracked = '?',
+                        -- unstaged = 'ϟ',
+                    },
+                    folder = {
+                        arrow_open = '',
+                        arrow_closed = '',
+                        default = '',
+                        open = '',
+                        empty = '',
+                        empty_open = '',
+                        symlink = '',
+                        symlink_open = '',
+                    },
+                }
+            }
+        },
+        view = {
+            width = 35,
+            side = 'left',
+        },
+        diagnostics = {
+            enable = true,
+            icons = {
+                error = '',
+                warning = '',
+                info = '',
+                hint = '',
             },
-            diagnostics = {
-                enable = true,
-                icons = {
-                    error = '',
-                    warning = '',
-                    info = '',
-                    hint = '',
-                },
-            },
-            update_focused_file = {
-                enable = true,
-            },
-            hijack_netrw = true,
-            update_cwd = true,
-            reload_on_bufenter = true,
-        }
-    end
+        },
+        update_focused_file = {
+            enable = true,
+        },
+        hijack_netrw = true,
+        update_cwd = true,
+        reload_on_bufenter = true,
+    }
 }
