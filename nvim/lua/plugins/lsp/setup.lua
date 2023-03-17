@@ -6,21 +6,13 @@ return {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'folke/lsp-colors.nvim',
-        'ray-x/lsp_signature.nvim',
         'nvim-telescope/telescope.nvim',
         'folke/neodev.nvim'
     },
     init = function()
-        -- global config for diagnostic
-        vim.diagnostic.config({
-            underline = true,
-            virtual_text = false,
-        })
-
-        local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
         vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-            { border = border })
+            { border = 'rounded' })
     end,
     opts = {
         mappings = {

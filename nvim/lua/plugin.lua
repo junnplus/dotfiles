@@ -21,6 +21,9 @@ require("lazy").setup({
         icons = {
             task = " ",
         }
+    },
+    change_detection = {
+        notify = false,
     }
 })
 vim.keymap.set('n', '<leader>z', ':Lazy<cr>')

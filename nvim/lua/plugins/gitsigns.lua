@@ -20,5 +20,8 @@ return {
         linehl = true,
         numhl = true,
         sign_priority = 6,
+        preview_config = {
+            border = 'rounded',
+        }
     }
 }

@@ -52,6 +52,10 @@ return {
                     return vim_item
                 end,
             },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
             snippet = {
                 expand = function(args)
                     vim.fn['vsnip#anonymous'](args.body)
