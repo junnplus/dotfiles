@@ -17,7 +17,7 @@ return {
         },
         word_diff = false,
         current_line_blame = true,
-        linehl = false,
+        linehl = true,
         numhl = true,
         sign_priority = 6,
     }

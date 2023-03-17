@@ -44,6 +44,9 @@ return {
                             mccabe = {
                                 enabled = false,
                             },
+                            pyflakes = {
+                                enabled = false,
+                            },
                             flake8 = {
                                 enabled = true,
                             },
@@ -51,6 +54,13 @@ return {
                                 enabled = true,
                             }
                         }
+                    }
+                }
+            },
+            yamlls = {
+                settings = {
+                    yaml = {
+                        keyOrdering = false
                     }
                 }
             },
