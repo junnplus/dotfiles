@@ -36,6 +36,11 @@ return {
         saturation = 1.0,
         brightness = 1.4,
     },
+    -- tempfile=$(mktemp) \
+    -- && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
+    -- && tic -x -o ~/.terminfo $tempfile \
+    -- && rm $tempfile
+    term = 'wezterm',
     default_cursor_style = 'BlinkingBlock',
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
     clean_exit_codes = { 0, 1, 130 },
