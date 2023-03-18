@@ -15,7 +15,7 @@ return {
                 Hint = { color = colors.hint },
                 Misc = { color = colors.purple },
             },
-            excluded_filetypes = { "NvimTree", "TelescopePrompt" }
+            excluded_filetypes = { "NvimTree", "TelescopePrompt", "chatgpt" }
         }
     end
 }
