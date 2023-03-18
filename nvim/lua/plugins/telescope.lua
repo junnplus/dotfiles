@@ -31,7 +31,7 @@ return {
         require('telescope').load_extension('gh')
         map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
         map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-        map('n', '<c-o>', '<cmd>Telescope buffers<cr>')
+        map('n', '<leader>b', '<cmd>Telescope buffers<cr>')
         map('n', ';', '<cmd>Telescope commands<cr>')
     end,
 }

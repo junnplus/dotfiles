@@ -5,8 +5,6 @@ return {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
-        'folke/lsp-colors.nvim',
-        'nvim-telescope/telescope.nvim',
         'folke/neodev.nvim'
     },
     init = function()
@@ -94,6 +92,9 @@ return {
             ['rust_analyzer@nightly'] = {
                 settings = {
                     ['rust-analyzer'] = {
+                        diagnostics = {
+                            disabled = { "unresolved-proc-macro" },
+                        },
                         cargo = {
                             loadOutDirsFromCheck = true,
                         },
