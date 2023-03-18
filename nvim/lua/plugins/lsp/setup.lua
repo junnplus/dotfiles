@@ -10,9 +10,10 @@ return {
         'folke/neodev.nvim'
     },
     init = function()
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-            { border = 'rounded' })
+        local rounded = { border = "rounded" }
+        vim.diagnostic.config({ float = rounded })
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, rounded)
+        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, rounded)
     end,
     opts = {
         mappings = {

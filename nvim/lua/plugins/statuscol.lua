@@ -6,7 +6,7 @@ return {
             relculright = true,
             segments = {
                 {
-                    sign = { name = { "Diagnostic" }, maxwidth = 1, colwidth = 1, auto = true },
+                    sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true },
                     click = "v:lua.ScSa"
                 },
                 { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
