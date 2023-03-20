@@ -1,5 +1,6 @@
 return {
     'nvim-tree/nvim-tree.lua',
+    event = "BufReadPost",
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function()
         local function open_nvim_tree()

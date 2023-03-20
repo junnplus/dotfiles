@@ -2,7 +2,7 @@ local map = require('utils').map
 
 return {
     'akinsho/toggleterm.nvim',
-    -- keys = { '<C-t>' },
+    event = "BufReadPost",
     init = function()
         map('t', '<C-]>', [[<C-\><C-n>]], { noremap = true })
     end,

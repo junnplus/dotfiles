@@ -18,6 +18,7 @@ require("lazy").setup({
         { import = "plugins.lsp" },
     },
     ui = {
+        border = "rounded",
         icons = {
             task = " ",
         }

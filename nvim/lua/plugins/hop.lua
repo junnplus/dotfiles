@@ -2,8 +2,7 @@ local map = require('utils').map
 
 return {
     'phaazon/hop.nvim',
-    -- keys = { 's', 'h', 'j', 'k', 'l', '<leader>j' },
-    event = 'BufRead',
+    event = 'BufReadPost',
     config = true,
     init = function()
         map('n', 's', '<cmd>HopChar2<cr>')

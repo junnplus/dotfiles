@@ -3,10 +3,9 @@ return {
     lazy = false,
     priority = 1000,
     init = function()
-        vim.cmd([[colorscheme tokyonight]])
+        require('tokyonight').load()
     end,
     opts = {
         style = 'night',
-        light_style = 'day'
     },
 }
