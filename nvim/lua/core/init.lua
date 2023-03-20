@@ -1,0 +1,5 @@
+require('core.global')
+require('core.autocmd')
+require('core.lazy')
+require('core.filetype')
+require('core.mapping')
