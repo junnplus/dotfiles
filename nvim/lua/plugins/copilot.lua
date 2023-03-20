@@ -11,9 +11,9 @@
 -- }
 
 return {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
     opts = {
         -- panel = {
         --     auto_refresh = true,
@@ -21,9 +21,9 @@ return {
         suggestion = {
             auto_trigger = true,
             keymap = {
-                accept = "<C-e>",
-                next = "<C-j>",
-                prev = "<C-k>",
+                accept = '<C-e>',
+                next = '<C-j>',
+                prev = '<C-k>',
             }
         }
     }

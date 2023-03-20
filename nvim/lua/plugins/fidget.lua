@@ -1,6 +1,6 @@
 return {
     'j-hui/fidget.nvim', -- nvim-lsp progress
-    event = "BufReadPre",
+    event = 'BufReadPre',
     opts = {
         text = {
             done = '[✓]',

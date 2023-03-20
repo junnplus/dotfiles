@@ -4,6 +4,7 @@
     "missing-parameter"
   ],
   "Lua.format.defaultConfig": {
-    "quote_style": "single"
+    "quote_style": "single",
+    "indent_size": "2"
   }
 }

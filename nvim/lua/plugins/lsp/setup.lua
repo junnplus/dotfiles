@@ -8,16 +8,16 @@ return {
         'folke/neodev.nvim'
     },
     init = function()
-        local rounded = { border = "rounded" }
+        local rounded = { border = 'rounded' }
         vim.diagnostic.config({ float = rounded })
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, rounded)
         vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, rounded)
     end,
     opts = {
         mappings = {
-            gd = function() require("telescope.builtin").lsp_definitions() end,
-            gi = function() require("telescope.builtin").lsp_implementations() end,
-            gr = function() require("telescope.builtin").lsp_references() end,
+            gd = function() require('telescope.builtin').lsp_definitions() end,
+            gi = function() require('telescope.builtin').lsp_implementations() end,
+            gr = function() require('telescope.builtin').lsp_references() end,
             ['<space>f'] = vim.lsp.buf.format,
         },
         servers = {
@@ -27,7 +27,7 @@ return {
                     pylsp = {
                         -- PylspInstall python-lsp-black
                         -- PylspInstall pyls-isort
-                        configurationSources = { "flake8" },
+                        configurationSources = { 'flake8' },
                         plugins = {
                             pycodestyle = {
                                 enabled = false,
@@ -88,12 +88,20 @@ return {
             solc = {},
             bufls = {},
             html = {},
-            lua_ls = {},
+            lua_ls = {
+                settings = {
+                    Lua = {
+                        workspace = {
+                            checkThirdParty = false,
+                        }
+                    }
+                }
+            },
             ['rust_analyzer@nightly'] = {
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostics = {
-                            disabled = { "unresolved-proc-macro" },
+                            disabled = { 'unresolved-proc-macro' },
                         },
                         cargo = {
                             loadOutDirsFromCheck = true,

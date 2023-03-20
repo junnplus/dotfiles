@@ -36,7 +36,7 @@ vim.o.signcolumn = 'auto:1'
 -- vim.o.cmdheight = 0
 vim.opt.list = true
 vim.opt.listchars:append('eol:↴')
-vim.opt.fillchars:append { diff = "╱" }
+vim.opt.fillchars:append { diff = '╱' }
 
 vim.o.textwidth = 120
 vim.o.smartindent = true

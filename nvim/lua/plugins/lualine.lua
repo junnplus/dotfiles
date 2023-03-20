@@ -1,6 +1,6 @@
 return {
     'hoob3rt/lualine.nvim',
-    event = "BufReadPost",
+    event = 'BufReadPost',
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     opts = {
         options = {

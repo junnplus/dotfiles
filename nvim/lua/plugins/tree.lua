@@ -1,23 +1,23 @@
 return {
     'nvim-tree/nvim-tree.lua',
-    event = "BufReadPost",
+    event = 'BufReadPost',
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function()
         local function open_nvim_tree()
-            require("nvim-tree.api").tree.find_file({ open = true })
+            require('nvim-tree.api').tree.find_file({ open = true })
         end
 
         local function close_nvim_tree()
-            local layout = vim.api.nvim_call_function("winlayout", {})
-            if layout[1] == "leaf"
-                and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+            local layout = vim.api.nvim_call_function('winlayout', {})
+            if layout[1] == 'leaf'
+                and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), 'filetype') == 'NvimTree'
                 and layout[3] == nil then
-                vim.cmd("confirm quit")
+                vim.cmd('confirm quit')
             end
         end
 
         vim.api.nvim_create_autocmd('VimEnter', { callback = open_nvim_tree })
-        vim.api.nvim_create_autocmd("BufEnter", { callback = close_nvim_tree })
+        vim.api.nvim_create_autocmd('BufEnter', { callback = close_nvim_tree })
     end,
     opts = {
         on_attach = function(bufnr)
@@ -28,8 +28,8 @@ return {
             map('n', '<C-s>', api.node.open.horizontal, { buffer = bufnr })
             map('n', 'v', api.node.open.vertical, { buffer = bufnr })
             map('n', 's', api.node.open.horizontal, { buffer = bufnr })
-            map('n', '<C-t>', ":ToggleTerm<CR>", { buffer = bufnr })
-            map('n', '-', "<Plug>(choosewin)", { buffer = bufnr })
+            map('n', '<C-t>', ':ToggleTerm<CR>', { buffer = bufnr })
+            map('n', '-', '<Plug>(choosewin)', { buffer = bufnr })
             map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
             map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
             map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
@@ -39,14 +39,14 @@ return {
                 enable = true,
                 icons = {
                     item = '|',
-                    edge = "|",
-                    corner = "┗",
+                    edge = '|',
+                    corner = '┗',
                 }
             },
             highlight_git = true,
             highlight_opened_files = '1',
             icons = {
-                git_placement = "after",
+                git_placement = 'after',
                 glyphs = {
                     symlink = '',
                     git = {

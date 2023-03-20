@@ -4,7 +4,7 @@ end
 
 return {
     'hrsh7th/nvim-cmp',
-    event = "InsertEnter",
+    event = 'InsertEnter',
     dependencies = {
         'hrsh7th/cmp-vsnip',
         'hrsh7th/cmp-nvim-lsp',
