@@ -2,7 +2,7 @@ local map = require('utils').map
 return {
     'nvim-telescope/telescope.nvim',
     -- keys = { '<leader>ff', '<leader>fg', '<leader>fb', ';' },
-    event = 'BufReadPost',
+    event = 'VeryLazy',
     dependencies = {
         'nvim-lua/plenary.nvim',
     },

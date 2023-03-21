@@ -1,6 +1,6 @@
 return {
     'akinsho/bufferline.nvim',
-    event = 'BufReadPost',
+    event = 'VeryLazy',
     enabled = false,
     opts = {
         options = {

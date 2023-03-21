@@ -1,6 +1,6 @@
 return {
     'nvim-tree/nvim-tree.lua',
-    event = 'BufReadPost',
+    event = 'VeryLazy',
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function()
         local function open_nvim_tree()
@@ -29,7 +29,7 @@ return {
             map('n', 'v', api.node.open.vertical, { buffer = bufnr })
             map('n', 's', api.node.open.horizontal, { buffer = bufnr })
             map('n', '<C-t>', ':ToggleTerm<CR>', { buffer = bufnr })
-            map('n', '-', '<Plug>(choosewin)', { buffer = bufnr })
+            map('n', '-', ':lua require("chowcho").run()<CR>', { buffer = bufnr })
             map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
             map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
             map('n', 'r', api.fs.rename_sub, { buffer = bufnr })

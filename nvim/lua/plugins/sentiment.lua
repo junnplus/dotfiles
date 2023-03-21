@@ -1,5 +1,5 @@
 return {
     'utilyre/sentiment.nvim',
-    event = 'BufReadPost',
+    event = 'VeryLazy',
     config = true,
 }

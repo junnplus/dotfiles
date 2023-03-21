@@ -1,5 +1,5 @@
 return {
     'glepnir/hlsearch.nvim',
-    event = 'BufRead',
+    event = 'VeryLazy',
     config = true,
 }

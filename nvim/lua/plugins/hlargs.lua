@@ -1,5 +1,5 @@
 return {
     'm-demare/hlargs.nvim',
-    event = 'BufRead',
+    event = 'VeryLazy',
     config = true,
 }

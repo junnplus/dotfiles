@@ -1,6 +1,7 @@
 return {
     'junnplus/lsp-setup.nvim',
     -- dir = '~/Documents/workspace/nvim-lsp-setup',
+    event = 'BufRead',
     dependencies = {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',

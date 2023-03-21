@@ -1,4 +1,4 @@
 return {
     'tpope/vim-fugitive',
-    event = 'BufReadPost',
+    event = 'VeryLazy',
 }

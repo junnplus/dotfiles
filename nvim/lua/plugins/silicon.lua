@@ -1,5 +1,6 @@
 return {
     'krivahtoo/silicon.nvim',
+    event = 'VeryLazy',
     enabled = false,
     opts = {
         font = 'Hack=20',

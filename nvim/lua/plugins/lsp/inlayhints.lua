@@ -1,5 +1,6 @@
 return {
     'lvimuser/lsp-inlayhints.nvim',
+    event = 'VeryLazy',
     init = function()
         vim.api.nvim_create_augroup('LspAttach_inlayhints', {})
         vim.api.nvim_create_autocmd('LspAttach', {
