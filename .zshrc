@@ -39,6 +39,7 @@ antigen bundle z-shell/F-Sy-H --branch=main
 antigen bundle zsh-users/zsh-completions
 antigen bundle dracula/zsh
 antigen bundle dracula/zsh-syntax-highlighting
+antigen bundle Tarrasch/zsh-autoenv
 
 antigen apply
 
@@ -65,8 +66,8 @@ alias kns=kubens
 alias kctx=kubectx
 alias g=git
 alias gti=git
-alias proxy="export all_proxy=socks5://127.0.0.1:6153"
-alias noproxy="unset all_proxy"
+alias proxy="export https_proxy=http://127.0.0.1:6152;export http_proxy=http://127.0.0.1:6152;export all_proxy=socks5://127.0.0.1:6153"
+alias noproxy="unset all_proxy https_proxy http_proxy"
 alias q=exit
 # alias nerdctl="lima sudo nerdctl"
 # alias docker="lima sudo docker"

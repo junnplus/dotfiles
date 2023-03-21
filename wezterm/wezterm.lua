@@ -1,4 +1,32 @@
 local wezterm = require('wezterm')
+local io = require 'io'
+local os = require 'os'
+local act = wezterm.action
+
+wezterm.on('window-visible-text', function(window, pane)
+    local viewport_text = pane:get_lines_as_text()
+
+    -- Create a temporary file to pass to vim
+    local name = os.tmpname()
+    local f = io.open(name, 'w+')
+    if not f then
+        return
+    end
+    f:write(viewport_text)
+    f:flush()
+    f:close()
+
+    window:perform_action(
+        act.SpawnCommandInNewWindow {
+            args = { 'vi', name },
+        },
+        pane
+    )
+
+    wezterm.sleep_ms(1000)
+    os.remove(name)
+end)
+
 
 wezterm.on('format-tab-title', function(tab)
     local pane = tab.active_pane
@@ -46,9 +74,11 @@ return {
     clean_exit_codes = { 0, 1, 130 },
     -- exit_behavior = 'Close',
     keys = {
+        { key = "e", mods = "CMD", action = wezterm.action({ EmitEvent = "window-visible-text" }) },
         { key = 'l', mods = 'CMD', action = wezterm.action({ ShowLauncherArgs = { flags = 'DOMAINS' } }) },
         { key = 'w', mods = 'CMD', action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
         { key = 'd', mods = 'CMD', action = wezterm.action({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
+        { key = 'k', mods = 'CMD', action = wezterm.action.SpawnCommandInNewTab { args = { 'k9s' } } },
         {
             key = 'd',
             mods = 'CMD|SHIFT',

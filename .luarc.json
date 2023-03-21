@@ -5,6 +5,6 @@
   ],
   "Lua.format.defaultConfig": {
     "quote_style": "single",
-    "indent_size": "2"
+    "indent_size": 2
   }
 }

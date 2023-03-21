@@ -45,6 +45,7 @@
   "sentiment.nvim": { "branch": "main", "commit": "01427ed4137d03df5bd6df08c1853ffe996463bf" },
   "statuscol.nvim": { "branch": "main", "commit": "f21566fabb9e37c14f4ae8acccfe91443cd59299" },
   "telescope.nvim": { "branch": "master", "commit": "a3f17d3baf70df58b9d3544ea30abe52a7a832c2" },
+  "todo-comments.nvim": { "branch": "main", "commit": "14e2cd9a6e5e67483a03660f08471ca9a981c4a5" },
   "toggleterm.nvim": { "branch": "main", "commit": "9a595ba699837c4333c4296634feed320f084df2" },
   "tokyonight.nvim": { "branch": "main", "commit": "edffa82026914be54c8220973b0385f61d3392f0" },
   "vim-fugitive": { "branch": "master", "commit": "5b52a0f395065d6cb7b65a00a5e17eaf9ebd64d5" },
