@@ -17,7 +17,10 @@ return {
         ncmd('set foldexpr=nvim_treesitter#foldexpr()')
     end,
     opts = {
-        ensure_installed = { 'c', 'lua', 'rust', 'go', 'python', 'zig', 'markdown', 'solidity', 'jsonnet', 'vim' },
+        ensure_installed = {
+            'c', 'lua', 'rust', 'go', 'python',
+            'zig', 'markdown', 'solidity', 'jsonnet', 'vim', 'graphql'
+        },
         highlight = {
             enable = true,
         },
