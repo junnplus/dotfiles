@@ -17,6 +17,7 @@ return {
     window_frame = {
         font_size = 14.0,
     },
+    window_decorations = 'INTEGRATED_BUTTONS|RESIZE',
     window_padding = {
         left = 5,
         right = 5,
@@ -36,6 +37,8 @@ return {
     term = 'wezterm',
     default_cursor_style = 'BlinkingBlock',
     default_cwd = wezterm.home_dir .. '/Documents/workspace',
+    native_macos_fullscreen_mode = true,
+    -- status_update_interval = 5000,
     clean_exit_codes = { 0, 1, 130 },
     -- exit_behavior = 'Close',
     keys = {
@@ -57,6 +60,16 @@ return {
             key = ']',
             mods = 'CMD',
             action = wezterm.action({ ActivatePaneDirection = 'Prev' }),
+        },
+        {
+            key = '>',
+            mods = 'CMD|SHIFT',
+            action = wezterm.action.MoveTabRelative(1),
+        },
+        {
+            key = '<',
+            mods = 'CMD|SHIFT',
+            action = wezterm.action.MoveTabRelative(-1),
         },
         { key = 'Enter', mods = 'CMD', action = 'ToggleFullScreen' },
     },

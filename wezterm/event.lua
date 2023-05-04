@@ -29,9 +29,15 @@ end)
 
 wezterm.on('format-tab-title', function(tab)
     local pane = tab.active_pane
-    local title = tab.tab_index + 1 .. ': ' .. pane.title
+    local title = '#' .. tab.tab_index + 1 .. ': ' .. pane.title
     if pane['domain_name'] then
         title = title .. ' - (' .. pane.domain_name .. ')'
     end
     return title
+end)
+
+wezterm.on('gui-startup', function()
+    local mux = wezterm.mux
+    local _, _, window = mux.spawn_window {}
+    window:gui_window():maximize()
 end)
