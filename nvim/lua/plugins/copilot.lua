@@ -18,6 +18,9 @@ return {
         -- panel = {
         --     auto_refresh = true,
         -- },
+        filetypes = {
+            ['*'] = true,
+        },
         suggestion = {
             auto_trigger = true,
             keymap = {
