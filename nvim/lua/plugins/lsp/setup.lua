@@ -59,10 +59,26 @@ return {
             zk = {},
             jsonls = {},
             bashls = {},
-            tsserver = {},
+            tsserver = {
+                settings = {
+                    typescript = {
+                        inlayHints = {
+                            includeInlayParameterNameHints = 'all',
+                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                            includeInlayFunctionParameterTypeHints = true,
+                            includeInlayVariableTypeHints = true,
+                            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                            includeInlayPropertyDeclarationTypeHints = true,
+                            includeInlayFunctionLikeReturnTypeHints = true,
+                            includeInlayEnumMemberValueHints = true,
+                        }
+                    },
+                }
+            },
             clojure_lsp = {},
             dockerls = {},
             jsonnet_ls = {},
+            helm_ls = {},
             zls = {},
             gopls = {
                 settings = {
@@ -81,7 +97,7 @@ return {
                             compositeLiteralFields = true,
                             compositeLiteralTypes = true,
                             functionTypeParameters = true,
-                        }
+                        },
                     },
                 },
             },

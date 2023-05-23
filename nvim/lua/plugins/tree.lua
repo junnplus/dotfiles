@@ -32,7 +32,7 @@ return {
             map('n', '-', ':lua require("chowcho").run()<CR>', { buffer = bufnr })
             map('n', '[d', api.node.navigate.diagnostics.prev, { buffer = bufnr })
             map('n', ']d', api.node.navigate.diagnostics.next, { buffer = bufnr })
-            map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
+            -- map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
         end,
         renderer = {
             indent_markers = {
