@@ -1,7 +1,8 @@
 return {
     'junnplus/lsp-setup.nvim',
+    branch = 'inlay-hints',
     -- dir = '~/Documents/workspace/nvim-lsp-setup',
-    event = 'BufRead',
+    -- event = 'BufRead',
     dependencies = {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
@@ -20,6 +21,12 @@ return {
             gi = function() require('telescope.builtin').lsp_implementations() end,
             gr = function() require('telescope.builtin').lsp_references() end,
             ['<space>f'] = vim.lsp.buf.format,
+        },
+        inlay_hints = {
+            enabled = true,
+            parameter_hints = true,
+            type_hints = true,
+            debug = true,
         },
         servers = {
             eslint = {},
@@ -110,7 +117,10 @@ return {
                     Lua = {
                         workspace = {
                             checkThirdParty = false,
-                        }
+                        },
+                        hint = {
+                            enable = true,
+                        },
                     }
                 }
             },
@@ -126,6 +136,11 @@ return {
                         procMacro = {
                             enable = true,
                         },
+                        inlayHints = {
+                            closureReturnTypeHints = {
+                                enable = true
+                            },
+                        }
                     },
                 },
             }
