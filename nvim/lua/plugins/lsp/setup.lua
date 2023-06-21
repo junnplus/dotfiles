@@ -122,8 +122,6 @@ return {
                     },
                 },
             },
-            -- clangd = {},
-            solc = {},
             bufls = {},
             html = {},
             lua_ls = {
@@ -134,6 +132,7 @@ return {
                         },
                         hint = {
                             enable = true,
+                            arrayIndex = 'Disable',
                         },
                     }
                 }
@@ -154,6 +153,9 @@ return {
                             closureReturnTypeHints = {
                                 enable = true
                             },
+                        },
+                        cache = {
+                            warmup = false,
                         }
                     },
                 },
