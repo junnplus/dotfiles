@@ -1,7 +1,6 @@
 return {
     'junnplus/lsp-setup.nvim',
-    branch = 'inlay-hints',
-    -- dir = '~/Documents/workspace/nvim-lsp-setup',
+    -- dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
     -- event = 'BufRead',
     dependencies = {
         'neovim/nvim-lspconfig',
@@ -10,10 +9,16 @@ return {
         'folke/neodev.nvim'
     },
     init = function()
+        vim.lsp.set_log_level('debug')
+        require('vim.lsp.log').set_format_func(vim.inspect)
+
         local rounded = { border = 'rounded' }
         vim.diagnostic.config({ float = rounded })
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, rounded)
-        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, rounded)
+        local with_rounded = function(handler)
+            return vim.lsp.with(handler, rounded)
+        end
+        vim.lsp.handlers['textDocument/hover'] = with_rounded(vim.lsp.handlers.hover)
+        vim.lsp.handlers['textDocument/signatureHelp'] = with_rounded(vim.lsp.handlers.signature_help)
     end,
     opts = {
         mappings = {
@@ -24,8 +29,6 @@ return {
         },
         inlay_hints = {
             enabled = true,
-            parameter_hints = true,
-            type_hints = true,
             debug = true,
         },
         servers = {
@@ -87,6 +90,7 @@ return {
             jsonnet_ls = {},
             helm_ls = {},
             zls = {
+                cmd = { '/Users/jun/Documents/workspace/zls/zig-out/bin/zls', '--enable-debug-log' },
                 settings = {
                     zls = {
                         enable_inlay_hints = true,
