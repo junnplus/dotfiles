@@ -1,19 +1,25 @@
-local map = require('utils').map
-
 return {
     'phaazon/hop.nvim',
     event = 'VeryLazy',
     config = true,
-    init = function()
-        map('n', 's', '<cmd>HopChar2<cr>')
-        map('n', '<leader>w', '<cmd>HopWordAC<cr>')
-        map('n', '<leader>k', '<cmd>HopLineStart<cr>')
-        map('n', '<leader>j', '<cmd>HopLineStart<cr>')
-        map('v', '<leader>k', '<cmd>HopLineStart<cr>')
-        map('v', '<leader>j', '<cmd>HopLineStart<cr>')
-        map('n', '<leader>h', '<cmd>HopWordBC<cr>')
-        map('n', '<leader>l', '<cmd>HopWordAC<cr>')
-        map('v', '<leader>h', '<cmd>HopWordBC<cr>')
-        map('v', '<leader>l', '<cmd>HopWordAC<cr>')
-    end,
+    keys = {
+        {
+            's',
+            '<cmd>HopChar2<cr>',
+        },
+        {
+            '<leader>w',
+            '<cmd>HopWordAC<cr>',
+        },
+        {
+            '<leader>k',
+            mode = { 'n', 'v' },
+            '<cmd>HopLineStart<cr>',
+        },
+        {
+            '<leader>j',
+            mode = { 'n', 'v' },
+            '<cmd>HopLineStart<cr>',
+        },
+    },
 }

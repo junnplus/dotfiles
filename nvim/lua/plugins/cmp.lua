@@ -1,7 +1,3 @@
-local function input(keys, mode)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, true, true), mode or 'i', true)
-end
-
 return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -47,6 +43,10 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Select }),
                 ['<S-Tab>'] = function(fallback)
+                    local function input(keys, mode)
+                        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, true, true), mode or 'i', true)
+                    end
+
                     if vim.fn.pumvisible() == 1 then
                         input('<C-p>', 'n')
                     elseif vim.fn['vsnip#jumpable']() == -1 then
