@@ -33,11 +33,12 @@ return {
             map('n', '<C-s>', api.node.open.horizontal)
             map('n', 'v', api.node.open.vertical)
             map('n', 's', api.node.open.horizontal)
-            map('n', '<C-t>', ':ToggleTerm<CR>')
-            map('n', '-', function() require('chowcho').run() end)
             map('n', '[d', api.node.navigate.diagnostics.prev)
             map('n', ']d', api.node.navigate.diagnostics.next)
             -- map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
+
+            map('n', '<C-t>', function() require('toggleterm').toggle() end)
+            map('n', '-', function() require('chowcho').run() end)
         end,
         renderer = {
             indent_markers = {
