@@ -50,7 +50,7 @@ return {
                 }
             },
             highlight_git = true,
-            highlight_opened_files = '1',
+            -- highlight_opened_files = '1',
             icons = {
                 git_placement = 'after',
                 glyphs = {
