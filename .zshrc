@@ -10,7 +10,7 @@ export PTPYTHON_CONFIG_HOME=~/.config/ptpython
 export CARGO_PATH=$HOME/.cargo
 
 export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH:$HOME/zig"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -37,14 +37,21 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle z-shell/F-Sy-H --branch=main
 # antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
-antigen bundle dracula/zsh
-antigen bundle dracula/zsh-syntax-highlighting
+# antigen bundle dracula/zsh
+# antigen bundle dracula/zsh-syntax-highlighting
 antigen bundle Tarrasch/zsh-autoenv
 
 antigen apply
 
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
+
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || {
+    echo "Load starship"
+    eval "$(starship init zsh)"
+}
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -94,3 +101,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
 "
+
+bindkey -v
+bindkey -M viins '^f' vi-backward-char
+bindkey -M viins '^b' vi-forward-char

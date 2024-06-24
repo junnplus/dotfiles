@@ -1,9 +1,9 @@
 format = '$directory$git_branch$git_commit$git_state$git_status$golang$helm$java$nodejs$python$red$ruby$rust$kubernetes$custom$cmd_duration$lua$line_break$jobs$time$status$shell$character'
 
 [character]
-vicmd_symbol = '[\[I\] ❯](bold green)'
-success_symbol = '[\[N\] ❯](bold green)'
-error_symbol = '[\[N\] ❯](bold red)'
+vicmd_symbol = '[\[N\] ❯](bold green)'
+success_symbol = '[\[I\] ❯](bold green)'
+error_symbol = '[\[I\] ❯](bold red)'
 
 [git_commit]
 tag_disabled = true
