@@ -103,5 +103,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 "
 
 bindkey -v
-bindkey -M viins '^f' vi-backward-char
-bindkey -M viins '^b' vi-forward-char
+bindkey -M viins '^f' vi-forward-char
+bindkey -M viins '^b' vi-backward-char
