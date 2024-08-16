@@ -1,6 +1,6 @@
 return {
-    -- 'junnplus/lsp-setup.nvim',
-    dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
+    'junnplus/lsp-setup.nvim',
+    -- dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
     -- event = 'BufRead',
     dependencies = {
         'neovim/nvim-lspconfig',
@@ -90,7 +90,6 @@ return {
             },
             clojure_lsp = {},
             jsonnet_ls = {},
-            helm_ls = {},
             zls = {
                 cmd = { '/Users/jun/Documents/workspace/zls/zig-out/bin/zls', '--enable-debug-log' },
                 settings = {
@@ -125,7 +124,6 @@ return {
                 },
             },
             bufls = {},
-            html = {},
             lua_ls = {
                 settings = {
                     Lua = {

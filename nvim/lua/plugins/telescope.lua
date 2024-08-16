@@ -23,6 +23,7 @@ return {
                     ['<C-b>'] = 'preview_scrolling_up',
                 },
             },
+            file_ignore_patterns = { '^vendor/', '^.git/' },
         },
     },
     keys = {
