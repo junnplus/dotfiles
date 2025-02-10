@@ -1,7 +1,6 @@
 return {
-    'junnplus/lsp-setup.nvim',
-    -- dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
-    -- event = 'BufRead',
+    -- 'junnplus/lsp-setup.nvim',
+    dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
     dependencies = {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
@@ -19,6 +18,16 @@ return {
         end
         vim.lsp.handlers['textDocument/hover'] = with_rounded(vim.lsp.handlers.hover)
         vim.lsp.handlers['textDocument/signatureHelp'] = with_rounded(vim.lsp.handlers.signature_help)
+
+        for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+            local default_diagnostic_handler = vim.lsp.handlers[method]
+            vim.lsp.handlers[method] = function(err, result, context, config)
+                if err ~= nil and err.code == -32802 then
+                    return
+                end
+                return default_diagnostic_handler(err, result, context, config)
+            end
+        end
     end,
     opts = {
         mappings = {
@@ -32,7 +41,6 @@ return {
             debug = true,
         },
         servers = {
-            eslint = {},
             pylsp = {
                 settings = {
                     pylsp = {
@@ -51,6 +59,7 @@ return {
                             },
                             flake8 = {
                                 enabled = true,
+                                args = { '--ignore=E501' }
                             },
                             pylint = {
                                 enabled = false,
@@ -72,7 +81,7 @@ return {
             zk = {},
             jsonls = {},
             bashls = {},
-            tsserver = {
+            ts_ls = {
                 settings = {
                     typescript = {
                         inlayHints = {
@@ -88,6 +97,7 @@ return {
                     },
                 }
             },
+            -- denols = {},
             clojure_lsp = {},
             jsonnet_ls = {},
             zls = {
@@ -123,7 +133,7 @@ return {
                     },
                 },
             },
-            bufls = {},
+            -- bufls = {},
             lua_ls = {
                 settings = {
                     Lua = {
@@ -137,7 +147,7 @@ return {
                     }
                 }
             },
-            ['rust_analyzer@nightly'] = {
+            ['rust_analyzer@2024-11-11'] = {
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostics = {

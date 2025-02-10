@@ -6,7 +6,7 @@ return {
         'nvim-treesitter/playground',
         'nvim-treesitter/nvim-treesitter-refactor',
         'nvim-treesitter/nvim-treesitter-textobjects',
-        'nvim-treesitter/nvim-treesitter-context',
+        -- 'nvim-treesitter/nvim-treesitter-context',
         'RRethy/nvim-treesitter-endwise',
         -- 'andymass/vim-matchup', -- extend % key
         'yioneko/nvim-yati',
