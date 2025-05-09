@@ -1,5 +1,5 @@
 return {
-    'numToStr/comment.nvim',
-    keys = { 'gcc', { 'gc', mode = 'v' } },
-    config = true,
+  'numToStr/comment.nvim',
+  keys = { 'gcc', { 'gc', mode = 'v' } },
+  config = true,
 }

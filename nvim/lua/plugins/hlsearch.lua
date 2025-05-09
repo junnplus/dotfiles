@@ -1,5 +1,5 @@
 return {
-    'glepnir/hlsearch.nvim',
-    event = 'VeryLazy',
-    config = true,
+  'glepnir/hlsearch.nvim',
+  event = 'VeryLazy',
+  config = true,
 }

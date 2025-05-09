@@ -1,5 +1,5 @@
 return {
-    'ray-x/lsp_signature.nvim',
-    event = 'VeryLazy',
-    config = true,
+  'ray-x/lsp_signature.nvim',
+  event = 'VeryLazy',
+  config = true,
 }

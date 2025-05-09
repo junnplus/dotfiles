@@ -1,19 +1,122 @@
-local cmd = vim.cmd
-local ncmd = vim.api.nvim_command
+vim.api.nvim_command('filetype plugin indent on')
 
-ncmd('filetype plugin indent on')
-cmd([[ autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]])
-cmd([[ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 ]])
-cmd([[ autocmd FileType json,jsonnet setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab ]])
-cmd([[ autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120 noexpandtab ]])
-cmd([[ autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 ]])
-cmd([[ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 expandtab ]])
-cmd([[ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]])
-cmd([[ autocmd FileType less,sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120 ]])
-cmd(
-    [[ autocmd FileType javascript,javascript.jsx,javascriptreact,typescript,typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab ]]
-)
-cmd([[ autocmd FileType NvimTree setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 ]])
+local function augroup(name)
+    return vim.api.nvim_create_augroup('augroup_' .. name, { clear = true })
+end
 
-cmd([[ autocmd BufNewFile,BufRead *.proto setfiletype proto ]])
-cmd([[ autocmd FileType proto setlocal shiftwidth=2 expandtab ]])
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'python',
+    group = augroup('python'),
+    callback = function()
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.softtabstop = 4
+        vim.opt_local.textwidth = 120
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'lua',
+    group = augroup('lua'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 120
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'go',
+    group = augroup('go'),
+    callback = function()
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.softtabstop = 4
+        vim.opt_local.textwidth = 120
+        vim.opt_local.expandtab = false
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'json', 'jsonnet' },
+    group = augroup('json'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'yaml', 'yml' },
+    group = augroup('yaml'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 0
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'css', 'scss', 'less' },
+    group = augroup('css'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 120
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'html', 'htmldjango', 'xhtml', 'haml' },
+    group = augroup('html'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 0
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescriptreact' },
+    group = augroup('js'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 0
+        vim.opt_local.expandtab = true
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'NvimTree',
+    group = augroup('nvimtree'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 0
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'proto',
+    group = augroup('proto'),
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.textwidth = 0
+        vim.opt_local.expandtab = true
+    end,
+})
