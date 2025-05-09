@@ -13,11 +13,7 @@ return {
 
         local rounded = { border = 'rounded' }
         vim.diagnostic.config({ float = rounded })
-        local with_rounded = function(handler)
-            return vim.lsp.with(handler, rounded)
-        end
-        vim.lsp.handlers['textDocument/hover'] = with_rounded(vim.lsp.handlers.hover)
-        vim.lsp.handlers['textDocument/signatureHelp'] = with_rounded(vim.lsp.handlers.signature_help)
+        vim.o.winborder = 'rounded'
 
         for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
             local default_diagnostic_handler = vim.lsp.handlers[method]
