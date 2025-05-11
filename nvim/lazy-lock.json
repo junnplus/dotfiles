@@ -23,7 +23,7 @@
   "incolla.nvim": { "branch": "master", "commit": "23454666333e5b30c87ff9576083ce6706c58715" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c" },
-  "lsp-setup.nvim": { "branch": "main", "commit": "4837513d3d57e9906837c5dee88893ec421dc7e2" },
+  "lsp-setup.nvim": { "branch": "main", "commit": "b80ecee5865fbe18c0b3cf2f2b53051147884ba8" },
   "lsp_signature.nvim": { "branch": "master", "commit": "a4e3c15dfdce8783c074539b1835edae75fa63d5" },
   "lspkind-nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
   "lualine.nvim": { "branch": "master", "commit": "15884cee63a8c205334ab13ab1c891cd4d27101a" },

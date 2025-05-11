@@ -1,6 +1,6 @@
 return {
-  -- 'junnplus/lsp-setup.nvim',
-  dir = '/Users/jun/Documents/workspace/nvim-lsp-setup',
+  'junnplus/lsp-setup.nvim',
+  -- dir = '/Users/jun/Documents/workspace/lsp-setup.nvim',
   dependencies = {
     'neovim/nvim-lspconfig',
     'mason-org/mason.nvim',
@@ -14,6 +14,7 @@ return {
     local rounded = { border = 'rounded' }
     vim.diagnostic.config({ float = rounded })
   end,
+  ---@type LspSetup.Options
   opts = {
     mappings = {
       gd = function() require('telescope.builtin').lsp_definitions() end,
