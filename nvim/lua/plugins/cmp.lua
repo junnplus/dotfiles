@@ -71,6 +71,9 @@ return {
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'vsnip' },
+        {
+          name = 'lazydev', group_index = 1,
+        }
       },
     }
     cmp.setup(opts)

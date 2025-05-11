@@ -27,6 +27,7 @@ vim.o.foldenable = false
 vim.o.autoread = true
 vim.o.autowrite = true
 vim.o.mouse = 'a'
+vim.o.winborder = 'rounded'
 
 vim.o.number = true
 vim.o.cursorline = true

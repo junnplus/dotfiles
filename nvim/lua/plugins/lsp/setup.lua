@@ -5,25 +5,14 @@ return {
     'neovim/nvim-lspconfig',
     'mason-org/mason.nvim',
     'mason-org/mason-lspconfig.nvim',
-    'folke/neodev.nvim'
+    'folke/lazydev.nvim'
   },
   init = function()
-    vim.lsp.set_log_level('debug')
-    require('vim.lsp.log').set_format_func(vim.inspect)
+    -- vim.lsp.set_log_level('debug')
+    -- require('vim.lsp.log').set_format_func(vim.inspect)
 
     local rounded = { border = 'rounded' }
     vim.diagnostic.config({ float = rounded })
-    vim.o.winborder = 'rounded'
-
-    for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
-      local default_diagnostic_handler = vim.lsp.handlers[method]
-      vim.lsp.handlers[method] = function(err, result, context, config)
-        if err ~= nil and err.code == -32802 then
-          return
-        end
-        return default_diagnostic_handler(err, result, context, config)
-      end
-    end
   end,
   opts = {
     mappings = {
@@ -34,14 +23,15 @@ return {
     },
     inlay_hints = {
       enabled = true,
-      debug = true,
+      -- debug = true,
     },
     servers = {
       pylsp = {
         settings = {
           pylsp = {
-            -- PylspInstall python-lsp-black
-            -- PylspInstall pyls-isort
+            -- :PylspInstall python-lsp-black
+            -- :PylspInstall pyls-isort
+            -- :PylspInstall python-lsp-ruff
             configurationSources = { 'flake8' },
             plugins = {
               pycodestyle = {
@@ -62,7 +52,10 @@ return {
               },
               black = {
                 enabled = true,
-              }
+              },
+              rope_autoimport = {
+                enabled = true,
+              },
             }
           }
         }
@@ -97,7 +90,7 @@ return {
       clojure_lsp = {},
       jsonnet_ls = {},
       zls = {
-        cmd = { '/Users/jun/Documents/workspace/zls/zig-out/bin/zls', '--enable-debug-log' },
+        -- cmd = { '/Users/jun/Documents/workspace/zls/zig-out/bin/zls', '--enable-debug-log' },
         settings = {
           zls = {
             enable_inlay_hints = true,
