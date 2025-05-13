@@ -13,6 +13,16 @@ return {
 
     local rounded = { border = 'rounded' }
     vim.diagnostic.config({ float = rounded })
+    local hover = vim.lsp.buf.hover;
+    ---@diagnostic disable-next-line: duplicate-set-field
+    vim.lsp.buf.hover = function()
+      return hover({
+        border = 'single',
+        -- max_width = 100,
+        max_width = math.floor(vim.o.columns * 0.7),
+        max_height = math.floor(vim.o.lines * 0.7),
+      })
+    end
   end,
   ---@type LspSetup.Options
   opts = {
@@ -141,7 +151,7 @@ return {
           }
         }
       },
-      ['rust_analyzer@2024-11-11'] = {
+      ['rust_analyzer'] = {
         settings = {
           ['rust-analyzer'] = {
             diagnostics = {
