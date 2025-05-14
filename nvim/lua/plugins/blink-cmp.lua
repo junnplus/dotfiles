@@ -10,8 +10,11 @@ return {
     -- C-n/C-p or Up/Down: Select next/previous item
     -- C-e: Hide menu
     -- C-k: Toggle signature help (if signature.enabled = true)
-    keymap = { preset = 'default' },
-
+    keymap = {
+      preset = 'default',
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<C-e>'] = {},
+    },
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned

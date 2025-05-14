@@ -29,16 +29,16 @@ return {
 
       local api = require('nvim-tree.api')
       api.config.mappings.default_on_attach(bufnr)
-      map('n', '<C-v>', api.node.open.vertical)
-      map('n', '<C-s>', api.node.open.horizontal)
-      map('n', 'v', api.node.open.vertical)
-      map('n', 's', api.node.open.horizontal)
-      map('n', '[d', api.node.navigate.diagnostics.prev)
-      map('n', ']d', api.node.navigate.diagnostics.next)
+      map('n', '<C-v>', api.node.open.vertical, { desc = 'Open vertical split' })
+      map('n', '<C-s>', api.node.open.horizontal, { desc = 'Open horizontal split' })
+      map('n', 'v', api.node.open.vertical, { desc = 'Open vertical split' })
+      map('n', 's', api.node.open.horizontal, { desc = 'Open horizontal split' })
+      map('n', '[d', api.node.navigate.diagnostics.prev, { desc = 'Prev diagnostic' })
+      map('n', ']d', api.node.navigate.diagnostics.next, { desc = 'Next diagnostic' })
       -- map('n', 'r', api.fs.rename_sub, { buffer = bufnr })
 
-      map('n', '<C-t>', function() require('toggleterm').toggle() end)
-      map('n', '-', function() require('chowcho').run() end)
+      map('n', '<C-t>', function() require('toggleterm').toggle() end, { desc = 'Toggle terminal' })
+      map('n', '-', function() require('chowcho').run() end, { desc = 'Choice Window' })
     end,
     renderer = {
       indent_markers = {

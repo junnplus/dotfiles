@@ -2,13 +2,22 @@ return {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
   keys = {
-    { '<C-t>', ':ToggleTerm<CR>' },
+    { '<leader>t', ':ToggleTerm<CR>', desc = 'Toggle terminal' },
     {
-      '<leader>lg',
+      '<leader>g',
       function()
-        require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()
+        local Terminal = require('toggleterm.terminal').Terminal
+        Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float', }):toggle()
       end,
       desc = 'LazyGit',
+    },
+    {
+      '<leader>d',
+      function()
+        local Terminal = require('toggleterm.terminal').Terminal
+        Terminal:new({ cmd = 'lazydocker', hidden = true, direction = 'float', }):toggle()
+      end,
+      desc = 'LazyDocker',
     }
   },
   opts = {
