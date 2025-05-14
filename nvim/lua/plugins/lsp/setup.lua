@@ -1,6 +1,6 @@
 return {
-  'junnplus/lsp-setup.nvim',
-  -- dir = '/Users/jun/Documents/workspace/lsp-setup.nvim',
+  -- 'junnplus/lsp-setup.nvim',
+  dir = '/Users/jun/Documents/workspace/lsp-setup.nvim',
   dependencies = {
     'neovim/nvim-lspconfig',
     'mason-org/mason.nvim',
