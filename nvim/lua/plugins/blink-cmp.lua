@@ -19,7 +19,7 @@ return {
     },
     completion = {
       menu = {
-        border = 'single',
+        border = 'rounded',
         draw = {
           columns = {
             { 'kind_icon',  'kind',              gap = 1 },
@@ -28,9 +28,9 @@ return {
           }
         }
       },
-      documentation = { auto_show = true, window = { border = 'single' } }
+      documentation = { auto_show = true, window = { border = 'rounded' } }
     },
-    signature = { window = { border = 'single' } },
+    signature = { window = { border = 'rounded' } },
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },

@@ -2,7 +2,14 @@ return {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
   keys = {
-    { mode = { 'n' }, '<C-t>', ':ToggleTerm<CR>' },
+    { '<C-t>', ':ToggleTerm<CR>' },
+    {
+      '<leader>lg',
+      function()
+        require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()
+      end,
+      desc = 'LazyGit',
+    }
   },
   opts = {
     open_mapping = [[<C-t>]],

@@ -2,7 +2,6 @@ return {
   'yetone/avante.nvim',
   event = 'VeryLazy',
   version = false, -- Never set this value to "*"! Never!
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'stevearc/dressing.nvim',
@@ -10,7 +9,6 @@ return {
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
     'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-    'hrsh7th/nvim-cmp',              -- autocompletion for avante commands and mentions
     'ibhagwan/fzf-lua',              -- for file_selector provider fzf
     'nvim-tree/nvim-web-devicons',   -- or echasnovski/mini.icons
     'zbirenbaum/copilot.lua',        -- for providers='copilot'
