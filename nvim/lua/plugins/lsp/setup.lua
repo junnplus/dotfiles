@@ -1,6 +1,6 @@
 return {
-  -- 'junnplus/lsp-setup.nvim',
-  dir = '/Users/jun/Documents/workspace/lsp-setup.nvim',
+  'junnplus/lsp-setup.nvim',
+  -- dir = '/Users/jun/Documents/workspace/lsp-setup.nvim',
   dependencies = {
     'neovim/nvim-lspconfig',
     'mason-org/mason.nvim',
@@ -27,10 +27,9 @@ return {
   ---@type LspSetup.Options
   opts = {
     mappings = {
-      gd = function() require('telescope.builtin').lsp_definitions() end,
-      gi = function() require('telescope.builtin').lsp_implementations() end,
-      gr = function() require('telescope.builtin').lsp_references() end,
-      ['<space>f'] = vim.lsp.buf.format,
+      gd = { cmd = function() require('telescope.builtin').lsp_definitions() end, opts = { desc = 'Go To Definition' } },
+      gi = { cmd = function() require('telescope.builtin').lsp_implementations() end, opts = { desc = 'Go To Implementation' } },
+      gr = { cmd = function() require('telescope.builtin').lsp_references() end, opts = { desc = 'Go To References' } },
     },
     inlay_hints = {
       enabled = true,
