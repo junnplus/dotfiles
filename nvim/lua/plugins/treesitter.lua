@@ -5,7 +5,6 @@ return {
   lazy = vim.fn.argc(-1) == 0,
   dependencies = {
     'nvim-treesitter/playground',
-    'nvim-treesitter/nvim-treesitter-refactor',
     'nvim-treesitter/nvim-treesitter-textobjects',
     -- 'nvim-treesitter/nvim-treesitter-context',
     'RRethy/nvim-treesitter-endwise',
@@ -34,17 +33,6 @@ return {
       enable = true,
       use_virtual_text = true,
       lint_events = { 'BufWrite', 'CursorHold' },
-    },
-    -- nvim-treesitter/nvim-treesitter-refactor
-    refactor = {
-      -- highlight_definitions = { enable = true }, -- too slow for large files
-      -- highlight_current_scope = { enable = true },
-      smart_rename = {
-        enable = true,
-        keymaps = {
-          smart_rename = 'gnr',
-        },
-      },
     },
     indent = { enable = false },
     autopairs = { enable = true },

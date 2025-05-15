@@ -2,6 +2,8 @@ return {
   'folke/lazydev.nvim',
   event = 'VeryLazy',
   ft = { 'lua' },
+  ---@module 'lazydev'
+  ---@type lazydev.Config
   opts = {
     library = {
       -- See the configuration section for more details

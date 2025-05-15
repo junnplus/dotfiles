@@ -36,14 +36,20 @@ return {
     signature = { window = { border = 'rounded' } },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
         lsp = {
           name = 'LSP',
           module = 'blink.cmp.sources.lsp',
           enabled = true,
         },
-      }
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+      },
     },
     fuzzy = { implementation = 'prefer_rust_with_warning' }
   },

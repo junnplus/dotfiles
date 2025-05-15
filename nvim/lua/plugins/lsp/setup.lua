@@ -5,7 +5,6 @@ return {
     'neovim/nvim-lspconfig',
     'mason-org/mason.nvim',
     'mason-org/mason-lspconfig.nvim',
-    'folke/lazydev.nvim'
   },
   init = function()
     -- vim.lsp.set_log_level('debug')
@@ -24,6 +23,7 @@ return {
       })
     end
   end,
+  ---@module 'lsp-setup'
   ---@type LspSetup.Options
   opts = {
     mappings = {
