@@ -37,7 +37,8 @@ return {
     },
     -- nvim-treesitter/nvim-treesitter-refactor
     refactor = {
-      highlight_definitions = { enable = true },
+      -- highlight_definitions = { enable = true }, -- too slow for large files
+      -- highlight_current_scope = { enable = true },
       smart_rename = {
         enable = true,
         keymaps = {
