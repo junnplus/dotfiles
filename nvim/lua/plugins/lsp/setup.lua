@@ -22,6 +22,20 @@ return {
         max_height = math.floor(vim.o.lines * 0.7),
       })
     end
+    --- TODO: remove it after new version of gopls is released (> v0.18.1)
+    --- Issue: https://github.com/golang/go/issues/72742
+    local code_action = vim.lsp.buf.code_action;
+    ---@diagnostic disable-next-line: duplicate-set-field
+    vim.lsp.buf.code_action = function()
+      return code_action({
+        filter = function(ca)
+          if ca.kind == 'gopls.doc.features' then
+            return false
+          end
+          return true
+        end,
+      })
+    end
   end,
   ---@module 'lsp-setup'
   ---@type LspSetup.Options
@@ -150,6 +164,7 @@ return {
           }
         }
       },
+      sqls = {},
       ['rust_analyzer'] = {
         settings = {
           ['rust-analyzer'] = {
