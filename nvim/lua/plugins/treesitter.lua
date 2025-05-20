@@ -15,6 +15,11 @@ return {
     local ncmd = vim.api.nvim_command
     ncmd('set foldmethod=expr')
     ncmd('set foldexpr=nvim_treesitter#foldexpr()')
+    vim.filetype.add({
+      pattern = {
+        ['%.env%.[%w_.-]+'] = 'sh',
+      }
+    })
   end,
   ---@type TSConfig
   ---@diagnostic disable-next-line: missing-fields
