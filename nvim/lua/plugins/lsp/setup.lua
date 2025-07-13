@@ -111,7 +111,7 @@ return {
         }
       },
       -- denols = {},
-      clojure_lsp = {},
+      -- clojure_lsp = {},
       jsonnet_ls = {},
       zls = {
         -- cmd = { '/Users/jun/Documents/workspace/zls/zig-out/bin/zls', '--enable-debug-log' },
@@ -128,6 +128,7 @@ return {
       gopls = {
         settings = {
           gopls = {
+            buildFlags = { '-tags=tools' },
             gofumpt = true,
             -- staticcheck = true,
             usePlaceholders = true,
@@ -164,7 +165,7 @@ return {
           }
         }
       },
-      sqls = {},
+      -- sqls = {},
       ['rust_analyzer'] = {
         settings = {
           ['rust-analyzer'] = {

@@ -109,3 +109,15 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.textwidth = 0
   end,
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*/templates/*.yaml', '*/templates/*.tpl', 'helmfile*.yaml' },
+  group = augroup('helm'),
+  callback = function()
+    vim.bo.filetype = 'helm'
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.textwidth = 0
+  end,
+})

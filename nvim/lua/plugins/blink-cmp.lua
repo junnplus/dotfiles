@@ -51,7 +51,10 @@ return {
         },
       },
     },
-    fuzzy = { implementation = 'prefer_rust_with_warning' }
+    fuzzy = {
+      implementation = 'prefer_rust_with_warning',
+      sorts = { 'sort_text', 'score', },
+    }
   },
   opts_extend = { 'sources.default' }
 }
