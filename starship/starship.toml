@@ -1,4 +1,4 @@
-format = '$directory$git_branch$git_commit$git_state$git_status$golang$helm$java$nodejs$python$red$ruby$rust$kubernetes$custom$cmd_duration$lua$line_break$jobs$time$status$shell$character'
+format = '$directory$git_branch$git_commit$git_state$git_status$golang$helm$java$nodejs$python$red$ruby$rust$kubernetes$docker_context$custom$cmd_duration$lua$line_break$jobs$time$status$shell$character'
 
 [character]
 vicmd_symbol = '[\[N\] ❯](bold green)'
