@@ -1,64 +1,41 @@
+[ -f ~/.env.zsh ] && source ~/.env.zsh
+
 export EDITOR=nvim
 
 export GOPATH=$HOME/.go
-# export GOPROXY=https://goproxy.cn,direct
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PTPYTHON_CONFIG_HOME=~/.config/ptpython
+export GOBIN=$GOPATH/bin
 
 export CARGO_PATH=$HOME/.cargo
 
-export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
-export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PYENV_ROOT/shims:$PATH:$HOME/zig"
+export PATH="/opt/homebrew/opt/libpq/bin:/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="$CARGO_PATH/bin:$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export ZSH_HIGHLIGHT_MAXLENGTH=60
-
-source ~/.antigen/antigen.zsh
-
-antigen use oh-my-zsh
-antigen bundle autojump
-antigen bundle vi-mode
-antigen bundle git
-antigen bundle fzf
-antigen bundle pyenv
-antigen bundle pip
-antigen bundle kubectl
-# antigen bundle tmux
-antigen bundle extract
-antigen bundle gitignore
-antigen bundle nvm
-
-antigen bundle lukechilds/zsh-nvm
-antigen bundle Aloxaf/fzf-tab
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle z-shell/F-Sy-H --branch=main
-# antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-# antigen bundle dracula/zsh
-# antigen bundle dracula/zsh-syntax-highlighting
-antigen bundle Tarrasch/zsh-autoenv
-
-antigen apply
-
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-# eval "$(starship init zsh)"
-
-# Check that the function `starship_zle-keymap-select()` is defined.
-# xref: https://github.com/starship/starship/issues/3418
-type starship_zle-keymap-select >/dev/null || {
-    echo "Load starship"
-    eval "$(starship init zsh)"
-}
+export ZSH_HIGHLIGHT_MAXLENGTH=60
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
+      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+    zle -N zle-keymap-select "";
+fi
+
+eval "$(zoxide init zsh)"
+eval "$(sheldon source)"
+eval "$(atuin init zsh)"
+eval "$(starship init zsh)"
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@3/include"
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/openssl@3/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+export LIBRARY_PATH="/opt/homebrew/lib"
+export C_INCLUDE_PATH="/opt/homebrew/include"
 
 alias vi=nvim
 alias vim=nvim
@@ -105,3 +82,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 bindkey -v
 bindkey -M viins '^f' vi-forward-char
 bindkey -M viins '^b' vi-backward-char
+
+export PATH=/Users/jun/.claude/local:/Users/jun/.opencode/bin:$PATH
