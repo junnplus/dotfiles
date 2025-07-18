@@ -56,6 +56,9 @@ alias q=exit
 # alias nerdctl="lima sudo nerdctl"
 # alias docker="lima sudo docker"
 
+eval $(ssh-agent) > /dev/null
+find ~/.ssh -name 'id_*' ! -name '*.pub' -exec ssh-add -q {} \;
+
 function workup {
     if [[ -n "$TMUX" ]]
     then
