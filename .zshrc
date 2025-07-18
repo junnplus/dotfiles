@@ -19,14 +19,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
-fi
+[[ ${widgets[zle-keymap-select]#user:} == starship* ]] && zle -N zle-keymap-select ""
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
+eval "$(atuin init zsh)"
 
 # zsh-vi-mode will overwrite the key bindings of atuin.
 # xref: https://github.com/atuinsh/atuin/issues/977
@@ -86,7 +84,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 "
 
 bindkey -v
-bindkey -M viins '^f' vi-forward-char
-bindkey -M viins '^b' vi-backward-char
+# bindkey -M viins '^f' vi-forward-char
+# bindkey -M viins '^b' vi-backward-char
+export WORDCHARS='*?_-[\]~=&;!#$%^(){}<>'
 
 export PATH=/Users/jun/.claude/local:/Users/jun/.opencode/bin:$PATH
