@@ -24,10 +24,13 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
     zle -N zle-keymap-select "";
 fi
 
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
-eval "$(atuin init zsh)"
-eval "$(starship init zsh)"
+
+# zsh-vi-mode will overwrite the key bindings of atuin.
+# xref: https://github.com/atuinsh/atuin/issues/977
+zvm_after_init_commands+=(eval "$(atuin init zsh)")
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

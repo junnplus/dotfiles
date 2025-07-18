@@ -15,6 +15,14 @@ shell = "zsh"
 [plugins.base16]
 github = "chriskempson/base16-shell"
 
+[plugins.zsh-vi-mode]
+github = "jeffreytse/zsh-vi-mode"
+
+[plugins.ohmyzsh]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins"
+use = ["{fzf,extract}/*.plugin.zsh"]
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -26,11 +34,6 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
-
-[plugins.ohmyzsh]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins"
-use = ["{vi-mode,fzf,extract}/*.plugin.zsh"]
 
 [plugins.f-sy-h]
 github = "z-shell/F-Sy-H"
