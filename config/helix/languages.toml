@@ -1,0 +1,8 @@
+[[language]]
+name = "rust"
+language-server = { command = "/Users/jun/.local/share/nvim/mason/bin/rust-analyzer"}
+
+
+[[language]]
+name = "python"
+language-server = { command = "/Users/jun/.local/share/nvim/mason/bin/pylsp" }

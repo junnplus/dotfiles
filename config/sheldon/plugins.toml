@@ -41,6 +41,9 @@ branch = "main"
 #
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+
+[plugins.brew-completions]
+local = "/opt/homebrew/share/zsh/site-functions"
 apply = ["fpath"]
 
 [plugins.local-completions]
