@@ -12,35 +12,64 @@
 
 shell = "zsh"
 
-[plugins.base16]
-github = "chriskempson/base16-shell"
-
-[plugins.zsh-vi-mode]
-github = "jeffreytse/zsh-vi-mode"
-
-[plugins.ohmyzsh]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins"
-use = ["{fzf,extract}/*.plugin.zsh"]
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.base16]
+github = "chriskempson/base16-shell"
+apply = ["defer"]
+
+[plugins.ohmyzsh]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins"
+use = ["extract/*.plugin.zsh"]
+apply = ["defer"]
+
+[plugins.zsh-vi-mode]
+github = "jeffreytse/zsh-vi-mode"
+apply = ["defer"]
+
+[plugins.zsh-vi-mode.hooks]
+post = '''
+zvm_after_init_commands+=(eval "$(atuin init zsh)")
+export WORDCHARS='*?[\]~=&;!#$%^(){}<>'
+'''
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting.hooks]
+post = '''
+export ZSH_HIGHLIGHT_MAXLENGTH=60
+'''
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
+apply = ["defer"]
+
+[plugins.fzf-tab.hooks]
+post = '''
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+'''
 
 [plugins.f-sy-h]
 github = "z-shell/F-Sy-H"
 branch = "main"
+apply = ["defer"]
 #
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["defer"]
+
+[plugins.zsh-completions.hooks]
 
 [plugins.brew-completions]
 local = "/opt/homebrew/share/zsh/site-functions"

@@ -1,14 +1,8 @@
 mkdir -p ~/.ssh
 mkdir -p ~/.kube
 
-echo "Installing antigen..."
-curl -L git.io/antigen > ~/.antigen/antigen.zsh
-
 FILES=(
     .zshrc
-    .zlogin
-    .gitconfig
-    .ssh/config
     .Brewfile
 )
 
@@ -17,18 +11,10 @@ for FILE in ${FILES[@]}; do
     ln -sfv $HOME/.dotfiles/$FILE ~/$FILE;
 done
 
-DIRS=(
-    pip
-    tmux
-    nvim
-    wezterm
-    stylua
-    starship
-    sheldon
-)
 echo "Linking config dir..."
-for DIR in ${DIRS[@]}; do
-    ln -sfvn $HOME/.dotfiles/$DIR ~/.config/$DIR;
+for item in "$HOME/.dotfiles/config/"*; do
+    DIR=$(basename $item)
+    ln -sfvn $HOME/.dotfiles/config/$DIR ~/.config/$DIR;
 done
 
 if test ! $(which brew); then

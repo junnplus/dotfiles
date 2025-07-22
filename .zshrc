@@ -13,9 +13,6 @@ export PATH="$HOME/.local/bin:${HOME}/.krew/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-export ZSH_HIGHLIGHT_MAXLENGTH=60
-
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
@@ -23,12 +20,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(sheldon source)"
 eval "$(atuin init zsh)"
-
-# zsh-vi-mode will overwrite the key bindings of atuin.
-# xref: https://github.com/atuinsh/atuin/issues/977
-zvm_after_init_commands+=(eval "$(atuin init zsh)")
+eval "$(sheldon source)"
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -73,19 +66,14 @@ function workup {
 export KUBECONFIG=$(echo `/bin/ls ~/.kube/*config` | sed 's/ /:/g')
 export GPG_TTY=$(tty)
 
-export FZF_COMPLETION_TRIGGER='~~'
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
---height 40%
---reverse
---bind 'ctrl-f:preview-page-down,ctrl-b:preview-page-up'
---color=light
---color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
---color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-"
-
-bindkey -v
-# bindkey -M viins '^f' vi-forward-char
-# bindkey -M viins '^b' vi-backward-char
-export WORDCHARS='*?_-[\]~=&;!#$%^(){}<>'
+# export FZF_COMPLETION_TRIGGER='~~'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+# --height 40%
+# --reverse
+# --bind 'ctrl-f:preview-page-down,ctrl-b:preview-page-up'
+# --color=light
+# --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+# --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+# "
 
 export PATH=/Users/jun/.claude/local:/Users/jun/.opencode/bin:$PATH
